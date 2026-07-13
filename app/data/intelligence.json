@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-07-12",
+  "status": "reviewed-live-sources",
+  "disclaimer": "Solaris summaries and recommendations are preliminary and require Chair review before methodology integration.",
+  "items": [
+    {
+      "id": "INT-2026-0712-001",
+      "source": "Reuters",
+      "title": "UN digital tech agency launches initiative to improve trust in AI agents",
+      "published": "2026-07-09",
+      "url": "https://www.reuters.com/legal/litigation/un-digital-tech-agency-launches-initiative-improve-trust-ai-agents-2026-07-09/",
+      "category": [
+        "AI Governance",
+        "Agentic AI",
+        "Standards"
+      ],
+      "readTime": 5,
+      "executiveSummary": "The ITU announced a focus group to develop international foundations for trustworthy AI agents, emphasizing identity, accountability, human oversight, and prevention of unauthorized actions.",
+      "keyTakeaways": [
+        "AI agents increasingly act independently on behalf of users and organizations.",
+        "Trustworthy deployment requires identity, authorization, accountability, and human control.",
+        "International technical, policy, and legal coordination is beginning to form."
+      ],
+      "whyItMatters": "Governance must extend beyond models to the actions, permissions, and operational behavior of autonomous systems.",
+      "businessImpact": "High",
+      "relatedStandards": [
+        "NIST AI RMF",
+        "ISO/IEC 42001",
+        "OECD AI Principles"
+      ],
+      "relatedSolarisModules": [
+        "Human Firewall™",
+        "Trust Index™",
+        "Governance Roadmap™",
+        "Executive Brief™"
+      ],
+      "recommendation": "Monitor",
+      "evidenceQuality": "High",
+      "chairNotes": "",
+      "bookmarked": false,
+      "verified": true
+    },
+    {
+      "id": "INT-2026-0712-002",
+      "source": "Reuters",
+      "title": "UN's Guterres warns AI outpacing oversight, urges global rules to protect children",
+      "published": "2026-07-06",
+      "url": "https://www.reuters.com/technology/un-chief-warns-ai-is-developing-faster-than-rules-can-keep-up-2026-07-06/",
+      "category": [
+        "AI Governance",
+        "Regulation",
+        "Human Impact"
+      ],
+      "readTime": 6,
+      "executiveSummary": "At a global AI governance dialogue, the UN Secretary-General called for harmonized guardrails and stronger protections for children as deployment advances faster than oversight.",
+      "keyTakeaways": [
+        "Global discussions are moving toward practical guardrails.",
+        "Child safety and manipulative AI interactions are receiving greater attention.",
+        "Governance capacity remains uneven across countries."
+      ],
+      "whyItMatters": "This connects governance, human impact, product safety, and organizational accountability.",
+      "businessImpact": "High",
+      "relatedStandards": [
+        "UN AI Governance initiatives",
+        "OECD AI Principles",
+        "NIST AI RMF"
+      ],
+      "relatedSolarisModules": [
+        "Human Firewall™",
+        "High Touch / High Tech™",
+        "Executive Guide",
+        "Intelligence Center"
+      ],
+      "recommendation": "Board Review",
+      "evidenceQuality": "High",
+      "chairNotes": "",
+      "bookmarked": false,
+      "verified": true
+    },
+    {
+      "id": "INT-2026-0712-003",
+      "source": "Reuters",
+      "title": "Britain should consider regulating AI models, FCA official says",
+      "published": "2026-07-06",
+      "url": "https://www.reuters.com/legal/litigation/britain-should-consider-regulating-ai-models-fca-official-says-2026-07-06/",
+      "category": [
+        "Regulation",
+        "Financial Services",
+        "Enterprise AI"
+      ],
+      "readTime": 6,
+      "executiveSummary": "A senior FCA official argued that general-purpose AI tools may require direct regulatory consideration as consumers and firms expand their reliance on them.",
+      "keyTakeaways": [
+        "AI can blur the boundary between information and regulated advice.",
+        "Provider concentration may create shared vulnerabilities.",
+        "Outcome-focused regulation is being considered."
+      ],
+      "whyItMatters": "Relevant to reliance, third-party concentration, customer impact, and decision accountability in regulated sectors.",
+      "businessImpact": "High",
+      "relatedStandards": [
+        "ISO/IEC 42001",
+        "NIST AI RMF"
+      ],
+      "relatedSolarisModules": [
+        "Trust Index™",
+        "Discovery Workbook™",
+        "Diagnostic Engine™",
+        "Governance Roadmap™"
+      ],
+      "recommendation": "Monitor",
+      "evidenceQuality": "High",
+      "chairNotes": "",
+      "bookmarked": false,
+      "verified": true
+    },
+    {
+      "id": "INT-2026-0712-004",
+      "source": "OECD",
+      "title": "Adopting and governing AI in government",
+      "published": "2026-06-15",
+      "url": "https://www.oecd.org/en/publications/digital-government-outlook_0496b2bc-en/full-report/adopting-and-governing-ai-in-government_7ef312a9.html",
+      "category": [
+        "AI Governance",
+        "Public Sector",
+        "Research"
+      ],
+      "readTime": 12,
+      "executiveSummary": "The OECD reports that AI governance frameworks in government are becoming more common while implementation capability remains uneven.",
+      "keyTakeaways": [
+        "Formal frameworks are spreading faster than implementation capability.",
+        "Governance requires skills, accountability, procurement controls, and institutional capacity.",
+        "Operational readiness remains a central challenge."
+      ],
+      "whyItMatters": "Supports Solaris' distinction between having a framework and possessing a methodology that can execute it.",
+      "businessImpact": "Medium",
+      "relatedStandards": [
+        "OECD AI Principles",
+        "NIST AI RMF",
+        "ISO/IEC 42001"
+      ],
+      "relatedSolarisModules": [
+        "Discovery Workbook™",
+        "Diagnostic Engine™",
+        "Governance Roadmap™",
+        "Executive Brief™"
+      ],
+      "recommendation": "Integration Candidate",
+      "evidenceQuality": "High",
+      "chairNotes": "",
+      "bookmarked": false,
+      "verified": true
+    },
+    {
+      "id": "INT-2026-0712-005",
+      "source": "European Commission",
+      "title": "European AI Office latest updates",
+      "published": "2026-07-08",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+      "category": [
+        "Regulation",
+        "Standards",
+        "Cybersecurity"
+      ],
+      "readTime": 8,
+      "executiveSummary": "The European AI Office's July activity includes policy and consultation work involving AI, cybersecurity, data sovereignty, model evaluation, and implementation of the EU governance structure.",
+      "keyTakeaways": [
+        "AI regulation is increasingly linked to cybersecurity and resilience.",
+        "External model evaluation and systemic-risk capabilities are becoming concrete implementation concerns.",
+        "Organizations should monitor operational guidance as well as statutory obligations."
+      ],
+      "whyItMatters": "Implementation guidance will shape client readiness, controls, and evidence requirements.",
+      "businessImpact": "High",
+      "relatedStandards": [
+        "EU AI Act",
+        "ISO/IEC 42001",
+        "NIST AI RMF"
+      ],
+      "relatedSolarisModules": [
+        "Standards Watch",
+        "Regulatory Watch",
+        "Diagnostic Engine™",
+        "Executive Brief™"
+      ],
+      "recommendation": "Monitor",
+      "evidenceQuality": "High",
+      "chairNotes": "",
+      "bookmarked": false,
+      "verified": true
+    }
+  ]
+}

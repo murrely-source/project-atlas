@@ -1,0 +1,47 @@
+# Manual Smoke Test
+
+Run after every UI change.
+
+- [ ] `app/index.html` opens without a blank page.
+- [ ] Solaris header renders with the clean approved symbol and wordmark.
+- [ ] Website displays as `solarisadvisoryai.com`.
+- [ ] First use defaults to Dark; Settings → Appearance Dark and Light controls update immediately and expose the selected state.
+- [ ] Theme choice survives reload; an invalid `solaris-nexus-theme` stored value falls back to Dark.
+- [ ] Switching themes preserves the active workspace, filters, open drawer, Chair Notes, and Bookmark state.
+- [ ] Executive Overview loads first.
+- [ ] Every overview card opens its intended workspace.
+- [ ] Sidebar navigation opens all 14 unique workspaces, including Standards & Learning, Notifications, and Settings; no separate Learning workspace appears.
+- [ ] Settings → Appearance changes Dark and Light immediately; no theme controls remain in the global header.
+- [ ] Global search renders as a full bar on desktop and a constrained bar on tablet.
+- [ ] On mobile, the search icon expands the labeled search field; Escape collapses it and restores focus.
+- [ ] Submitting search announces the placeholder status without navigating or showing fabricated results.
+- [ ] Notifications and Settings open as dedicated sidebar workspaces; neither appears as a header icon.
+- [ ] Settings theme changes preserve the active workspace and use the existing persisted theme preference.
+- [ ] Accessibility, Dashboard, Intelligence, and Account appear only as non-interactive future placeholders.
+- [ ] News filters work, if enabled.
+- [ ] `app/data/intelligence.json` loads and all five governed records render in the News Desk.
+- [ ] Every assigned category renders in each News Desk row and Intelligence Drawer; filters match records containing the selected category.
+- [ ] Intelligence Center shows all five verified governed records; Standards & Learning shows 2 current governed records, Regulatory shows 3, and Human Firewall™ shows 1.
+- [ ] Contextual feed records open the shared Intelligence Drawer with matching source, Chair Notes, Bookmark, and Board recommendation behavior.
+- [ ] Standards & Learning contains all six approved sections and five accessible filter groups.
+- [ ] Organization, Content Type, Certification, Status, and Recommendation filters work alone and in combination.
+- [ ] IAPP AIGP appears as both a professional ecosystem program and a certification/learning pathway without presenting an invented update.
+- [ ] A Standards & Learning record changes the drawer control to **← Return to Standards & Learning** and returns to the same filtered workspace.
+- [ ] Selecting each rendered record opens the matching Intelligence Drawer content loaded from JSON.
+- [ ] A missing, malformed, or empty intelligence dataset shows an accessible News Desk error without breaking navigation.
+- [ ] Each News Desk article opens the correct Intelligence Drawer content without leaving Solaris Nexus.
+- [ ] Drawer close button, Escape, and backdrop each close the drawer and return focus to the selected article.
+- [ ] **← Return to News Desk** closes every article drawer without reload and preserves the active filter, News Desk scroll position, selected theme, and focus restoration.
+- [ ] Chair Notes and Bookmark persist while the browser tab/session remains open.
+- [ ] Unverified source links are disabled; every verified source link opens the matching HTTPS URL in a new tab with safe opener isolation.
+- [ ] Background scrolling is prevented while the drawer is open.
+- [ ] Backlog, Documents, DHF, and Skills content renders.
+- [ ] No browser console errors.
+- [ ] Dark theme is visually reviewed at 1440px, 1024px, 768px, 390px, and 320px widths.
+- [ ] Light theme is visually reviewed at 1440px, 1024px, 768px, 390px, and 320px widths.
+- [ ] At 768px and above, the left sidebar remains visible and every workspace is reachable.
+- [ ] At 767px and below, the workspace menu opens, traps focus, closes by its close control, Escape, backdrop, and workspace selection, then restores focus.
+- [ ] Every table scrolls inside its own labeled region without causing page-level horizontal overflow.
+- [ ] The Intelligence Drawer is full-width and independently scrollable on mobile, with its close control visible.
+- [ ] In both themes, review the logo/wordmark, forms, tables, links, filters, status pills, charts, disabled states, focus states, and Intelligence Drawer.
+- [ ] No methodology or factual content was changed without approval.

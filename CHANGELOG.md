@@ -1,0 +1,252 @@
+# Changelog
+
+All notable changes to Project Atlas will be documented here.
+
+## [0.15.0] - 2026-07-12
+### Added
+- Added the unified ECR-012 Standards & Learning workspace sections for standards, professional organizations, certifications, training and webinars, conferences and events, and publications and guidance.
+- Added composable Organization, Content Type, Certification, Status, and Recommendation filters with accessible labels and 44px controls.
+- Added Business Impact to the shared Intelligence Drawer and context-aware return labels for originating workspaces.
+
+### Changed
+- Renamed Standards Watch to Standards & Learning while preserving the `standards` route.
+- Consolidated the separate Learning & Certification Watch into Standards & Learning, returning navigation to 14 unique workspaces.
+- Expanded standards feed mapping to support governed standards, guidance, certification, training, webinar, conference, publication, exam, and course metadata.
+- Updated the Atlas Backlog entry to ECR-012 Standards & Learning Workspace.
+
+### Governance
+- Preserved the single governed dataset and did not invent standards, certification, training, webinar, conference, publication, exam, course, or event updates.
+- IAPP AIGP is represented as both part of the professional ecosystem and a tracked certification/learning pathway, without asserting a current update.
+
+## [0.14.0] - 2026-07-12
+### Added
+- Added ECR-012 reusable Workspace Intelligence Feed components to Intelligence Center, Standards Watch, Regulatory Watch, Human Firewall™ Intelligence, and Learning & Certification Watch.
+- Added Learning & Certification Watch as the fifteenth workspace with approved monitoring filters and Solaris learning-roadmap scope, including IAPP AIGP.
+- Added contextual mapping tests covering relevant-record inclusion, irrelevant-record exclusion, verified-only presentation, shared drawer behavior, routes, and learning scope.
+
+### Changed
+- Extended normalized intelligence records to support optional governed `tags` and `relatedWorkspaces` arrays without changing the source dataset.
+- Added the completed ECR-012 implementation to the Atlas Backlog workspace.
+
+### Governance
+- Reused the single governed intelligence dataset; no article or learning record was copied or invented.
+- Learning & Certification Watch presents an explicit empty state because the current governed dataset contains no matching certification or training record.
+
+## [0.13.0] - 2026-07-12
+### Added
+- Added ECR-011 **← Return to News Desk** at the top of the reusable Intelligence Drawer.
+- Added regression coverage for accessible labeling, visible focus, touch-target sizing, filter preservation, and scroll restoration contracts.
+
+### Changed
+- Reused the existing drawer close and focus-restoration path while explicitly returning to the News Desk without navigation or reload.
+- Preserved active News Desk filters, scroll position, theme state, and all existing close behaviors.
+
+### Governance
+- No intelligence content, methodology, workspace navigation, or interface layout outside the drawer was changed.
+
+## [0.12.0] - 2026-07-12
+### Added
+- Added a governed-schema normalization boundary that accepts the `items` collection while preserving legacy `articles` support.
+- Added array-category rendering in News Desk rows and the Intelligence Drawer.
+- Added governed-record, schema-mapping, category-membership, verified-source, and placeholder-removal regression coverage.
+
+### Changed
+- Mapped `published`, `url`, `readTime`, and `recommendation` into the stable application fields used by the existing interface.
+- Updated category filtering to match any assigned category while retaining legacy single-string support.
+- Replaced demonstration labels and the four-record overview count with the approved governed-intelligence language and five-record count.
+
+### Fixed
+- Restored News Desk and Intelligence Drawer loading after the governed dataset introduced its approved schema.
+- Prevented records explicitly marked unverified from enabling the original-source action.
+
+### Governance
+- Did not modify any governed intelligence record or invent additional content.
+
+## [0.11.0] - 2026-07-12
+### Added
+- Completed Sprint 3 integration validation for every JSON-backed News Desk and Intelligence Drawer field.
+- Added regression checks for safe new-tab source links and the disabled pending-verification state.
+
+### Changed
+- Clarified that News Desk rows, filters, drawer content, and source actions are populated from `app/data/intelligence.json` at runtime.
+- Documented the governance boundary between runtime integration and the dataset's current demonstration classification.
+
+### Governance
+- Preserved all existing intelligence records without inventing content or source links.
+- Retained `live: false`; the current reserved placeholder URL is not described as verified live intelligence.
+
+## [0.10.0] - 2026-07-12
+### Added
+- Added the Sprint 3 external intelligence data architecture under `app/data/intelligence.json`.
+- Added loader validation for required fields, array shapes, unique article IDs, boolean bookmark state, and HTTPS-only non-null source URLs.
+- Added classified graceful handling for missing, malformed, empty, and invalid intelligence datasets.
+- Added a dedicated Sprint 3 dataset integrity test covering JSON loading, unchanged records, unique IDs, HTTPS sources, News Desk rendering, and drawer binding.
+
+### Changed
+- Refactored `app/data.js` from an embedded intelligence store into the external JSON loader and validator while retaining synchronous workspace, overview, filter, and search configuration.
+- Updated News Desk initialization to render validated records asynchronously and preserve the selected category during loading.
+- Added an accessible intelligence loading/error state without changing successful News Desk or drawer presentation.
+- Documented a local static-server workflow for consistent external JSON loading, with a direct-file request path retained where browser policy permits and selected before `fetch()` to avoid a recoverable console network error.
+
+### Validation
+- Confirmed the same four demonstration records and titles were preserved; no intelligence or methodology content was invented or changed.
+- Confirmed all 14 workspaces, nine overview routes, themes, responsive behavior, filters, drawer controls, Settings, search interface, notes, bookmarks, and source-link contracts remain intact.
+
+## [0.9.0] - 2026-07-11
+### Added
+- Added ECR-010 Executive Header & Navigation Refinement.
+- Added an accessible semantic global search form with visible-label support, focus states, future-scope metadata, and non-destructive placeholder submission behavior.
+- Added responsive global search presentation: full desktop bar, constrained tablet bar, and expandable mobile search with Escape/focus restoration.
+- Added Notifications as the fourteenth Solaris Nexus workspace with an explicit non-functional foundation placeholder.
+
+### Changed
+- Removed Notifications and Settings icon actions from the global header.
+- Kept Notifications and Settings as dedicated workspace navigation items while preserving every existing navigation item and route.
+- Updated responsive, smoke, and manual validation contracts for global search and 14 workspaces.
+
+### Validation
+- Preserved Settings theme functionality and persistence, all nine overview destinations, responsive navigation, filters, drawer controls, notes, bookmarks, and source links.
+- No search engine, indexing, search results, notification delivery, methodology, article content, or dashboard redesign was introduced.
+
+## [0.8.0] - 2026-07-11
+### Changed
+- Implemented ECR-009 Executive Header Simplification for Solaris Nexus.
+- Updated the product subtitle from **The Intelligence Platform** to **Intelligence Platform** in current product-facing identity locations.
+- Removed Dark/Light controls from the global header while preserving existing theme selection and `localStorage` persistence exclusively under Settings → Appearance.
+- Removed the `Internal — Solaris Use Only` development banner from the header.
+- Moved the approved `solarisadvisoryai.com` reference from header metadata to the existing footer brand line.
+- Increased spacing between the approved Solaris lockup, divider, and product title without altering the logo or wordmark.
+
+### Added
+- Added accessible Search, Notifications, and Settings icon actions to the right side of the global header.
+- Added non-destructive live-region placeholder announcements for Search and Notifications.
+- Connected the Settings header action to the existing Settings workspace route.
+
+### Validation
+- Preserved all 13 workspaces, nine overview routes, theme persistence, responsive navigation, filters, drawer controls, notes, bookmarks, and source links.
+- No dashboard, methodology, article, navigation structure, or non-header layout behavior changed.
+
+## [0.7.0] - 2026-07-11
+### Added
+- Added ECR-008 User Settings Foundation as the thirteenth Solaris Nexus workspace.
+- Added an Appearance panel with Dark and Light controls that reuse the existing persisted theme architecture.
+- Added non-interactive structural placeholders for future Accessibility, Dashboard, Intelligence, and Account settings.
+
+### Changed
+- Extended the existing workspace registry, desktop sidebar, and mobile workspace menu with Settings.
+- Added a responsive settings layout designed to accept future approved setting panels without restructuring the workspace.
+- Updated smoke, responsive, and manual checks for the new route and synchronized theme controls.
+
+### Validation
+- Preserved all existing workspace routes, overview destinations, theme persistence, filters, drawer controls, notes, bookmarks, source links, and responsive behavior.
+- No future settings, account functionality, methodology content, backend, or external service was implemented.
+
+## [0.6.0] - 2026-07-11
+### Added
+- Added ECR-007 as the dedicated Solaris Nexus Accessibility Standard under `docs/standards/ACCESSIBILITY.md`.
+- Established WCAG 2.2 AA as the minimum engineering target across software, content, charts, tables, forms, and documents.
+- Documented expectations for keyboard-only navigation, screen readers, focus order and indicators, contrast, responsive layouts, touch targets, semantic HTML, tables, charts, forms, PDFs, reduced motion, and both themes.
+
+### Changed
+- Updated repository documentation to identify accessibility as a beginning-to-end feature responsibility.
+- Confirmed accessibility defects are treated as engineering defects rather than enhancement requests.
+- Added `docs/standards/` to the repository map.
+
+### Validation
+- Documentation-only standards change; no application content, methodology, navigation, layout, theme, or behavior changed.
+
+## [0.5.0] - 2026-07-11
+### Added
+- Added ECR-006 repository-wide Engineering Principles for all future Solaris Nexus development.
+- Established Human-Centered Design, Accessibility by Design, High Touch / High Tech™, Governance Before Convenience, Quality Over Speed, Evidence Before Opinion, Transparency, Privacy and Security by Design, Modular Architecture, and Continuous Improvement as the core engineering values.
+- Established WCAG 2.2 AA as the minimum accessibility engineering standard and defined accessibility issues as engineering defects.
+
+### Changed
+- Updated `AGENTS.md` so every coding task must begin by reading `ENGINEERING_PRINCIPLES.md` and `AGENTS.md` in full.
+- Established that Engineering Principles take precedence over implementation convenience without overriding DHF decisions, approved requirements, governance authority, or Board approvals.
+- Updated repository documentation and the repository map to identify the new mandatory governance document.
+
+### Validation
+- Documentation-only governance change; no application content, methodology, navigation, layout, theme, or behavior changed.
+
+## [0.4.0] - 2026-07-11
+### Added
+- Added ECR-004 responsive behavior for large desktop, desktop/laptop, tablet, and mobile widths from 320px upward.
+- Added an accessible off-canvas workspace menu below 768px with close-control, Escape, backdrop, selection-close, scroll-lock, focus containment, and focus-return behavior.
+- Added labeled keyboard-focusable horizontal scroll regions around all eight existing data tables.
+- Added the ECR-004 requirement record and automated responsive contract checks.
+
+### Changed
+- Added fluid header spacing and typography while preserving the approved Solaris lockup and asset proportions.
+- Preserved the left sidebar at 768px and above; overview cards now resolve to three, two, or one columns according to available width.
+- Increased critical navigation, theme, filter, table-action, drawer, bookmark, and source controls toward the practical 44px touch target.
+- Expanded the Intelligence Drawer to full mobile width and refined phone spacing without changing drawer behavior.
+- Extended reduced-motion handling to mobile navigation transitions.
+
+### Validation
+- Confirmed all 12 workspaces, nine overview routes, four demonstration articles, filters, drawer controls, notes, bookmarks, source links, and both theme contracts remain covered.
+- Confirmed all core theme contrast checks continue to pass.
+- No methodology, article content, workspace, route, or navigation structure was removed or renamed.
+
+## [0.3.0] - 2026-07-11
+### Added
+- Added ECR-003 Dark / Light Theme Switching for Solaris Nexus.
+- Added accessible Dark and Light header controls with icons, text, selected-state semantics, and visible focus treatment.
+- Added first-use Dark default, invalid-value fallback, and browser-local persistence under `solaris-nexus-theme`.
+- Added an ECR-003 requirement record and automated core WCAG contrast checks.
+
+### Changed
+- Refactored existing component colors into shared semantic design tokens for page, header, sidebar, cards, panels, tables, inputs, buttons, badges, charts, and the Intelligence Drawer.
+- Added a Solaris-aligned light palette using Soft White/light neutrals, Deep Solaris Blue structure, and controlled Electric Blue, Magenta, and Violet accents.
+- Adjusted tablet header wrapping to accommodate the theme control without changing navigation or workspace layout.
+
+### Validation
+- Confirmed core normal-text token pairs meet or exceed the WCAG AA 4.5:1 contrast target.
+- Preserved all 12 workspaces, nine overview routes, News Desk filters, article links, drawer controls, notes, bookmarks, navigation, methodology, and content.
+
+## [0.2.1] - 2026-07-11
+### Changed
+- Applied ADR-001 public product naming across product-facing UI and appropriate public repository language.
+- The public product is now presented as **Solaris Nexus: The Intelligence Platform**.
+- Preserved **Project Atlas** as the internal engineering codename throughout DHF, architecture, sprint, requirements, and engineering contexts.
+- No functionality, navigation, methodology names, or structured behavior changed.
+
+## [0.2.0] - 2026-07-11
+### Added
+- Added a reusable, accessible right-side Intelligence Drawer for News Desk articles.
+- Added four clearly labeled structured demonstration article records with governance metadata, summaries, relationships, recommendations, evidence quality, notes, and bookmark state.
+- Added session-only Chair Notes and Bookmark persistence.
+- Added guarded original-source behavior with safe new-tab attributes and a pending-verification state.
+- Added the Sprint 2 Intelligence Drawer requirement and expanded automated/manual validation coverage.
+
+### Changed
+- News Desk article rows are now keyboard-accessible drawer triggers while preserving existing titles, summaries, recommendations, and category filters.
+- Corrected the overview News Desk count and removed unverified source-name attribution so it accurately describes the four demonstration records.
+
+### Validation
+- Existing 12 workspace routes, nine overview destinations, sidebar navigation, assets, and data-separation checks remain covered.
+- No Solaris methodology content or live intelligence was added.
+
+## [0.1.1] - 2026-07-11
+### Changed
+- Separated the prototype's HTML, CSS, JavaScript, and routing data into focused application files.
+- Preserved the existing interface, workspace content, navigation, overview-card destinations, and news filtering.
+- Corrected the Solaris symbol path to use the approved asset under `app/assets/`.
+- Added documented automated and manual local smoke-test processes.
+
+### Validation
+- Added static checks for workspace routes, overview-card destinations, local assets, separated resources, and the approved website.
+- No methodology content or prototype data was changed.
+
+## [0.1.0] - 2026-07-11
+### Added
+- Codex-ready repository structure.
+- Current clickable executive-overview prototype.
+- AGENTS.md governance instructions.
+- Solaris Skills Library.
+- MVP requirements and acceptance criteria.
+- Brand and DHF reference folders.
+
+### Notes
+- Existing dashboard data may include clearly labeled prototype values.
+- No methodology changes were made during repository initialization.
