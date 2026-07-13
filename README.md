@@ -7,7 +7,11 @@ Codex-ready repository initialized from the approved clickable dashboard prototy
 
 ## Founder’s Preview deployment
 
+<<<<<<< HEAD
 The expected GitHub Pages URL is [https://murrely-source.github.io/project-atlas/](https://murrely-source.github.io/project-atlas/).
+=======
+The expected GitHub Pages URL is https://github.com/murrely-source/project-atlas.git
+>>>>>>> f271c95acfb58820da00b3bdcd7a6b006b7f972d
 
 The Pages workflow publishes only the contents of `app/`. Repository governance files, `docs/`, `tests/`, and other root-level engineering material are not included in the website artifact.
 
