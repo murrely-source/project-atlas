@@ -5,6 +5,14 @@
 ## Current status
 Codex-ready repository initialized from the approved clickable dashboard prototype.
 
+## Founder’s Preview deployment
+
+The expected GitHub Pages URL is [https://maggieu.github.io/project-atlas/](https://maggieu.github.io/project-atlas/).
+
+The Pages workflow publishes only the contents of `app/`. Repository governance files, `docs/`, `tests/`, and other root-level engineering material are not included in the website artifact.
+
+Deployment runs automatically when a commit is pushed to `main`. An authorized maintainer can also run **Deploy Solaris Nexus Founder's Preview** manually from the repository’s Actions tab. Future deployments should update and validate the application, commit the controlled change to `main`, and push it; no application files need to be moved or duplicated.
+
 ## Open locally
 Because Sprint 3 loads intelligence from external JSON, the most consistent local workflow is to serve the repository from its root:
 

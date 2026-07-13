@@ -2,6 +2,18 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.16.0] - 2026-07-12
+### Added
+- Added the GitHub Pages deployment workflow for the Solaris Nexus Founder’s Preview.
+- Added automatic deployment from `main` and authorized manual deployment through GitHub Actions.
+
+### Changed
+- Documented the expected Founder’s Preview URL and controlled future deployment process.
+
+### Governance
+- The Pages artifact is restricted to `app/`; private engineering documentation, tests, governance files, and other repository-root content are not published.
+- No application behavior, intelligence record, theme, navigation, or styling was changed.
+
 ## [0.15.0] - 2026-07-12
 ### Added
 - Added the unified ECR-012 Standards & Learning workspace sections for standards, professional organizations, certifications, training and webinars, conferences and events, and publications and guidance.
