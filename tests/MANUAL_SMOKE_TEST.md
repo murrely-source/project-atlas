@@ -3,7 +3,8 @@
 Run after every UI change.
 
 - [ ] `app/index.html` opens without a blank page.
-- [ ] Solaris header renders with the clean approved symbol and wordmark.
+- [ ] The header renders the approved Solaris monogram with **Solaris Labs** and **Executive Intelligence for Responsible AI** as live text in both themes.
+- [ ] The **Solaris Nexus / Intelligence Platform** product block is unchanged.
 - [ ] Website displays as `solarisadvisoryai.com`.
 - [ ] First use defaults to Dark; Settings → Appearance Dark and Light controls update immediately and expose the selected state.
 - [ ] Theme choice survives reload; an invalid `solaris-nexus-theme` stored value falls back to Dark.
@@ -37,8 +38,8 @@ Run after every UI change.
 - [ ] Background scrolling is prevented while the drawer is open.
 - [ ] Backlog, Documents, DHF, and Skills content renders.
 - [ ] No browser console errors.
-- [ ] Dark theme is visually reviewed at 1440px, 1024px, 768px, 390px, and 320px widths.
-- [ ] Light theme is visually reviewed at 1440px, 1024px, 768px, 390px, and 320px widths.
+- [ ] Dark theme is visually reviewed at 1440px, 1024px, 768px, 390px, and 320px widths, including corporate lockup readability and header containment.
+- [ ] Light theme is visually reviewed at 1440px, 1024px, 768px, 390px, and 320px widths, including corporate lockup readability and header containment.
 - [ ] At 768px and above, the left sidebar remains visible and every workspace is reachable.
 - [ ] At 767px and below, the workspace menu opens, traps focus, closes by its close control, Escape, backdrop, and workspace selection, then restores focus.
 - [ ] Every table scrolls inside its own labeled region without causing page-level horizontal overflow.

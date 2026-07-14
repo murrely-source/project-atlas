@@ -2,6 +2,41 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.17.3] - 2026-07-13
+### Changed
+- Applied the same 4px optical lift to the Dark-theme Solaris Labs monogram.
+- Preserved both logo dimensions, lockup spacing, header height, and responsive sizing.
+
+## [0.17.2] - 2026-07-13
+### Changed
+- Raised only the Light-theme Solaris Labs monogram by 4px to align its optical center with the corporate wordmark.
+- Preserved the logo dimensions, lockup gap, header height, responsive sizing, and Dark-theme presentation.
+
+## [0.17.1] - 2026-07-13
+### Fixed
+- Removed the embedded dark rectangle from the Solaris Labs monogram in Light theme by adding a transparent-background light asset.
+- Added explicit theme-aware image switching while preserving the original dark-theme asset unchanged.
+- Set both theme-specific logo alternatives to the accessible name **Solaris Labs** without using CSS filters or background images.
+
+### Validation
+- Confirmed transparent light-asset corners, preserved 86×83 proportions, unchanged dark-asset checksum, responsive logo sizing, and existing Dark/Light contrast contracts.
+
+## [0.17.0] - 2026-07-13
+### Changed
+- Updated only the global header corporate identity from Solaris AI Risk & Governance Advisory to **Solaris Labs — Executive Intelligence for Responsible AI**.
+- Preserved the **Solaris Nexus — Intelligence Platform** product block, divider, header dimensions, search, navigation, responsive behavior, and theme behavior.
+- Added theme-aware corporate wordmark and tagline tokens using the approved Solaris palette and declared Poppins/Montserrat typography with system fallbacks.
+- Added a future Solaris Labs ecosystem website and product-switcher item to the Atlas Backlog without implementing either capability.
+- Resolved pre-existing README deployment conflict markers to the already-approved Founder’s Preview Pages URL.
+
+### Accessibility
+- Updated the approved monogram alternative text to identify Solaris Labs and kept the corporate name and descriptor as live text.
+- Added Dark and Light contrast regression coverage for the corporate wordmark and descriptor.
+
+### Governance
+- Reused the existing approved Solaris monogram; no advisory logo, substitute mark, cropped guide image, methodology content, navigation, or dashboard behavior was changed.
+- Dedicated approved Dark and Light Solaris Labs lockup files and packaged Poppins/Montserrat font files are not present in the repository and remain subject to Brand Review.
+
 ## [0.16.0] - 2026-07-12
 ### Added
 - Added the GitHub Pages deployment workflow for the Solaris Nexus Founder’s Preview.

@@ -1,17 +1,13 @@
 # Solaris Nexus
 
-**Solaris Nexus: Intelligence Platform** is the public product name for the internal engineering platform developed under the codename **Project Atlas** by Solaris AI Risk & Governance Advisory.
+**Solaris Nexus: Intelligence Platform** is the public product name for the internal engineering platform developed under the codename **Project Atlas** by Solaris Labs.
 
 ## Current status
 Codex-ready repository initialized from the approved clickable dashboard prototype.
 
 ## Founder’s Preview deployment
 
-<<<<<<< HEAD
 The expected GitHub Pages URL is [https://murrely-source.github.io/project-atlas/](https://murrely-source.github.io/project-atlas/).
-=======
-The expected GitHub Pages URL is https://github.com/murrely-source/project-atlas.git
->>>>>>> f271c95acfb58820da00b3bdcd7a6b006b7f972d
 
 The Pages workflow publishes only the contents of `app/`. Repository governance files, `docs/`, `tests/`, and other root-level engineering material are not included in the website artifact.
 
@@ -74,6 +70,12 @@ The Settings workspace is structured to accept future approved categories withou
 The executive header contains a full global search interface on desktop, a reduced-width version on tablet, and an expandable search control on mobile. Search is an accessible interface placeholder in this release; it does not query, index, rank, or return results yet.
 
 The component is structured for future discovery across News, Intelligence, Standards, Regulations, Documents, Skills Library, DHF, Board Decisions, Atlas Backlog, Executive Briefs, and future client assessments. **Notifications** and **Settings** are dedicated workspace navigation items rather than global header actions. Notification delivery, preferences, and history are not yet implemented.
+
+## Header identity
+
+The global header presents **Solaris Labs — Executive Intelligence for Responsible AI** as the corporate identity while preserving **Solaris Nexus — Intelligence Platform** as the product identity. The approved Solaris monogram remains a foreground image with accessible alternative text; the corporate wording remains live text and uses theme-aware Solaris palette tokens in Dark and Light.
+
+A future Solaris Labs ecosystem website and cross-product switcher is recorded in the Atlas Backlog. Neither capability is implemented in this release.
 
 ## Supported screen sizes
 Solaris Nexus uses one responsive application across:
