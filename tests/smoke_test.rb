@@ -41,7 +41,7 @@ failures << "HTML still contains inline style or script blocks" if html.match?(/
 failures << "approved Solaris website is missing" unless html.include?("solarisadvisoryai.com")
 failures << "approved public product title is missing" unless html.include?("<title>Solaris Nexus: Intelligence Platform</title>")
 failures << "approved public product header is missing" unless html.include?("<h1>Solaris Nexus</h1><p>Intelligence Platform</p>")
-lockup_alt = "Solaris Labs — Executive Intelligence for Responsible AI"
+lockup_alt = "Solaris Labs — Technology for Human-Centered AI"
 failures << "Solaris Labs corporate identity is missing" unless html.include?(%(<div class="brand-lockup" role="img" aria-label="#{lockup_alt}">)) && html.include?(%(src="assets/brand/solaris-labs-lockup-dark.png" alt="#{lockup_alt}")) && html.include?(%(src="assets/brand/solaris-labs-lockup-light.png" alt="#{lockup_alt}"))
 failures << "duplicate standalone Solaris Labs monogram remains" if html.include?("brand-symbol") || html.include?("solaris-labs-monogram-transparent-512.png")
 failures << "Chair-approved Solaris Labs source image was altered" unless File.file?(approved_lockup_source) && Digest::SHA256.file(approved_lockup_source).hexdigest == "177fafebec8f5cf54eb0b17825f0c2472fc8e36d805b198f5a7ef777c485a508"

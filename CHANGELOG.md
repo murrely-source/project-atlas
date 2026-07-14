@@ -2,6 +2,14 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.17.6] - 2026-07-14
+### Changed
+- Updated the global header to use the newly approved Dark and Light Solaris Labs production lockups carrying the **Technology for Human-Centered AI** tagline.
+- Updated the grouped logo accessible name and image alternatives to match the approved corporate identity.
+
+### Validation
+- Preserved the existing lockup sizing, header alignment, Solaris Nexus product block, responsive behavior, and persisted theme switching.
+
 ## [0.17.5] - 2026-07-13
 ### Changed
 - Cropped native-resolution Dark and Light Solaris Labs header lockups from the Chair-approved composite source without resizing or altering the artwork.
