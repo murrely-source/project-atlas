@@ -2,6 +2,15 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.17.7] - 2026-07-14
+### Changed
+- Increased only the **Technology for Human-Centered AI** tagline from Montserrat Regular (400) to Montserrat Medium (500) in both Solaris Labs theme lockups.
+- Added versioned Dark and Light v3 production assets and updated the dashboard header references.
+
+### Validation
+- Preserved tagline size, tracking, centering, wording, hyphenation, capitalization, and theme colors.
+- Preserved the Solaris monogram, SOLARIS LABS wordmark, backgrounds, lockup proportions, header layout, Solaris Nexus product block, and responsive behavior.
+
 ## [0.17.6] - 2026-07-14
 ### Changed
 - Updated the global header to use the newly approved Dark and Light Solaris Labs production lockups carrying the **Technology for Human-Centered AI** tagline.

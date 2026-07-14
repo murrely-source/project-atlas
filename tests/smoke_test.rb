@@ -13,8 +13,8 @@ styles = File.read(File.join(app, "styles.css"), encoding: "UTF-8")
 intelligence_path = File.join(app, "data", "intelligence.json")
 intelligence = JSON.parse(File.read(intelligence_path, encoding: "UTF-8"))
 approved_lockup_source = File.join(app, "assets", "brand", "solaris-labs-approved-theme-lockups.png")
-dark_lockup = File.join(app, "assets", "brand", "solaris-labs-lockup-dark.png")
-light_lockup = File.join(app, "assets", "brand", "solaris-labs-lockup-light.png")
+dark_lockup = File.join(app, "assets", "brand", "solaris-labs-lockup-dark-v3.png")
+light_lockup = File.join(app, "assets", "brand", "solaris-labs-lockup-light-v3.png")
 
 def png_dimensions(path)
   File.binread(path, 24).byteslice(16, 8).unpack("NN")
@@ -42,7 +42,8 @@ failures << "approved Solaris website is missing" unless html.include?("solarisa
 failures << "approved public product title is missing" unless html.include?("<title>Solaris Nexus: Intelligence Platform</title>")
 failures << "approved public product header is missing" unless html.include?("<h1>Solaris Nexus</h1><p>Intelligence Platform</p>")
 lockup_alt = "Solaris Labs — Technology for Human-Centered AI"
-failures << "Solaris Labs corporate identity is missing" unless html.include?(%(<div class="brand-lockup" role="img" aria-label="#{lockup_alt}">)) && html.include?(%(src="assets/brand/solaris-labs-lockup-dark.png" alt="#{lockup_alt}")) && html.include?(%(src="assets/brand/solaris-labs-lockup-light.png" alt="#{lockup_alt}"))
+failures << "Solaris Labs corporate identity is missing" unless html.include?(%(<div class="brand-lockup" role="img" aria-label="#{lockup_alt}">)) && html.include?(%(src="assets/brand/solaris-labs-lockup-dark-v3.png" alt="#{lockup_alt}")) && html.include?(%(src="assets/brand/solaris-labs-lockup-light-v3.png" alt="#{lockup_alt}"))
+failures << "stale Solaris Labs lockup references remain" if html.include?('src="assets/brand/solaris-labs-lockup-dark.png"') || html.include?('src="assets/brand/solaris-labs-lockup-light.png"')
 failures << "duplicate standalone Solaris Labs monogram remains" if html.include?("brand-symbol") || html.include?("solaris-labs-monogram-transparent-512.png")
 failures << "Chair-approved Solaris Labs source image was altered" unless File.file?(approved_lockup_source) && Digest::SHA256.file(approved_lockup_source).hexdigest == "177fafebec8f5cf54eb0b17825f0c2472fc8e36d805b198f5a7ef777c485a508"
 failures << "Solaris Labs production crops do not retain their native 1385x255 dimensions" unless [dark_lockup, light_lockup].all? { |path| File.file?(path) && png_dimensions(path) == [1385, 255] }
