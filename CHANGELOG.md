@@ -2,6 +2,15 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.17.8] - 2026-07-14
+### Changed
+- Increased the Solaris Labs tagline size from 30px to 34.5px while preserving Montserrat Medium (500).
+- Reduced tagline tracking from 11px to 8px, keeping its overall width, optical center, wording, and hierarchy effectively unchanged.
+- Added controlled Dark and Light v4 lockups and updated the dashboard header references.
+
+### Validation
+- Preserved the Solaris monogram, SOLARIS LABS wordmark, colors, backgrounds, overall proportions, header layout, and Solaris Nexus product block.
+
 ## [0.17.7] - 2026-07-14
 ### Changed
 - Increased only the **Technology for Human-Centered AI** tagline from Montserrat Regular (400) to Montserrat Medium (500) in both Solaris Labs theme lockups.
