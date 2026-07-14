@@ -2,6 +2,32 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.17.5] - 2026-07-13
+### Changed
+- Cropped native-resolution Dark and Light Solaris Labs header lockups from the Chair-approved composite source without resizing or altering the artwork.
+- Replaced the standalone monogram and live-text identity with one complete, theme-appropriate Solaris Labs lockup while preserving the Solaris Nexus product block and header behavior.
+
+### Accessibility
+- Applied the accessible name **Solaris Labs — Executive Intelligence for Responsible AI** to the consolidated corporate identity and both theme assets.
+- Preserved one accessible identity announcement through the grouped image role and excluded the non-active theme asset from presentation with `display: none`.
+
+### Validation
+- Preserved lockup proportions with fluid native-resolution images and responsive widths for desktop, tablet, and phone layouts.
+- Preserved the approved source image unchanged at `app/assets/brand/solaris-labs-approved-theme-lockups.png`.
+
+## [0.17.4] - 2026-07-13
+### Fixed
+- Removed duplicate theme-specific monogram elements from the Solaris Labs header identity.
+- Replaced the 86px theme assets with the approved 512px transparent monogram at `app/assets/brand/solaris-labs-monogram-transparent-512.png`.
+- Retained one live-text Poppins/Montserrat corporate identity block for both Dark and Light themes.
+
+### Accessibility
+- Consolidated the monogram and adjacent live text into one accessible Solaris Labs identity announcement while preserving `alt="Solaris Labs"` on the monogram.
+- Preserved the existing WCAG AA wordmark and descriptor color tokens in both themes.
+
+### Validation
+- Preserved header dimensions, divider placement, product identity, search, mobile navigation, responsive sizing, and persisted theme behavior.
+
 ## [0.17.3] - 2026-07-13
 ### Changed
 - Applied the same 4px optical lift to the Dark-theme Solaris Labs monogram.

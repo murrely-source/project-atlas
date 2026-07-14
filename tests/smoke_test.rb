@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # Static smoke checks for the Project Atlas prototype.
 require "json"
+require "digest"
 
 root = File.expand_path("..", __dir__)
 app = File.join(root, "app")
@@ -11,6 +12,13 @@ app_script = File.read(File.join(app, "app.js"), encoding: "UTF-8")
 styles = File.read(File.join(app, "styles.css"), encoding: "UTF-8")
 intelligence_path = File.join(app, "data", "intelligence.json")
 intelligence = JSON.parse(File.read(intelligence_path, encoding: "UTF-8"))
+approved_lockup_source = File.join(app, "assets", "brand", "solaris-labs-approved-theme-lockups.png")
+dark_lockup = File.join(app, "assets", "brand", "solaris-labs-lockup-dark.png")
+light_lockup = File.join(app, "assets", "brand", "solaris-labs-lockup-light.png")
+
+def png_dimensions(path)
+  File.binread(path, 24).byteslice(16, 8).unpack("NN")
+end
 
 failures = []
 workspace_ids = data.scan(/\{ id: "([^"]+)", label:/).flatten
@@ -21,7 +29,7 @@ page_ids = html.scan(/<section id="([^"]+)" class="page(?: active)?">/).flatten
 nav_targets = html.scan(/class="nav(?: active)?" data-page="([^"]+)"/).flatten
 open_targets = html.scan(/data-open-page="([^"]+)"/).flatten
 overview_targets = open_targets.first(card_targets.length)
-asset_paths = html.scan(/(?:src|href)="((?:assets\/)?[^"\/]+\.(?:css|js|png))"/).flatten
+asset_paths = html.scan(/(?:src|href)="((?:assets\/[^\"]+|[^"\/]+)\.(?:css|js|png))"/).flatten
 
 failures << "workspace sections do not match structured workspace data" unless page_ids.sort == workspace_ids.sort
 failures << "expected 14 unique workspaces including Standards & Learning, Notifications, and Settings" unless workspace_ids.length == 14 && !workspace_ids.include?("learning") && workspace_ids.include?("standards") && workspace_ids.include?("notifications") && workspace_ids.include?("settings")
@@ -33,13 +41,15 @@ failures << "HTML still contains inline style or script blocks" if html.match?(/
 failures << "approved Solaris website is missing" unless html.include?("solarisadvisoryai.com")
 failures << "approved public product title is missing" unless html.include?("<title>Solaris Nexus: Intelligence Platform</title>")
 failures << "approved public product header is missing" unless html.include?("<h1>Solaris Nexus</h1><p>Intelligence Platform</p>")
-failures << "Solaris Labs corporate identity is missing" unless html.include?('<img class="brand-symbol brand-symbol-dark" src="assets/solaris-symbol.png" alt="Solaris Labs">') && html.include?('<img class="brand-symbol brand-symbol-light" src="assets/solaris-symbol-light.png" alt="Solaris Labs">') && html.include?('<div class="brand-name">SOLARIS LABS</div><div class="brand-subline">EXECUTIVE INTELLIGENCE FOR RESPONSIBLE AI</div>')
+lockup_alt = "Solaris Labs — Executive Intelligence for Responsible AI"
+failures << "Solaris Labs corporate identity is missing" unless html.include?(%(<div class="brand-lockup" role="img" aria-label="#{lockup_alt}">)) && html.include?(%(src="assets/brand/solaris-labs-lockup-dark.png" alt="#{lockup_alt}")) && html.include?(%(src="assets/brand/solaris-labs-lockup-light.png" alt="#{lockup_alt}"))
+failures << "duplicate standalone Solaris Labs monogram remains" if html.include?("brand-symbol") || html.include?("solaris-labs-monogram-transparent-512.png")
+failures << "Chair-approved Solaris Labs source image was altered" unless File.file?(approved_lockup_source) && Digest::SHA256.file(approved_lockup_source).hexdigest == "177fafebec8f5cf54eb0b17825f0c2472fc8e36d805b198f5a7ef777c485a508"
+failures << "Solaris Labs production crops do not retain their native 1385x255 dimensions" unless [dark_lockup, light_lockup].all? { |path| File.file?(path) && png_dimensions(path) == [1385, 255] }
 failures << "legacy advisory identity remains in the corporate header" if html.match?(/<header class="top">.*?AI RISK &amp; GOVERNANCE ADVISORY/m)
-failures << "corporate identity is not theme-aware" unless styles.scan("--corporate-wordmark:").length == 2 && styles.scan("--corporate-tagline:").length == 2
-failures << "theme-specific Solaris Labs logo switching is missing" unless styles.include?(".brand-symbol-light { display: none; }") && styles.include?(':root[data-theme="light"] .brand-symbol-dark { display: none; }') && styles.include?(':root[data-theme="light"] .brand-symbol-light { display: block; transform: translateY(-4px); }')
-failures << "Dark-theme logo alignment is missing" unless styles.include?(':root[data-theme="dark"] .brand-symbol-dark { transform: translateY(-4px); }')
-failures << "a CSS filter is altering the Solaris Labs logo" if styles.match?(/\.brand-symbol[^}]*filter:/)
-failures << "approved corporate typography is missing" unless styles.include?("font-family: Poppins, Arial, sans-serif") && styles.include?("font-family: Montserrat, Arial, sans-serif")
+failures << "corporate identity is not theme-aware" unless styles.include?(":root[data-theme=\"light\"] .brand-lockup-dark { display: none; }") && styles.include?(":root[data-theme=\"light\"] .brand-lockup-light { display: block; }")
+failures << "Solaris Labs lockup proportions are not preserved" unless styles.include?(".brand-lockup-image { display: block; width: 100%; height: auto; object-fit: contain; }")
+failures << "a CSS filter is altering the Solaris Labs lockup" if styles.match?(/\.brand-lockup(?:-image|-dark|-light)?[^}]*filter:/)
 failures << "future Solaris Labs ecosystem website and product switcher backlog item is missing" unless html.include?("Solaris Labs ecosystem website and product switcher")
 failures << "theme initializer must load before the stylesheet" unless html.index('src="theme-init.js"') < html.index('href="styles.css"')
 failures << "Settings Dark and Light controls are missing" unless html.include?('data-theme-choice="dark" aria-pressed="true"') && html.include?('data-theme-choice="light" aria-pressed="false"') && html.include?('role="group" aria-label="Settings theme"')
