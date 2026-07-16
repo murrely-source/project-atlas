@@ -29,11 +29,12 @@ failures << "all retained tables must have accessible contained scrolling" unles
 failures << "wide table data may be truncated" unless css.include?("table { width: 100%; min-width: 560px;") && css.include?(".table-scroll { max-width: 100%; overflow-x: auto;")
 failures << "mobile drawer width contract is missing" unless css.match?(/@media\(max-width:767px\).*?\.intelligence-drawer \{ width: 100vw; \}/m)
 failures << "drawer return touch target is undersized" unless css.match?(/\.drawer-return \{[^}]*min-height: 44px;/)
-failures << "critical touch targets are below the practical target" unless css.include?(".settings-theme-choice") && css.include?(".global-search-toggle") && css.scan("min-height: 44px").length >= 5
+failures << "critical touch targets are below the practical target" unless css.include?(".settings-theme-choice") && css.include?(".menu-toggle") && css.scan("min-height: 44px").length >= 5
 failures << "reduced-motion navigation contract is missing" unless css.match?(/prefers-reduced-motion:reduce.*?\.shell > aside/m)
 failures << "theme compatibility contract is missing" unless css.include?(':root[data-theme="light"]') && html.include?('data-theme-choice="light"')
 failures << "responsive Settings layout is missing" unless css.match?(/@media\(max-width:767px\).*?\.settings-layout \{ grid-template-columns: 1fr; \}/m) && css.match?(/@media\(max-width:480px\).*?\.setting-row \{ align-items: stretch; flex-direction: column; \}/m)
-failures << "responsive global search contracts are missing" unless css.match?(/@media\(max-width:1100px\).*?\.global-search \{ max-width: 560px;/m) && css.match?(/@media\(max-width:767px\).*?\.global-search-toggle \{ display: inline-grid; \}.*?\.global-search-field \{ display: none; \}.*?\.global-search\.is-expanded \.global-search-field \{ display: flex; \}/m)
+failures << "obsolete global search layout remains" if css.match?(/global-search|search-field-icon|#global-search-input/)
+failures << "header tools leave desktop space or hide the mobile menu" unless css.include?(".header-tools { display: none; }") && css.match?(/@media\(max-width:767px\).*?\.header-tools \{ display: flex; width: 100%; align-items: center; \}/m)
 failures << "Solaris Labs corporate lockup lacks responsive sizing" unless css.match?(/@media\(max-width:767px\).*?\.brand-lockup \{ width: 310px; min-width: 0; \}/m) && css.match?(/@media\(max-width:480px\).*?\.brand-lockup \{ width: min\(100%,265px\); \}/m)
 failures << "theme lockups do not retain proportions" unless html.scan('class="brand-lockup-image').length == 2 && css.include?(".brand-lockup-image { display: block; width: 100%; height: auto; object-fit: contain; }")
 failures << "lockup sizing may clip narrow viewports" unless css.include?(".brand-lockup { width: min(100%,265px); }")

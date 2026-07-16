@@ -2,6 +2,16 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.18.1] - 2026-07-15
+### Changed
+- Replaced the three-part application footer with the exact approved statement: **© 2026 Powered by Solaris Labs - Technology for Human-Centered AI**.
+- Removed the global header search interface, responsive search presentation, and placeholder search behavior without changing Intelligence Center filters.
+- Returned the 768–1100px header to a single identity row and limited the header-tools row to the mobile menu breakpoint.
+
+### Governance
+- Preserved the approved four-route navigation, Solaris Labs and Solaris Nexus identity, governed intelligence data, legacy unexposed content, themes, and GitHub Pages-compatible resources.
+- Retained prior search-scope information as explicitly unexposed legacy structured data for controlled future extensibility.
+
 ## [0.18.0] - 2026-07-15
 ### Changed
 - Simplified the Solaris Nexus primary navigation to Overview, Ask Nexus, Intelligence Center, and Settings.

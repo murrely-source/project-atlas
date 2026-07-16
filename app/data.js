@@ -80,7 +80,7 @@
       events: Object.freeze(["Approved AI governance conferences and events"]),
       publications: Object.freeze(["Standards publications", "Official guidance", "Implementation guidance"])
     }),
-    searchScopes: Object.freeze(["News", "Intelligence", "Standards & Learning", "Regulations", "Documents", "Skills Library", "DHF", "Board Decisions", "Atlas Backlog", "Executive Briefs", "Future client assessments"]),
+    legacySearchScopes: Object.freeze(["News", "Intelligence", "Standards & Learning", "Regulations", "Documents", "Skills Library", "DHF", "Board Decisions", "Atlas Backlog", "Executive Briefs", "Future client assessments"]),
     articles: Object.freeze([])
   });
 

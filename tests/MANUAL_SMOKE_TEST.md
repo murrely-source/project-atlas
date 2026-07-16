@@ -3,7 +3,9 @@
 Run after every UI change.
 
 - [ ] `app/index.html` opens without a blank page or console errors.
-- [ ] The approved Solaris Labs corporate lockup, Solaris Nexus product block, global search, and footer are unchanged.
+- [ ] The approved Solaris Labs corporate lockup and Solaris Nexus product block are unchanged.
+- [ ] The global search interface is absent without leaving a blank header row or broken alignment.
+- [ ] The footer reads exactly: **© 2026 Powered by Solaris Labs - Technology for Human-Centered AI**.
 - [ ] First use defaults to Dark; Settings → Appearance switches Dark and Light immediately and persists the selection.
 - [ ] Primary navigation contains only Overview, Ask Nexus, Intelligence Center, and Settings, in that order.
 - [ ] At 767px and below, the menu opens, traps focus, and closes by its close control, Escape, backdrop, or route selection, then restores focus.
@@ -21,7 +23,6 @@ Run after every UI change.
 - [ ] Chair Notes and Bookmark persist during the current browser session.
 - [ ] Settings exposes working Theme controls; Accessibility, Notifications, and Language are clearly non-interactive future placeholders.
 - [ ] Legacy workspace content remains in the repository but cannot be opened from primary navigation.
-- [ ] Global search remains a labelled, accessible placeholder on desktop, tablet, and mobile.
 - [ ] Review Dark and Light themes at 1440px, 1024px, 768px, 390px, and 320px.
 - [ ] Confirm no page-level horizontal overflow, clipped header content, inaccessible controls, or hidden critical information at each width.
 - [ ] No methodology, governed intelligence record, or approved brand content changed.

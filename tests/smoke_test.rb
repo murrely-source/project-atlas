@@ -38,7 +38,6 @@ failures << "a clickable control points to an unknown workspace" unless (open_ta
 failures << "legacy overview routing data remains" unless card_targets.empty?
 failures << "Overview high-level sections are incomplete" unless ["Top AI Headlines", "Continue a Previous Nexus Conversation", "Notifications"].all? { |label| html.include?(label) }
 failures << "HTML still contains inline style or script blocks" if html.match?(/<style|<script>/)
-failures << "approved Solaris website is missing" unless html.include?("solarisadvisoryai.com")
 failures << "approved public product title is missing" unless html.include?("<title>Solaris Nexus: Intelligence Platform</title>")
 failures << "approved public product header is missing" unless html.include?("<h1>Solaris Nexus</h1><p>Intelligence Platform</p>")
 lockup_alt = "Solaris Labs — Technology for Human-Centered AI"
@@ -55,15 +54,14 @@ failures << "future Solaris Labs ecosystem website and product switcher backlog 
 failures << "theme initializer must load before the stylesheet" unless html.index('src="theme-init.js"') < html.index('href="styles.css"')
 failures << "Settings Dark and Light controls are missing" unless html.include?('data-theme-choice="dark" aria-pressed="true"') && html.include?('data-theme-choice="light" aria-pressed="false"') && html.include?('role="group" aria-label="Settings theme"')
 failures << "theme controls must exist exclusively in Settings" unless html.scan('data-theme-choice="dark"').length == 1 && html.scan('data-theme-choice="light"').length == 1 && !html.include?('aria-label="Color theme"')
-failures << "accessible global search form is incomplete" unless html.include?('id="global-search" role="search"') && html.include?('<label class="visually-hidden" for="global-search-input">Search Solaris Nexus</label>') && html.include?('id="global-search-input" type="search"')
-failures << "search icons are missing or malformed" unless html.scan('<svg class="search-icon').length == 2 && html.scan('<circle cx="11" cy="11" r="7">').length == 2 && html.scan('d="m16.5 16.5 4 4"').length == 2
+approved_footer = "© 2026 Powered by Solaris Labs - Technology for Human-Centered AI"
+failures << "approved footer text or structure changed" unless html.include?("<footer class=\"footer\">#{approved_footer}</footer>") && html.scan(approved_footer).length == 1
+failures << "global search interface remains" if html.match?(/global-search|Search Solaris Nexus|search-icon/)
 failures << "header Notifications or Settings controls remain" if html.include?('id="header-notifications"') || html.include?('id="header-settings"')
-failures << "global search mobile toggle is incomplete" unless html.include?('id="global-search-toggle" type="button" aria-label="Open global search" aria-expanded="false" aria-controls="global-search-field"')
 search_scope_names = ["News", "Intelligence", "Standards", "Regulations", "Documents", "Skills Library", "DHF", "Board Decisions", "Atlas Backlog", "Executive Briefs", "Future client assessments"]
-failures << "future global search scopes are incomplete" unless search_scope_names.all? { |scope| data.include?(scope) }
+failures << "unexposed legacy search-scope information was deleted" unless data.include?("legacySearchScopes") && search_scope_names.all? { |scope| data.include?(scope) }
 failures << "development banner remains in the header" if html.include?("Internal — Solaris Use Only")
-failures << "global search placeholder behavior is missing" unless app_script.include?('globalSearch.addEventListener("submit"') && app_script.include?("Global search is not implemented in this release.")
-failures << "mobile search expansion and Escape contracts are missing" unless app_script.include?('globalSearch.classList.add("is-expanded")') && app_script.include?('globalSearch.classList.remove("is-expanded")') && app_script.match?(/event\.key === "Escape".*?collapseGlobalSearch\(\)/m)
+failures << "obsolete global search behavior remains" if app_script.match?(/globalSearch|Global search|expandGlobalSearch|collapseGlobalSearch/)
 failures << "Notifications workspace is missing its explicit placeholder" unless html.include?('<section id="notifications" class="page">') && html.include?("Notification delivery, preferences, and history are not implemented in this release.")
 failures << "Settings future category placeholders are incomplete" unless %w[Accessibility Notifications Language].all? { |category| html.include?("#{category} <span>Future</span>") }
 failures << "future Settings controls must not be implemented" unless html.include?("No controls are implemented in this release.")

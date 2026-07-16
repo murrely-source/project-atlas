@@ -24,10 +24,6 @@ const menuClose = document.querySelector("#menu-close");
 const workspaceNavigation = document.querySelector("#workspace-navigation");
 const navBackdrop = document.querySelector("#nav-backdrop");
 const desktopNavigationQuery = window.matchMedia("(min-width: 768px)");
-const globalSearch = document.querySelector("#global-search");
-const globalSearchToggle = document.querySelector("#global-search-toggle");
-const globalSearchInput = document.querySelector("#global-search-input");
-const globalSearchStatus = document.querySelector("#global-search-status");
 const askNexusForm = document.querySelector("#ask-nexus-form");
 const askNexusStatus = document.querySelector("#ask-nexus-status");
 
@@ -101,29 +97,6 @@ function selectTheme(theme) {
   const selectedTheme = window.SOLARIS_THEME.applyRootTheme(theme);
   window.SOLARIS_THEME.storeTheme(selectedTheme);
   updateThemeControls(selectedTheme, true);
-}
-
-function announceSearchPlaceholder(message) {
-  globalSearchStatus.textContent = "";
-  window.requestAnimationFrame(() => {
-    globalSearchStatus.textContent = message;
-  });
-}
-
-function expandGlobalSearch() {
-  globalSearch.classList.add("is-expanded");
-  globalSearchToggle.setAttribute("aria-expanded", "true");
-  globalSearchToggle.setAttribute("aria-label", "Close global search");
-  window.requestAnimationFrame(() => globalSearchInput.focus());
-}
-
-function collapseGlobalSearch(restoreFocus = true) {
-  globalSearch.classList.remove("is-expanded");
-  globalSearchToggle.setAttribute("aria-expanded", "false");
-  globalSearchToggle.setAttribute("aria-label", "Open global search");
-  if (restoreFocus) {
-    globalSearchToggle.focus();
-  }
 }
 
 function readSession(key, fallbackValue) {
@@ -522,24 +495,6 @@ themeChoices.forEach((choice) => {
   choice.addEventListener("click", () => selectTheme(choice.dataset.themeChoice));
 });
 
-globalSearch.addEventListener("submit", (event) => {
-  event.preventDefault();
-  announceSearchPlaceholder("Global search is not implemented in this release.");
-});
-globalSearchToggle.addEventListener("click", () => {
-  if (globalSearch.classList.contains("is-expanded")) {
-    collapseGlobalSearch();
-  } else {
-    expandGlobalSearch();
-  }
-});
-globalSearchInput.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !desktopNavigationQuery.matches) {
-    event.preventDefault();
-    collapseGlobalSearch();
-  }
-});
-
 menuToggle.addEventListener("click", () => {
   if (mobileMenuOpen) {
     closeMobileMenu();
@@ -553,7 +508,6 @@ workspaceNavigation.addEventListener("keydown", handleMobileNavigationKeydown);
 desktopNavigationQuery.addEventListener("change", (event) => {
   if (event.matches) {
     closeMobileMenu(false);
-    collapseGlobalSearch(false);
   }
 });
 document.addEventListener("keydown", (event) => {
