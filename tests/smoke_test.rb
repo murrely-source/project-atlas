@@ -31,12 +31,12 @@ open_targets = html.scan(/data-open-page="([^"]+)"/).flatten
 overview_targets = open_targets.first(card_targets.length)
 asset_paths = html.scan(/(?:src|href)="((?:assets\/[^\"]+|[^"\/]+)\.(?:css|js|png))"/).flatten
 
-failures << "workspace sections do not match structured workspace data" unless page_ids.sort == workspace_ids.sort
-failures << "expected 14 unique workspaces including Standards & Learning, Notifications, and Settings" unless workspace_ids.length == 14 && !workspace_ids.include?("learning") && workspace_ids.include?("standards") && workspace_ids.include?("notifications") && workspace_ids.include?("settings")
+failures << "approved primary workspace data changed" unless workspace_ids == %w[overview ask intelligence settings]
+failures << "a primary workspace section is missing" unless (workspace_ids - page_ids).empty?
 failures << "sidebar navigation does not match structured workspace data" unless nav_targets.sort == workspace_ids.sort
 failures << "a clickable control points to an unknown workspace" unless (open_targets - workspace_ids).empty?
-failures << "overview cards do not match structured overview routing data" unless overview_targets.sort == card_targets.sort
-failures << "expected nine overview cards" unless overview_targets.length == 9
+failures << "legacy overview routing data remains" unless card_targets.empty?
+failures << "Overview high-level sections are incomplete" unless ["Top AI Headlines", "Continue a Previous Nexus Conversation", "Notifications"].all? { |label| html.include?(label) }
 failures << "HTML still contains inline style or script blocks" if html.match?(/<style|<script>/)
 failures << "approved Solaris website is missing" unless html.include?("solarisadvisoryai.com")
 failures << "approved public product title is missing" unless html.include?("<title>Solaris Nexus: Intelligence Platform</title>")
@@ -65,7 +65,7 @@ failures << "development banner remains in the header" if html.include?("Interna
 failures << "global search placeholder behavior is missing" unless app_script.include?('globalSearch.addEventListener("submit"') && app_script.include?("Global search is not implemented in this release.")
 failures << "mobile search expansion and Escape contracts are missing" unless app_script.include?('globalSearch.classList.add("is-expanded")') && app_script.include?('globalSearch.classList.remove("is-expanded")') && app_script.match?(/event\.key === "Escape".*?collapseGlobalSearch\(\)/m)
 failures << "Notifications workspace is missing its explicit placeholder" unless html.include?('<section id="notifications" class="page">') && html.include?("Notification delivery, preferences, and history are not implemented in this release.")
-failures << "Settings future category placeholders are incomplete" unless %w[Accessibility Dashboard Intelligence Account].all? { |category| html.include?("#{category} <span>Future</span>") }
+failures << "Settings future category placeholders are incomplete" unless %w[Accessibility Notifications Language].all? { |category| html.include?("#{category} <span>Future</span>") }
 failures << "future Settings controls must not be implemented" unless html.include?("No controls are implemented in this release.")
 failures << "intelligence records remain embedded in data.js" if data.include?("demo-agentic-governance") || data.match?(/articles:\s*Object\.freeze\(\[\s*\{/m)
 failures << "external intelligence loader contract is missing" unless data.include?('new URL("data/intelligence.json", document.baseURI)') && data.include?("window.ATLAS_DATA_READY") && data.include?("validateIntelligence")
@@ -93,16 +93,16 @@ failures << "example.com placeholder URLs remain" if verified_urls.any? { |url| 
 failures << "governed items schema normalization is missing" unless data.include?("Array.isArray(payload.items) ? payload.items : payload.articles") && data.include?("normalizeArticle")
 failures << "category array rendering or filtering is missing" unless app_script.include?('Categories: ${article.category.join(", ")}') && app_script.include?("categories.some((articleCategory) => articleCategory.includes(category))") && app_script.include?('renderTags("#drawer-categories", article.category)')
 feed_ids = html.scan(/data-intelligence-feed="([^"]+)"/).flatten
-failures << "contextual intelligence feeds are incomplete" unless feed_ids.sort == %w[human intelligence regulation standards]
+failures << "consolidated intelligence list is missing or duplicated" unless html.scan('id="article-list"').length == 1 && html.match?(/<section id="intelligence" class="page">.*?id="article-list"/m)
 failures << "reusable workspace feed component is missing" unless app_script.include?("function renderWorkspaceIntelligenceFeed(container)") && app_script.include?("createArticleTrigger(article, true)") && app_script.include?("article.verified !== true")
-failures << "Standards & Learning route is missing or duplicated" unless html.include?('<section id="standards" class="page">') && html.include?("<h2>Standards &amp; Learning</h2>") && html.scan('data-page="standards"').length == 1 && !html.include?('id="learning" class="page"') && !html.include?('data-page="learning"')
+failures << "Standards & Learning source content was not retained or remains routed" unless html.include?('<section id="standards" class="page">') && html.include?("<h2>Standards &amp; Learning</h2>") && !html.include?('data-page="standards"')
 standards_sections = ["Standards", "Professional Organizations", "Certifications", "Training &amp; Webinars", "Conferences &amp; Events", "Publications &amp; Guidance"]
 failures << "Standards & Learning sections are incomplete" unless standards_sections.all? { |section| html.include?(section) }
 failures << "Standards & Learning filters are incomplete" unless %w[organization contentType certification status recommendation].all? { |filter| html.include?("data-standards-filter=\"#{filter}\"") }
 failures << "IAPP AIGP ecosystem or certification coverage is incomplete" unless data.scan("IAPP AIGP").length >= 2 && html.include?("professional AI governance ecosystem") && html.include?("certification and learning pathway")
-failures << "News Desk does not initialize from external data" unless app_script.include?("await window.ATLAS_DATA_READY") && app_script.include?("atlasData = loadedData") && app_script.include?("renderArticles()")
+failures << "Intelligence Center does not initialize from external data" unless app_script.include?("await window.ATLAS_DATA_READY") && app_script.include?("atlasData = loadedData") && app_script.include?("renderArticles()")
 failures << "drawer close, backdrop, or Escape behavior is missing" unless app_script.match?(/drawerClose\.addEventListener\("click", closeDrawer\).*drawerBackdrop\.addEventListener\("click", closeDrawer\)/m) && app_script.include?('event.key === "Escape"')
-failures << "Return to News Desk control is missing or inaccessible" unless html.include?('id="drawer-return" type="button" aria-label="Return to News Desk">← Return to News Desk</button>') && styles.include?(".drawer-return:focus-visible")
+failures << "Return to Intelligence Center control is missing or inaccessible" unless html.include?('id="drawer-return" type="button" aria-label="Return to Intelligence Center">← Return to Intelligence Center</button>') && styles.include?(".drawer-return:focus-visible")
 failures << "context-aware drawer return does not preserve workspace state" unless app_script.include?('drawerReturn.addEventListener("click", returnToOriginWorkspace)') && app_script.include?("drawerOriginWorkspace") && app_script.include?("drawerOriginScrollPosition = window.scrollY") && app_script.include?('window.scrollTo({ top: scrollPosition, behavior: "auto" })')
 failures << "Business Impact is missing from the shared drawer" unless html.include?('<p id="drawer-business-impact"></p>') && app_script.include?('setText("#drawer-business-impact", article.businessImpact')
 failures << "unverified source handling is missing" unless app_script.include?('originalSource.removeAttribute("href")') && app_script.include?('originalSource.setAttribute("aria-disabled", "true")') && app_script.include?('sourcePending.hidden = false')

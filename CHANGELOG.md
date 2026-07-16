@@ -2,6 +2,22 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.18.0] - 2026-07-15
+### Changed
+- Simplified the Solaris Nexus primary navigation to Overview, Ask Nexus, Intelligence Center, and Settings.
+- Replaced the former dashboard-card Overview with Top AI Headlines, previous-conversation status, and Notifications only.
+- Added the Ask Nexus prompt foundation with explicit preview-only, non-connected behavior.
+- Consolidated governed news, learning, standards, frameworks, laws, and regulations into one Intelligence Center feed and retained filterable monitoring scope.
+- Updated Settings to distinguish the working Theme preference from future Accessibility, Notifications, and Language placeholders.
+
+### Governance
+- Preserved all five governed intelligence records unchanged and retained the preliminary-pending-Board-disposition notice.
+- Retained former workspace content in the application source without exposing obsolete primary routes, preserving information and future extensibility.
+
+### Validation
+- Added an exact four-route navigation regression test and updated smoke, contextual-intelligence, responsive, and manual review contracts.
+- Preserved the shared Intelligence Drawer, safe source links, Chair Notes, bookmarks, theme persistence, mobile navigation, global search, approved header identity, and GitHub Pages-compatible relative resources.
+
 ## [0.17.8] - 2026-07-14
 ### Changed
 - Increased the Solaris Labs tagline size from 30px to 34.5px while preserving Montserrat Medium (500).

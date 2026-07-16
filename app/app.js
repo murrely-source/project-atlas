@@ -1,11 +1,13 @@
 "use strict";
 
 let atlasData = window.ATLAS_DATA;
-const pages = [...document.querySelectorAll(".page")];
+const primaryPageIds = ["overview", "ask", "intelligence", "settings"];
+const pages = primaryPageIds.map((id) => document.getElementById(id));
 const nav = [...document.querySelectorAll(".nav")];
 const articleList = document.querySelector("#article-list");
-const workspaceIntelligenceFeeds = [...document.querySelectorAll("[data-intelligence-feed]")];
-const standardsFilters = [...document.querySelectorAll("[data-standards-filter]")];
+const overviewHeadlines = document.querySelector("#overview-headlines");
+const workspaceIntelligenceFeeds = [...document.querySelectorAll("#intelligence [data-intelligence-feed]")];
+const standardsFilters = [...document.querySelectorAll("#intelligence [data-standards-filter]")];
 const drawerLayer = document.querySelector("#intelligence-drawer-layer");
 const drawer = document.querySelector("#intelligence-drawer");
 const drawerReturn = document.querySelector("#drawer-return");
@@ -26,13 +28,15 @@ const globalSearch = document.querySelector("#global-search");
 const globalSearchToggle = document.querySelector("#global-search-toggle");
 const globalSearchInput = document.querySelector("#global-search-input");
 const globalSearchStatus = document.querySelector("#global-search-status");
+const askNexusForm = document.querySelector("#ask-nexus-form");
+const askNexusStatus = document.querySelector("#ask-nexus-status");
 
 let selectedArticle = null;
 let selectedArticleTrigger = null;
 let mobileMenuOpen = false;
-let activeNewsCategory = "all";
+let activeIntelligenceCategory = "all";
 const activeStandardsFilters = { organization: "all", contentType: "all", certification: "all", status: "all", recommendation: "all" };
-let drawerOriginWorkspace = "news";
+let drawerOriginWorkspace = "intelligence";
 let drawerOriginScrollPosition = 0;
 const sessionFallback = new Map();
 
@@ -178,7 +182,18 @@ function renderArticles() {
     articleList.append(row);
   });
   articleList.setAttribute("aria-busy", "false");
-  filterNews(activeNewsCategory);
+  filterIntelligence(activeIntelligenceCategory);
+}
+
+function renderOverviewHeadlines() {
+  overviewHeadlines.replaceChildren();
+  atlasData.articles.filter((article) => article.verified === true).slice(0, 3).forEach((article) => {
+    const item = document.createElement("article");
+    item.className = "workspace-feed-item";
+    item.append(createArticleTrigger(article, true));
+    overviewHeadlines.append(item);
+  });
+  overviewHeadlines.setAttribute("aria-busy", "false");
 }
 
 function createArticleTrigger(article, compact = false) {
@@ -303,7 +318,7 @@ function initializeStandardsLearningWorkspace() {
   standardsFilters.forEach((select) => {
     populateSelect(select, atlasData.standardsLearningFilters[select.dataset.standardsFilter]);
   });
-  document.querySelectorAll("[data-monitoring-section]").forEach((container) => {
+  document.querySelectorAll("#intelligence [data-monitoring-section]").forEach((container) => {
     const values = atlasData.standardsLearningSections[container.dataset.monitoringSection];
     values.forEach((value) => {
       const item = document.createElement("span");
@@ -315,7 +330,7 @@ function initializeStandardsLearningWorkspace() {
 
 function filterStandardsIntelligence(select) {
   activeStandardsFilters[select.dataset.standardsFilter] = select.value;
-  renderWorkspaceIntelligenceFeed(document.querySelector('[data-intelligence-feed="standards"]'));
+  filterIntelligence(activeIntelligenceCategory);
 }
 
 function renderIntelligenceError(error) {
@@ -335,6 +350,8 @@ function renderIntelligenceError(error) {
   state.append(title, message);
   articleList.replaceChildren(state);
   articleList.setAttribute("aria-busy", "false");
+  overviewHeadlines.replaceChildren(state.cloneNode(true));
+  overviewHeadlines.setAttribute("aria-busy", "false");
 }
 
 async function initializeIntelligence() {
@@ -346,18 +363,21 @@ async function initializeIntelligence() {
   }
   atlasData = loadedData;
   renderArticles();
+  renderOverviewHeadlines();
   renderWorkspaceIntelligenceFeeds();
 }
 
-function filterNews(category) {
-  activeNewsCategory = category;
+function filterIntelligence(category) {
+  activeIntelligenceCategory = category;
   document.querySelectorAll(".filter").forEach((filter) => {
     filter.classList.toggle("active", filter.dataset.cat === category);
   });
 
-  document.querySelectorAll(".intel").forEach((item) => {
+  articleList.querySelectorAll(".intel").forEach((item) => {
+    const article = atlasData.articles.find((record) => record.id === item.querySelector("[data-article-id]")?.dataset.articleId);
     const categories = item.dataset.cat.split("|");
-    item.hidden = category !== "all" && !categories.some((articleCategory) => articleCategory.includes(category));
+    const categoryMatches = category === "all" || categories.some((articleCategory) => articleCategory.includes(category));
+    item.hidden = !article || !categoryMatches || !matchesStandardsFilters(article);
   });
 }
 
@@ -409,9 +429,9 @@ function configureSourceLink(article) {
 function openDrawer(article, trigger) {
   selectedArticle = article;
   selectedArticleTrigger = trigger;
-  drawerOriginWorkspace = trigger.closest("[data-intelligence-feed]")?.dataset.intelligenceFeed || "news";
+  drawerOriginWorkspace = trigger.closest(".page")?.id || "intelligence";
   drawerOriginScrollPosition = window.scrollY;
-  const originLabel = atlasData.workspaces.find((workspace) => workspace.id === drawerOriginWorkspace)?.label || "News Desk";
+  const originLabel = atlasData.workspaces.find((workspace) => workspace.id === drawerOriginWorkspace)?.label || "Intelligence Center";
   drawerReturn.textContent = `← Return to ${originLabel}`;
   drawerReturn.setAttribute("aria-label", `Return to ${originLabel}`);
 
@@ -555,11 +575,16 @@ document.querySelectorAll("[data-open-page]").forEach((element) => {
 });
 
 document.querySelectorAll(".filter").forEach((filter) => {
-  filter.addEventListener("click", () => filterNews(filter.dataset.cat));
+  filter.addEventListener("click", () => filterIntelligence(filter.dataset.cat));
 });
 
 standardsFilters.forEach((filter) => {
   filter.addEventListener("change", () => filterStandardsIntelligence(filter));
+});
+
+askNexusForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  askNexusStatus.textContent = "Model connectivity is not implemented in this preview. No prompt was sent.";
 });
 
 drawerClose.addEventListener("click", closeDrawer);

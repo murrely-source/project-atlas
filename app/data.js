@@ -30,35 +30,31 @@
 
   const baseData = Object.freeze({
     workspaces: Object.freeze([
-      { id: "overview", label: "Executive Overview" },
+      { id: "overview", label: "Overview" },
+      { id: "ask", label: "Ask Nexus" },
       { id: "intelligence", label: "Intelligence Center" },
-      { id: "news", label: "News Desk" },
-      { id: "human", label: "Human Firewall™" },
-      { id: "standards", label: "Standards & Learning" },
-      { id: "regulation", label: "Regulatory Watch" },
-      { id: "progress", label: "Progress & Milestones" },
-      { id: "backlog", label: "Atlas Backlog" },
-      { id: "documents", label: "Documents" },
-      { id: "pending", label: "Board Queue" },
-      { id: "dhf", label: "DHF / Decisions" },
-      { id: "skills", label: "Skills Library" },
-      { id: "notifications", label: "Notifications" },
       { id: "settings", label: "Settings" }
     ]),
-    overviewCards: Object.freeze([
-      { label: "Intelligence Trends", destination: "intelligence" },
-      { label: "What’s in the News", destination: "news" },
-      { label: "Human Firewall™", destination: "human" },
-      { label: "Standards Activity", destination: "standards" },
-      { label: "Regulatory Activity", destination: "regulation" },
-      { label: "Atlas Progress", destination: "progress" },
-      { label: "Backlog Health", destination: "backlog" },
-      { label: "Board Queue", destination: "pending" },
-      { label: "Document Status", destination: "documents" }
+    overviewCards: Object.freeze([]),
+    legacyNavigation: Object.freeze([
+      { route: "news", label: "News Desk" },
+      { route: "human", label: "Human Firewall™" },
+      { route: "standards", label: "Standards & Learning" },
+      { route: "regulation", label: "Regulatory Watch" },
+      { route: "progress", label: "Progress & Milestones" },
+      { route: "backlog", label: "Atlas Backlog" },
+      { route: "documents", label: "Documents" },
+      { route: "pending", label: "Board Queue" },
+      { route: "dhf", label: "DHF / Decisions" },
+      { route: "skills", label: "Skills Library" },
+      { route: "notifications", label: "Notifications" }
     ]),
+    legacyOverviewDestinations: Object.freeze(["intelligence", "news", "human", "standards", "regulation", "progress", "backlog", "pending", "documents"]),
     newsCategories: Object.freeze(["all", "governance", "human", "standards", "enterprise"]),
     workspaceIntelligence: Object.freeze({
-      intelligence: Object.freeze({ allVerified: true, categories: Object.freeze([]) }),
+      intelligence: Object.freeze({ allVerified: true, categories: Object.freeze([]) })
+    }),
+    legacyWorkspaceIntelligence: Object.freeze({
       standards: Object.freeze({ categories: Object.freeze(["Standards", "Official Guidance", "Implementation Guidance", "Standards Training", "Certification", "Training", "Webinar", "Conference", "Publication", "Exam Update", "Course Update"]) }),
       regulation: Object.freeze({ categories: Object.freeze(["Regulation", "Enforcement", "Consultation", "Legislation"]) }),
       human: Object.freeze({ categories: Object.freeze(["Human Impact", "AI Literacy", "Human Oversight", "Workforce Readiness"]) })
