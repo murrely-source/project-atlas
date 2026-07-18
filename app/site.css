@@ -170,6 +170,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
   .site-navigation a { display: flex; align-items: center; min-height: 52px; color: var(--soft-white); font-size: 1rem; }
   .site-navigation a:hover, .site-navigation a:focus-visible { color: var(--soft-white); }
   .site-navigation a[aria-current="page"] { padding-inline: 12px; border-left: 3px solid var(--gold); background: var(--solaris-blue); color: var(--soft-white); }
+  .site-navigation.is-open, .site-navigation.is-open .mobile-nav-heading, .site-navigation.is-open .mobile-nav-heading > span, .site-navigation.is-open a, .site-navigation.is-open a[aria-current="page"], .site-navigation.is-open .menu-close { visibility: visible; color: #f2f6fa; opacity: 1; filter: none; mix-blend-mode: normal; text-shadow: none; -webkit-text-fill-color: currentColor; }
   .site-navigation a::after { display: none; }
   .hero-layout { gap: 3rem; }
   .intro-grid, .responsible-grid, .cta-panel { grid-template-columns: 1fr; }

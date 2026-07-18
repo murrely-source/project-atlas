@@ -2,6 +2,11 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.20.7] - 2026-07-18
+### Fixed
+- Added explicit iPhone Safari text-rendering overrides for the open mobile navigation label, links, selected item, and close control.
+- Standardized mobile navigation text on `#F2F6FA` with full opacity, normal blending, no filters or shadows, and current-color WebKit text fill.
+
 ## [0.20.6] - 2026-07-18
 ### Fixed
 - Made the mobile navigation a fully opaque, full-viewport deep navy panel with `100vh` and `100dvh` height contracts for iPhone Safari.
