@@ -27,7 +27,8 @@ pairs = {
   "gold button text" => ["#1a1106", tokens["gold"]],
   "light-section body text" => ["#536271", tokens["white"]],
   "light-section heading" => [tokens["midnight"], tokens["white"]],
-  "light status text" => [tokens["solaris-blue"], "#ffffff"]
+  "light status text" => [tokens["solaris-blue"], "#ffffff"],
+  "mobile navigation text" => [tokens["soft-white"], "#0d2637"]
 }
 
 failures = pairs.map do |label, colors|
