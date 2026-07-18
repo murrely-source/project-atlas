@@ -2,6 +2,11 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.20.4] - 2026-07-18
+### Changed
+- Extended the hero artwork across the full viewport width while retaining the existing contained text layout.
+- Scaled the background proportionally to `100% auto` so the complete horizontal composition reaches both viewport edges without stretching or cropping the horizon.
+
 ## [0.20.3] - 2026-07-18
 ### Changed
 - Integrated the approved sunrise artwork directly into the hero background and removed the separate image component.
