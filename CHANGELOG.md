@@ -2,6 +2,12 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.20.9] - 2026-07-18
+### Fixed
+- Replaced fragmented mobile navigation color overrides with one menu-scoped `--mobile-navigation-foreground` contract inherited by the heading, links, selected item, and close control.
+- Removed the accumulated descendant `!important` rules and explicitly kept the mobile container, list, items, and controls fully opaque.
+- Synchronized the existing `is-open` class with `aria-hidden` and inert state so closed-state accessibility behavior cannot remain active after opening.
+
 ## [0.20.8] - 2026-07-18
 ### Fixed
 - Overrode the global inactive navigation color for every open mobile-menu label, link, descendant span, close control, and potential SVG path using scoped `!important` contrast declarations.

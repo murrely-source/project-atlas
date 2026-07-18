@@ -17,8 +17,11 @@ failures << "small-phone layout breakpoint is missing" unless css.include?("@med
 failures << "hero does not collapse on tablet" unless css.match?(/@media \(max-width: 980px\).*?\.hero-layout, \.lens-layout \{ grid-template-columns: 1fr; \}/m)
 failures << "content grids do not collapse on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.solution-grid, \.resource-grid \{ grid-template-columns: 1fr; \}/m)
 failures << "narrative layout does not collapse on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.perspective-layout \{ grid-template-columns: 1fr; \}/m)
-failures << "mobile navigation drawer is missing" unless css.match?(/@media \(max-width: 767px\).*?\.site-navigation \{ position: fixed; inset: 0;.*?transform: translateX\(105%\);/m)
-failures << "mobile navigation open state is missing" unless css.include?('.site-navigation.is-open { transform: translateX(0); visibility: visible; }')
+mobile_css = css[/@media \(max-width: 767px\) \{(.*?)\n\}/m, 1].to_s
+mobile_navigation_rule = mobile_css[/\.site-navigation \{([^}]*)\}/, 1].to_s
+mobile_open_rule = mobile_css[/\.site-navigation\.is-open \{([^}]*)\}/, 1].to_s
+failures << "mobile navigation drawer is missing" unless mobile_navigation_rule.include?("position: fixed") && mobile_navigation_rule.include?("inset: 0") && mobile_navigation_rule.include?("transform: translateX(105%)")
+failures << "mobile navigation open state is missing" unless mobile_open_rule.include?("transform: translateX(0)") && mobile_open_rule.include?("visibility: visible") && mobile_open_rule.include?("opacity: 1")
 failures << "mobile scroll lock is missing" unless css.include?("body.nav-open { position: fixed; width: 100%; overflow: hidden; }") && script.include?("window.scrollTo(0, lockedScrollPosition)")
 failures << "mobile menu does not close after selection" unless script.match?(/event\.target\.closest\("a"\).*?closeMenu\(\)/m)
 failures << "touch targets are undersized" unless css.include?("min-height: 44px") && css.include?("min-height: 48px") && css.include?("min-height: 52px")
