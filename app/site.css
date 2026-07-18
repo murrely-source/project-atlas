@@ -161,18 +161,15 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
   .menu-glyph { position: relative; }
   .menu-glyph::before { position: absolute; top: -5px; }
   .menu-glyph::after { position: absolute; top: 5px; }
-  .site-navigation { position: fixed; inset: 0; z-index: 300; width: 100%; min-height: 100vh; min-height: 100dvh; padding: 16px; overflow-y: auto; overscroll-behavior: contain; border: 0; background: #0d2637; transform: translateX(105%); visibility: hidden; transition: transform .2s ease, visibility .2s ease; -webkit-overflow-scrolling: touch; }
-  .site-navigation.is-open { transform: translateX(0); visibility: visible; }
-  .mobile-nav-heading { display: flex; align-items: center; justify-content: space-between; padding-bottom: 1rem; border-bottom: 1px solid var(--border-strong); color: var(--soft-white); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
-  .menu-close { border-color: var(--cyan); background: var(--solaris-blue); color: var(--soft-white); font-size: 1.6rem; }
-  .site-navigation ul { display: grid; gap: 0; padding-top: 1rem; }
-  .site-navigation li { border-bottom: 1px solid var(--border-strong); }
-  .site-navigation a { display: flex; align-items: center; min-height: 52px; color: var(--soft-white); font-size: 1rem; }
-  .site-navigation a:hover, .site-navigation a:focus-visible { color: var(--soft-white); }
-  .site-navigation a[aria-current="page"] { padding-inline: 12px; border-left: 3px solid var(--gold); background: var(--solaris-blue); color: var(--soft-white); }
-  .site-navigation.is-open, .site-navigation.is-open ul, .site-navigation.is-open li { visibility: visible; color: #f2f6fa; opacity: 1 !important; }
-  .site-navigation.is-open .mobile-nav-heading, .site-navigation.is-open .mobile-nav-heading > span, .site-navigation.is-open a, .site-navigation.is-open a span, .site-navigation.is-open a[aria-current="page"], .site-navigation.is-open .menu-close, .site-navigation.is-open .menu-close svg, .site-navigation.is-open .menu-close svg path { visibility: visible; color: #f2f6fa !important; opacity: 1 !important; filter: none !important; mix-blend-mode: normal !important; text-shadow: none; -webkit-text-fill-color: #f2f6fa !important; }
-  .site-navigation.is-open .menu-close svg, .site-navigation.is-open .menu-close svg path { fill: none; stroke: #f2f6fa !important; }
+  .site-navigation { --mobile-navigation-foreground: #f2f6fa; position: fixed; inset: 0; z-index: 300; width: 100%; min-height: 100vh; min-height: 100dvh; padding: 16px; overflow-y: auto; overscroll-behavior: contain; border: 0; background: #0d2637; color: var(--mobile-navigation-foreground); opacity: 1; transform: translateX(105%); visibility: hidden; transition: transform .2s ease, visibility .2s ease; -webkit-overflow-scrolling: touch; }
+  .site-navigation.is-open { color: var(--mobile-navigation-foreground); opacity: 1; transform: translateX(0); visibility: visible; }
+  .mobile-nav-heading { display: flex; align-items: center; justify-content: space-between; padding-bottom: 1rem; border-bottom: 1px solid var(--border-strong); color: inherit; opacity: 1; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; -webkit-text-fill-color: currentColor; }
+  .menu-close { border-color: var(--cyan); background: var(--solaris-blue); color: inherit; opacity: 1; font-size: 1.6rem; -webkit-text-fill-color: currentColor; }
+  .site-navigation ul { display: grid; gap: 0; padding-top: 1rem; opacity: 1; }
+  .site-navigation li { border-bottom: 1px solid var(--border-strong); opacity: 1; }
+  .site-navigation a { display: flex; align-items: center; min-height: 52px; color: inherit; opacity: 1; font-size: 1rem; -webkit-text-fill-color: currentColor; }
+  .site-navigation a:hover, .site-navigation a:focus-visible { color: inherit; }
+  .site-navigation a[aria-current="page"] { padding-inline: 12px; border-left: 3px solid var(--gold); background: var(--solaris-blue); color: inherit; opacity: 1; }
   .site-navigation a::after { display: none; }
   .hero-layout { gap: 3rem; }
   .intro-grid, .responsible-grid, .cta-panel { grid-template-columns: 1fr; }
