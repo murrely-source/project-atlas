@@ -2,6 +2,12 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.20.6] - 2026-07-18
+### Fixed
+- Made the mobile navigation a fully opaque, full-viewport deep navy panel with `100vh` and `100dvh` height contracts for iPhone Safari.
+- Strengthened the navigation heading, links, dividers, selected state, and close-control contrast.
+- Added iOS-safe fixed-body scroll locking and exact scroll-position restoration when the menu closes.
+
 ## [0.20.5] - 2026-07-18
 ### Fixed
 - Replaced the mobile navigation drawer's near-black surface with an opaque deep navy background.

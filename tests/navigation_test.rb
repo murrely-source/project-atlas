@@ -30,9 +30,15 @@ abort("FAIL: current navigation state does not follow the selected section") unl
 abort("FAIL: navigation selection does not close mobile menu and restore focus") unless script.include?('event.target.closest("a")') && script.match?(/event\.target\.closest\("a"\).*?closeMenu\(\)/m)
 mobile_css = css[/@media \(max-width: 767px\) \{(.*?)\n\}/m, 1].to_s
 abort("FAIL: mobile navigation background is not opaque deep navy") unless mobile_css.match?(/\.site-navigation \{[^}]*background: #0d2637;/)
+mobile_navigation_rule = mobile_css[/\.site-navigation \{([^}]*)\}/, 1].to_s
+abort("FAIL: mobile navigation does not cover the full viewport") unless mobile_navigation_rule.include?("position: fixed") && mobile_navigation_rule.include?("inset: 0") && mobile_navigation_rule.include?("width: 100%") && mobile_navigation_rule.include?("min-height: 100vh") && mobile_navigation_rule.include?("min-height: 100dvh")
+abort("FAIL: mobile navigation is below page content") unless mobile_navigation_rule.include?("z-index: 300")
+abort("FAIL: mobile navigation uses transparent or filtered styling") if mobile_navigation_rule.match?(/rgba|opacity|backdrop-filter|mix-blend-mode|filter:/)
 abort("FAIL: mobile navigation links do not use Soft White") unless mobile_css.match?(/\.site-navigation a \{[^}]*color: var\(--soft-white\);/)
 abort("FAIL: mobile current navigation item is not visibly selected") unless mobile_css.include?('.site-navigation a[aria-current="page"]') && mobile_css.include?("border-left: 3px solid var(--gold)")
 abort("FAIL: mobile close control lacks contrast") unless mobile_css.match?(/\.menu-close \{[^}]*background: var\(--solaris-blue\);[^}]*color: var\(--soft-white\);/)
+abort("FAIL: mobile navigation label lacks contrast") unless mobile_css.match?(/\.mobile-nav-heading \{[^}]*color: var\(--soft-white\);/)
+abort("FAIL: iOS page-position lock is missing") unless script.include?("lockedScrollPosition = window.scrollY") && script.include?('document.body.style.top = `-${lockedScrollPosition}px`') && script.include?("window.scrollTo(0, lockedScrollPosition)")
 
 puts "PASS: Solaris Lucerna public navigation"
 puts "  approved six-link order and accessible mobile behavior validated"
