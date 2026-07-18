@@ -2,6 +2,11 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.20.8] - 2026-07-18
+### Fixed
+- Overrode the global inactive navigation color for every open mobile-menu label, link, descendant span, close control, and potential SVG path using scoped `!important` contrast declarations.
+- Forced full opacity on the open navigation container, list, and list items so no parent state can darken mobile menu content.
+
 ## [0.20.7] - 2026-07-18
 ### Fixed
 - Added explicit iPhone Safari text-rendering overrides for the open mobile navigation label, links, selected item, and close control.

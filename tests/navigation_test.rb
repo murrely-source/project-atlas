@@ -38,8 +38,12 @@ abort("FAIL: mobile navigation links do not use Soft White") unless mobile_css.m
 abort("FAIL: mobile current navigation item is not visibly selected") unless mobile_css.include?('.site-navigation a[aria-current="page"]') && mobile_css.include?("border-left: 3px solid var(--gold)")
 abort("FAIL: mobile close control lacks contrast") unless mobile_css.match?(/\.menu-close \{[^}]*background: var\(--solaris-blue\);[^}]*color: var\(--soft-white\);/)
 abort("FAIL: mobile navigation label lacks contrast") unless mobile_css.match?(/\.mobile-nav-heading \{[^}]*color: var\(--soft-white\);/)
-contrast_override = mobile_css[/\.site-navigation\.is-open, \.site-navigation\.is-open \.mobile-nav-heading.*?\{([^}]*)\}/, 1].to_s
-abort("FAIL: explicit mobile text contrast override is missing") unless contrast_override.include?("color: #f2f6fa") && contrast_override.include?("opacity: 1") && contrast_override.include?("visibility: visible") && contrast_override.include?("filter: none") && contrast_override.include?("mix-blend-mode: normal") && contrast_override.include?("text-shadow: none") && contrast_override.include?("-webkit-text-fill-color: currentColor")
+parent_override = mobile_css[/\.site-navigation\.is-open, \.site-navigation\.is-open ul, \.site-navigation\.is-open li \{([^}]*)\}/, 1].to_s
+contrast_override = mobile_css[/\.site-navigation\.is-open \.mobile-nav-heading,.*?\{([^}]*)\}/, 1].to_s
+svg_override = mobile_css.scan(/\.site-navigation\.is-open \.menu-close svg, \.site-navigation\.is-open \.menu-close svg path \{([^}]*)\}/).flatten.find { |rule| rule.include?("stroke:") }.to_s
+abort("FAIL: open mobile navigation parents can reduce text opacity") unless parent_override.include?("opacity: 1 !important") && parent_override.include?("visibility: visible") && parent_override.include?("color: #f2f6fa")
+abort("FAIL: explicit mobile text contrast override is missing") unless contrast_override.include?("color: #f2f6fa !important") && contrast_override.include?("opacity: 1 !important") && contrast_override.include?("visibility: visible") && contrast_override.include?("filter: none !important") && contrast_override.include?("mix-blend-mode: normal !important") && contrast_override.include?("text-shadow: none") && contrast_override.include?("-webkit-text-fill-color: #f2f6fa !important")
+abort("FAIL: mobile close SVG contrast override is missing") unless svg_override.include?("fill: none") && svg_override.include?("stroke: #f2f6fa !important")
 abort("FAIL: iOS page-position lock is missing") unless script.include?("lockedScrollPosition = window.scrollY") && script.include?('document.body.style.top = `-${lockedScrollPosition}px`') && script.include?("window.scrollTo(0, lockedScrollPosition)")
 
 puts "PASS: Solaris Lucerna public navigation"
