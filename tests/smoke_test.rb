@@ -28,6 +28,11 @@ failures << "product naming is duplicated outside centralized configuration" if 
 failures << "LENS oversight limitation is missing" unless html.include?("does not replace legal, technical, governance, or executive judgment")
 failures << "resource placeholders are not governed" unless html.scan("Coming Soon").length >= 4 && !html.match?(/lorem ipsum/i)
 failures << "contact preview collects data without an approved integration" if html.match?(/<form|<input|<textarea|<select/)
+footer = html[/<footer class="site-footer">(.*?)<\/footer>/m, 1].to_s
+failures << "footer branding remains duplicated" if footer.match?(/data-company-name|data-company-tagline|footer-brand/)
+failures << "footer navigation remains duplicated" if footer.match?(/<nav|data-primary-navigation|Home|Solutions|LENS|Resources|About|Contact/)
+failures << "simplified footer statement is incomplete" unless footer.include?("© 2026 Solaris Lucerna.") && footer.include?("Responsible intelligence supports—and does not replace—professional judgment.")
+failures << "footer divider or centered layout is missing" unless css.match?(/\.site-footer \{[^}]*border-top: 1px solid var\(--border\);/) && css.match?(/\.footer-content \{[^}]*align-items: center;[^}]*justify-content: center;/) && css.match?(/\.site-footer p \{[^}]*text-align: center;/)
 hero_asset = File.join(app, "assets", "brand", "hero-sunrise.png")
 failures << "approved hero artwork is missing" unless File.file?(hero_asset) && css.include?('background-image: url("assets/brand/hero-sunrise.png")')
 failures << "temporary hero placeholder remains" if html.match?(/Production asset pending|data-required-asset|art-placement/)
