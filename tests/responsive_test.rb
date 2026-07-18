@@ -22,7 +22,8 @@ failures << "mobile navigation open state is missing" unless css.include?('.site
 failures << "mobile scroll lock is missing" unless css.include?("body.nav-open { overflow: hidden; }")
 failures << "mobile menu does not close after selection" unless script.match?(/event\.target\.closest\("a"\).*?closeMenu\(\)/m)
 failures << "touch targets are undersized" unless css.include?("min-height: 44px") && css.include?("min-height: 48px") && css.include?("min-height: 52px")
-failures << "hero background does not preserve the full composition" unless css.include?("background-size: contain;") && css.include?("background-position: center bottom;") && css.include?("background-repeat: no-repeat;")
+failures << "hero does not span the viewport" unless css.match?(/\.hero \{[^}]*width: 100vw;/)
+failures << "hero background does not preserve the full-width composition" unless css.include?("background-size: 100% auto;") && css.include?("background-position: center bottom;") && css.include?("background-repeat: no-repeat;")
 failures << "footer does not stack on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.footer-grid \{ grid-template-columns: 1fr; \}/m)
 
 unless failures.empty?
