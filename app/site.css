@@ -58,8 +58,8 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
 .mobile-nav-overlay { display: none; }
 
 .hero { width: 100vw; min-height: calc(100vh - 82px); display: grid; align-items: center; overflow: hidden; background-color: #000310; background-image: url("assets/brand/hero-sunrise.png"); background-position: center bottom; background-repeat: no-repeat; background-size: 100% auto; }
-.hero-layout { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(380px, .9fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: center; }
-.hero-copy { position: relative; z-index: 1; }
+.hero-layout { position: relative; display: grid; grid-template-columns: minmax(0, 48rem) minmax(0, 1fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: center; }
+.hero-copy { position: relative; z-index: 1; overflow: visible; }
 .hero h1 { margin-bottom: .8rem; background: linear-gradient(100deg, var(--soft-white), #ffffff 50%, var(--cyan-soft)); background-clip: text; color: transparent; }
 .hero-tagline { margin-bottom: 1.6rem; color: var(--cyan-soft); font-family: var(--font-heading); font-size: clamp(1.1rem, 2.5vw, 1.65rem); letter-spacing: .06em; }
 .hero-intro { max-width: 660px; margin-bottom: 2rem; color: #c5cdd7; font-size: clamp(1.05rem, 2vw, 1.24rem); }
