@@ -28,7 +28,9 @@ pairs = {
   "light-section body text" => ["#536271", tokens["white"]],
   "light-section heading" => [tokens["midnight"], tokens["white"]],
   "light status text" => [tokens["solaris-blue"], "#ffffff"],
-  "mobile navigation text" => ["#f2f6fa", "#0d2637"]
+  "mobile navigation text" => ["#f4f7fa", "#03131f"],
+  "mobile navigation label" => ["#9fdff2", "#03131f"],
+  "mobile active text" => ["#ffffff", "#08283a"]
 }
 
 failures = pairs.map do |label, colors|

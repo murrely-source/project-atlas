@@ -3,9 +3,8 @@
 (() => {
   const site = window.SOLARIS_SITE;
   const menuButton = document.querySelector("#site-menu-button");
-  const navigation = document.querySelector("#site-navigation");
-  const menuClose = document.querySelector("#site-menu-close");
-  const backdrop = document.querySelector("#site-nav-backdrop");
+  const mobileOverlay = document.querySelector("#mobile-navigation-overlay");
+  const mobileClose = document.querySelector("#mobile-navigation-close");
   const desktopNavigation = window.matchMedia("(min-width: 768px)");
   let menuOpen = false;
   let lockedScrollPosition = 0;
@@ -33,13 +32,31 @@
     });
   }
 
+  function renderMobileNavigation() {
+    const list = document.querySelector("[data-mobile-navigation]");
+    list.replaceChildren();
+    site.navigation.forEach((item) => {
+      const listItem = document.createElement("li");
+      const link = document.createElement("a");
+      link.className = "mobile-nav-link";
+      link.href = item.href;
+      link.textContent = item.label;
+      listItem.append(link);
+      list.append(listItem);
+    });
+  }
+
   function updateCurrentNavigation() {
     const currentHash = window.location.hash || "#home";
-    document.querySelectorAll("[data-primary-navigation] a").forEach((link) => {
-      if (link.getAttribute("href") === currentHash) {
+    document.querySelectorAll("[data-primary-navigation] a, [data-mobile-navigation] a").forEach((link) => {
+      const linkIsCurrent = link.getAttribute("href") === currentHash;
+      if (linkIsCurrent) {
         link.setAttribute("aria-current", "page");
       } else {
         link.removeAttribute("aria-current");
+      }
+      if (link.classList.contains("mobile-nav-link")) {
+        link.classList.toggle("mobile-nav-link--active", linkIsCurrent);
       }
     });
   }
@@ -70,12 +87,6 @@
     });
   }
 
-  function synchronizeNavigationState() {
-    const navigationHidden = !desktopNavigation.matches && !menuOpen;
-    navigation.setAttribute("aria-hidden", String(navigationHidden));
-    navigation.inert = navigationHidden;
-  }
-
   function openMenu() {
     if (desktopNavigation.matches || menuOpen) {
       return;
@@ -83,12 +94,11 @@
     menuOpen = true;
     lockedScrollPosition = window.scrollY;
     document.body.style.top = `-${lockedScrollPosition}px`;
-    navigation.classList.add("is-open");
-    synchronizeNavigationState();
-    backdrop.hidden = false;
+    mobileOverlay.hidden = false;
+    mobileOverlay.setAttribute("aria-hidden", "false");
     document.body.classList.add("nav-open");
     menuButton.setAttribute("aria-expanded", "true");
-    window.requestAnimationFrame(() => menuClose.focus());
+    window.requestAnimationFrame(() => mobileClose.focus());
   }
 
   function closeMenu(restoreFocus = true) {
@@ -96,9 +106,8 @@
       return;
     }
     menuOpen = false;
-    navigation.classList.remove("is-open");
-    synchronizeNavigationState();
-    backdrop.hidden = true;
+    mobileOverlay.hidden = true;
+    mobileOverlay.setAttribute("aria-hidden", "true");
     document.body.classList.remove("nav-open");
     document.body.style.top = "";
     window.scrollTo(0, lockedScrollPosition);
@@ -112,7 +121,7 @@
     if (event.key !== "Tab" || !menuOpen) {
       return;
     }
-    const focusable = [menuClose, ...navigation.querySelectorAll("a")];
+    const focusable = [mobileClose, ...mobileOverlay.querySelectorAll("a")];
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
     if (event.shiftKey && document.activeElement === first) {
@@ -129,16 +138,15 @@
   populateText("[data-product-name]", site.product.name);
   populateText("[data-product-expansion]", site.product.expansion);
   renderNavigation();
+  renderMobileNavigation();
   updateCurrentNavigation();
   renderSolutions();
   renderLensCapabilities();
-  synchronizeNavigationState();
 
   menuButton.addEventListener("click", openMenu);
-  menuClose.addEventListener("click", () => closeMenu());
-  backdrop.addEventListener("click", () => closeMenu());
-  navigation.addEventListener("keydown", trapMenuFocus);
-  navigation.addEventListener("click", (event) => {
+  mobileClose.addEventListener("click", () => closeMenu());
+  mobileOverlay.addEventListener("keydown", trapMenuFocus);
+  mobileOverlay.addEventListener("click", (event) => {
     if (event.target.closest("a")) {
       closeMenu();
     }
@@ -153,7 +161,6 @@
     if (event.matches) {
       closeMenu(false);
     }
-    synchronizeNavigationState();
   });
   window.addEventListener("hashchange", updateCurrentNavigation);
 })();
