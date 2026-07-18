@@ -1,31 +1,20 @@
 #!/usr/bin/env ruby
-# Consolidated Intelligence Center contracts using the governed dataset.
+# Preservation contracts for the governed intelligence and legacy Nexus preview.
 require "json"
 
 root = File.expand_path("..", __dir__)
-items = JSON.parse(File.read(File.join(root, "app", "data", "intelligence.json"), encoding: "UTF-8")).fetch("items")
-html = File.read(File.join(root, "app", "index.html"), encoding: "UTF-8")
+dataset = JSON.parse(File.read(File.join(root, "app", "data", "intelligence.json"), encoding: "UTF-8"))
+legacy_html = File.read(File.join(root, "app", "nexus-preview.html"), encoding: "UTF-8")
 data_script = File.read(File.join(root, "app", "data.js"), encoding: "UTF-8")
 app_script = File.read(File.join(root, "app", "app.js"), encoding: "UTF-8")
+items = dataset.fetch("items")
 
-abort("FAIL: governed dataset changed") unless items.length == 5 && items.all? { |item| item["verified"] == true }
-abort("FAIL: Intelligence Center does not own the governed record list") unless html.match?(/<section id="intelligence" class="page">.*?id="article-list"/m)
-abort("FAIL: News, learning, standards, and regulation areas are not consolidated") unless ["Knowledge &amp; Learning", "Standards &amp; Frameworks", "Laws &amp; Regulations"].all? { |label| html.include?(label) }
-abort("FAIL: consolidated feed duplicates governed data") unless html.scan('id="article-list"').length == 1 && !File.exist?(File.join(root, "app", "data", "learning.json"))
-abort("FAIL: record renderer does not use the one governed collection") unless app_script.include?("atlasData.articles.forEach")
-abort("FAIL: unverified records are not excluded from Overview headlines") unless app_script.include?('article.verified === true).slice(0, 3)')
-abort("FAIL: article triggers do not open the shared drawer") unless app_script.include?('button.addEventListener("click", () => openDrawer(article, button))')
-abort("FAIL: shared source link safety contract changed") unless html.match?(/id="original-source"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/)
-abort("FAIL: drawer return is not context-aware") unless app_script.include?('trigger.closest(".page")?.id || "intelligence"') && app_script.include?('activatePage(drawerOriginWorkspace)')
+abort("FAIL: governed intelligence records changed") unless items.length == 5 && items.all? { |item| item["verified"] == true }
+abort("FAIL: governed loader was removed") unless data_script.include?("validateIntelligence") && data_script.include?("normalizeArticle")
+abort("FAIL: legacy entry point no longer loads governed data") unless legacy_html.include?('src="data.js"') && legacy_html.include?('src="app.js"')
+abort("FAIL: shared intelligence drawer was removed") unless legacy_html.include?('role="dialog" aria-modal="true"') && app_script.include?("openDrawer")
+abort("FAIL: safe source-link behavior changed") unless legacy_html.include?('target="_blank" rel="noopener noreferrer"')
+abort("FAIL: governed intelligence leaked into public homepage") if File.read(File.join(root, "app", "index.html"), encoding: "UTF-8").include?(items.first.fetch("title"))
 
-monitored_programs = ["NIST", "ISO / ISO/IEC", "OECD", "IEEE", "W3C", "CISA", "OWASP", "EU AI Office", "UK AI Safety Institute", "Singapore IMDA / AI Verify", "IAPP", "IAPP AIGP", "ISACA", "ISACA AAIA", "PMI", "ISO/IEC 42001 training and auditor pathways", "ISO 23894 learning", "ITIL AI Governance"]
-monitored_programs.each do |program|
-  abort("FAIL: retained monitoring scope is missing #{program}") unless data_script.include?(program)
-end
-
-abort("FAIL: composable intelligence filters are missing") unless %w[organization contentType certification status recommendation].all? { |filter| html.include?("data-standards-filter=\"#{filter}\"") } && app_script.include?("Object.entries(activeStandardsFilters).every")
-abort("FAIL: category and metadata filters are not combined") unless app_script.include?("!categoryMatches || !matchesStandardsFilters(article)")
-abort("FAIL: legacy workspace information was deleted") unless %w[news human standards regulation].all? { |id| html.include?(%(<section id="#{id}" class="page)) }
-
-puts "PASS: consolidated governed intelligence"
-puts "  five records, one visible feed, retained monitoring scope, combined filters, and shared drawer validated"
+puts "PASS: governed intelligence and legacy Nexus preview preserved"
+puts "  five verified records, loader, drawer, and safe source behavior retained outside the public homepage"

@@ -70,7 +70,7 @@ legacy_normalized_category = legacy_category.is_a?(Array) ? legacy_category : [l
 abort("FAIL: legacy single-string category compatibility is missing") unless legacy_normalized_category == [legacy_category]
 
 app_script = File.read(File.join(root, "app", "app.js"), encoding: "UTF-8")
-app_html = File.read(File.join(root, "app", "index.html"), encoding: "UTF-8")
+app_html = File.read(File.join(root, "app", "nexus-preview.html"), encoding: "UTF-8")
 abort("FAIL: News Desk does not render the loaded records") unless app_script.include?("atlasData.articles.forEach") && app_script.include?("button.dataset.articleId = article.id")
 abort("FAIL: drawer does not receive the selected loaded article") unless app_script.include?('button.addEventListener("click", () => openDrawer(article, button))')
 abort("FAIL: loader does not accept governed items") unless app_script && File.read(File.join(root, "app", "data.js"), encoding: "UTF-8").include?("Array.isArray(payload.items) ? payload.items : payload.articles")

@@ -1,56 +1,160 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Solaris Nexus: Intelligence Platform</title>
-<script src="theme-init.js"></script>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solaris Lucerna | Illuminating Responsible Intelligence</title>
+  <meta name="description" content="Solaris Lucerna guides organizations through AI adoption, governance, risk awareness, and operational readiness.">
+  <meta name="theme-color" content="#10141a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Solaris Lucerna">
+  <meta property="og:title" content="Solaris Lucerna | Illuminating Responsible Intelligence">
+  <meta property="og:description" content="Executive guidance for responsible AI adoption, governance, risk awareness, and operational readiness.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Solaris Lucerna | Illuminating Responsible Intelligence">
+  <meta name="twitter:description" content="Executive guidance for responsible AI adoption, governance, risk awareness, and operational readiness.">
+  <link rel="stylesheet" href="site.css">
+  <script src="brand-config.js" defer></script>
+  <script src="site.js" defer></script>
 </head>
 <body>
-<header class="top"><div class="header-identity"><div class="brand-lockup" role="img" aria-label="Solaris Labs — Technology for Human-Centered AI"><img class="brand-lockup-image brand-lockup-dark" src="assets/brand/solaris-labs-lockup-dark-v4.png" alt="Solaris Labs — Technology for Human-Centered AI"><img class="brand-lockup-image brand-lockup-light" src="assets/brand/solaris-labs-lockup-light-v4.png" alt="Solaris Labs — Technology for Human-Centered AI"></div><div class="header-divider"></div><div class="name"><h1>Solaris Nexus</h1><p>Intelligence Platform</p></div></div><div class="header-tools"><button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="workspace-navigation"><span aria-hidden="true">☰</span><span>Menu</span></button></div></header>
-<div class="shell"><aside id="workspace-navigation" aria-label="Workspace navigation"><div class="mobile-nav-header"><strong>Workspaces</strong><button class="menu-close" id="menu-close" type="button" aria-label="Close workspace menu">×</button></div><nav aria-label="Solaris Nexus workspaces">
-<button class="nav active" data-page="overview">Overview</button><button class="nav" data-page="ask">Ask Nexus</button><button class="nav" data-page="intelligence">Intelligence Center</button><button class="nav" data-page="settings">Settings</button>
-</nav></aside><button class="nav-backdrop" id="nav-backdrop" type="button" aria-label="Close workspace menu" hidden></button><main>
-<section id="overview" class="page active"><div class="hero"><h2>Overview</h2><p>High-level information and entry points for Solaris Nexus.</p></div><div class="overview-sections">
-<section class="card overview-panel" aria-labelledby="top-headlines-title"><div class="overview-section-heading"><div><h3 id="top-headlines-title">Top AI Headlines</h3><p class="small">The latest verified records in governed dataset order.</p></div><button class="linkbtn" type="button" data-open-page="intelligence">View Intelligence Center</button></div><div id="overview-headlines" class="workspace-intelligence-feed" aria-live="polite" aria-busy="true"></div></section>
-<section class="card overview-panel" aria-labelledby="continue-title"><h3 id="continue-title">Continue a Previous Nexus Conversation</h3><div class="empty-state"><p>No previous Nexus conversations are available in this preview.</p><p class="small">New conversations begin from Ask Nexus in the primary navigation.</p></div></section>
-<section class="card overview-panel" aria-labelledby="overview-notifications-title"><h3 id="overview-notifications-title">Notifications</h3><div class="empty-state"><p>No notifications are available in this preview.</p><p class="small">Notification delivery, preferences, and history are not implemented in this release. Reminders will be handled as notifications when approved.</p></div></section>
-</div></section>
-<section id="ask" class="page"><div class="hero"><h2>Ask Nexus</h2><p>Ask a question or provide an instruction to the Nexus AI model.</p></div><section class="card ask-panel" aria-labelledby="ask-nexus-title"><div><h3 id="ask-nexus-title">Conversation</h3><p class="small">Model connectivity is not implemented in this preview. No prompt will be sent.</p></div><form id="ask-nexus-form"><label for="ask-nexus-input">Question or instruction</label><textarea id="ask-nexus-input" rows="8" placeholder="Enter a question or instruction"></textarea><div class="ask-actions"><button class="source-button" type="submit">Ask Nexus</button><span id="ask-nexus-status" class="small" role="status" aria-live="polite"></span></div></form></section></section>
-<section id="intelligence" class="page"><div class="hero"><h2>Intelligence Center</h2><p>Governed AI news, knowledge and learning resources, standards and frameworks, and laws and regulations in one trusted-information workspace.</p></div><p class="demo-label">Governed intelligence — preliminary pending Board disposition.</p><section class="card intelligence-filter-panel" aria-labelledby="intelligence-filter-title"><h3 id="intelligence-filter-title">Filter Governed Intelligence</h3><div class="filters"><button class="filter active" data-cat="all">All</button><button class="filter" data-cat="governance">Governance</button><button class="filter" data-cat="human">Human Firewall™</button><button class="filter" data-cat="standards">Standards</button><button class="filter" data-cat="enterprise">Enterprise</button></div><div class="standards-filter-grid"><label>Organization<select data-standards-filter="organization" aria-label="Filter intelligence by organization"><option value="all">All organizations</option></select></label><label>Content Type<select data-standards-filter="contentType" aria-label="Filter intelligence by content type"><option value="all">All content types</option></select></label><label>Certification<select data-standards-filter="certification" aria-label="Filter intelligence by certification"><option value="all">All certifications</option></select></label><label>Status<select data-standards-filter="status" aria-label="Filter intelligence by status"><option value="all">All statuses</option></select></label><label>Recommendation<select data-standards-filter="recommendation" aria-label="Filter intelligence by recommendation"><option value="all">All recommendations</option></select></label></div></section><section class="card workspace-intelligence" aria-labelledby="intelligence-feed-title"><h3 id="intelligence-feed-title">Trusted Intelligence</h3><p class="small">All verified governed records. Filters combine without duplicating source data.</p><div id="article-list" aria-live="polite" aria-busy="true"></div></section><div class="standards-section-grid"><section class="card"><h3>Standards &amp; Frameworks</h3><div class="monitoring-list" data-monitoring-section="standards"></div></section><section class="card"><h3>Professional Organizations</h3><div class="monitoring-list" data-monitoring-section="organizations"></div><p class="small">IAPP AIGP remains represented as part of the professional AI governance ecosystem.</p></section><section class="card"><h3>Knowledge &amp; Learning</h3><div class="monitoring-list" data-monitoring-section="training"></div><div class="monitoring-list" data-monitoring-section="certifications"></div></section><section class="card"><h3>Laws &amp; Regulations</h3><div class="monitoring-list"><span>European Union AI governance implementation activity</span><span>United States agency and state-level guidance</span></div><p class="small">Existing monitoring descriptions are retained; only verified governed records are presented as current intelligence.</p></section><section class="card"><h3>Conferences &amp; Events</h3><div class="monitoring-list" data-monitoring-section="events"></div></section><section class="card"><h3>Publications &amp; Guidance</h3><div class="monitoring-list" data-monitoring-section="publications"></div></section></div></section>
-<section id="news" class="page"><div class="hero"><h2>Today’s News Desk</h2><p>The curated evidence behind the executive intelligence summary.</p></div><p class="demo-label">Governed intelligence — preliminary pending Board disposition.</p><div class="card"><h3>Curated Developments</h3><div id="legacy-article-list"></div></div></section>
-<section id="human" class="page"><div class="hero"><h2>Human Firewall™ Intelligence</h2><p>Research, trends, and methodology implications involving awareness, trust, fatigue, overreliance, decision quality, and workforce readiness.</p></div><div class="grid"><div class="card"><h3>Research Signals</h3><div class="metric">6</div></div><div class="card"><h3>Board Review</h3><div class="metric pink">1</div></div><div class="card"><h3>Methodology Links</h3><div class="metric green">4</div></div><div class="card"><h3>Trend</h3><div class="metric amber">▲</div></div></div><div class="two"><div class="card"><h3>Current Themes</h3><div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><tr><th>Theme</th><th>Signal</th></tr><tr><td>AI awareness</td><td>Increasing</td></tr><tr><td>Decision fatigue</td><td>Emerging</td></tr><tr><td>Appropriate reliance</td><td>High relevance</td></tr><tr><td>Human oversight</td><td>Persistent</td></tr></table></div></div><div class="card"><h3>Methodology Impact</h3><div class="item">Awareness & Transparency</div><div class="item">Verification & Critical Thinking</div><div class="item">Decision Confidence</div><div class="item">Escalation & Communication</div></div></div><section class="card workspace-intelligence" aria-labelledby="human-feed-title"><h3 id="human-feed-title">Contextual Intelligence</h3><p class="small">Verified records matching Human Impact, AI Literacy, Human Oversight, or Workforce Readiness.</p><div class="workspace-intelligence-feed" data-intelligence-feed="human" aria-live="polite"></div></section></section>
-<section id="standards" class="page"><div class="hero"><h2>Standards &amp; Learning</h2><p>Governed monitoring across standards, professional organizations, certifications, learning, events, publications, and implementation guidance relevant to AI governance.</p></div><section class="card standards-filter-panel" aria-labelledby="standards-filter-title"><h3 id="standards-filter-title">Filter Governed Intelligence</h3><p class="small">Filters combine. Records appear only when verified governed metadata matches every selected value.</p><div class="standards-filter-grid"><label>Organization<select data-standards-filter="organization" aria-label="Filter Standards and Learning by organization"><option value="all">All organizations</option></select></label><label>Content Type<select data-standards-filter="contentType" aria-label="Filter Standards and Learning by content type"><option value="all">All content types</option></select></label><label>Certification<select data-standards-filter="certification" aria-label="Filter Standards and Learning by certification"><option value="all">All certifications</option></select></label><label>Status<select data-standards-filter="status" aria-label="Filter Standards and Learning by status"><option value="all">All statuses</option></select></label><label>Recommendation<select data-standards-filter="recommendation" aria-label="Filter Standards and Learning by recommendation"><option value="all">All recommendations</option></select></label></div></section><section class="card workspace-intelligence" aria-labelledby="standards-feed-title"><h3 id="standards-feed-title">Standards &amp; Learning Intelligence</h3><p class="small">Verified records matching standards, guidance, certification, training, webinar, conference, publication, exam, or course metadata.</p><div class="workspace-intelligence-feed" data-intelligence-feed="standards" aria-live="polite"></div></section><div class="standards-section-grid"><section class="card"><h3>Standards</h3><div class="monitoring-list" data-monitoring-section="standards"></div></section><section class="card"><h3>Professional Organizations</h3><div class="monitoring-list" data-monitoring-section="organizations"></div><p class="small">IAPP AIGP is monitored as part of the professional AI governance ecosystem.</p></section><section class="card"><h3>Certifications</h3><div class="monitoring-list" data-monitoring-section="certifications"></div><p class="small">IAPP AIGP is tracked as a certification and learning pathway.</p></section><section class="card"><h3>Training &amp; Webinars</h3><div class="monitoring-list" data-monitoring-section="training"></div></section><section class="card"><h3>Conferences &amp; Events</h3><div class="monitoring-list" data-monitoring-section="events"></div></section><section class="card"><h3>Publications &amp; Guidance</h3><div class="monitoring-list" data-monitoring-section="publications"></div></section></div><p class="small monitoring-disclaimer">Monitoring scope does not assert a current update. Only verified governed intelligence records appear above.</p></section>
-<section id="regulation" class="page"><div class="hero"><h2>Regulatory Watch</h2><p>Jurisdictional developments, effective dates, guidance, and enforcement activity.</p></div><div class="card"><div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><tr><th>Jurisdiction</th><th>Development</th><th>Status</th><th>Impact</th></tr><tr><td>European Union</td><td>AI governance implementation activity</td><td><span class="badge watch">Monitor</span></td><td>High</td></tr><tr><td>United States</td><td>Agency and state-level guidance</td><td><span class="badge watch">Monitor</span></td><td>Medium</td></tr></table></div></div><section class="card workspace-intelligence" aria-labelledby="regulation-feed-title"><h3 id="regulation-feed-title">Contextual Intelligence</h3><p class="small">Verified records matching Regulation, Enforcement, Consultation, or Legislation.</p><div class="workspace-intelligence-feed" data-intelligence-feed="regulation" aria-live="polite"></div></section></section>
-<section id="progress" class="page"><div class="hero"><h2>Progress & Milestones</h2><p>Detailed view of completed work, active sprints, and remaining milestones.</p></div><div class="two"><div class="card"><h3>Current Sprint</h3><div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><tr><th>Artifact</th><th>Status</th><th>Progress</th></tr><tr><td>Discovery Workbook™</td><td><span class="badge ok">Approved Master</span></td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>Diagnostic Engine™</td><td><span class="badge ok">Approved Master</span></td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>Human Firewall™</td><td><span class="badge watch">Current Sprint</span></td><td><div class="bar"><span style="width:42%"></span></div></td></tr><tr><td>Trust Index™</td><td><span class="badge watch">Queued</span></td><td><div class="bar"><span style="width:15%"></span></div></td></tr></table></div></div><div class="card"><h3>Milestone Summary</h3><div class="item">Discovery Workbook™ — Approved</div><div class="item">Diagnostic Engine™ — Approved</div><div class="item">Human Firewall™ — In progress</div><div class="item">Trust Index™ — Queued</div></div></div></section>
-<section id="backlog" class="page"><div class="hero"><h2>Project Atlas Backlog</h2><p>Full prioritized queue of methodology, research, software, and documentation work.</p></div><div class="card"><div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><tr><th>Priority</th><th>Item</th><th>Category</th><th>Status</th></tr><tr><td>P1</td><td>Human Firewall™ Workbook</td><td>Methodology</td><td><span class="badge watch">In Progress</span></td></tr><tr><td>P1</td><td>Trust Index™ Dashboard</td><td>Methodology / UI</td><td><span class="badge watch">Queued</span></td></tr><tr><td>P1</td><td>Weekly Atlas Intelligence Review</td><td>Research</td><td><span class="badge ok">Approved</span></td></tr><tr><td>P2</td><td>Governance Roadmap™</td><td>Methodology</td><td><span class="badge watch">Queued</span></td></tr><tr><td>Future</td><td>Solaris Labs ecosystem website and product switcher</td><td>Brand / Product Architecture</td><td><span class="badge watch">Backlog</span></td></tr><tr><td>Complete</td><td>ECR-012 Standards &amp; Learning Workspace</td><td>Software / Intelligence</td><td><span class="badge ok">Implemented</span></td></tr></table></div></div></section>
-<section id="documents" class="page"><div class="hero"><h2>Solaris Nexus Document Library</h2><p>Controlled documents and their relationship to future platform modules.</p></div><div class="card"><div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><tr><th>Document</th><th>Purpose</th><th>Status</th></tr><tr><td>Executive Brief™</td><td>Primary executive client deliverable</td><td><span class="badge ok">Active</span></td></tr><tr><td>Executive Guide</td><td>Comprehensive methodology reference</td><td><span class="badge watch">Deferred</span></td></tr><tr><td>Discovery Workbook™</td><td>Discovery interviews and organizational inventory</td><td><span class="badge ok">Approved Master</span></td></tr><tr><td>Diagnostic Engine™</td><td>Assessment scoring and evaluation</td><td><span class="badge ok">Approved Master</span></td></tr></table></div></div></section>
-<section id="pending" class="page"><div class="hero"><h2>Board Queue</h2><p>Items requiring Chair review, Board discussion, or formal disposition.</p></div><div class="grid"><div class="card"><h3>Human Firewall™ Domains</h3><p>Finalize assessment domains and scoring structure.</p><span class="badge act">Decision needed</span></div><div class="card"><h3>Intelligence Workflow</h3><p>Finalize daily versus weekly operating detail and archive process.</p><span class="badge watch">Refine</span></div><div class="card"><h3>Dashboard MVP</h3><p>Define the next set of pages and reporting workflows.</p><span class="badge watch">Define</span></div><div class="card"><h3>Executive Brief Revision</h3><p>Determine timing for the next active revision.</p><span class="badge ok">No immediate action</span></div></div></section>
-<section id="dhf" class="page"><div class="hero"><h2>Design History File / Decision Register</h2><p>Governed Project Atlas decisions.</p></div><div class="card"><div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><tr><th>ID</th><th>Decision</th><th>Status</th></tr><tr><td>ADR-001</td><td>Adopt Project Atlas Design History File</td><td><span class="badge ok">Approved</span></td></tr><tr><td>ADR-003</td><td>Brand Guide as visual source of truth</td><td><span class="badge ok">Approved</span></td></tr><tr><td>ADR-010</td><td>Interactive dashboard as command center</td><td><span class="badge ok">Approved</span></td></tr></table></div></div></section>
-<section id="skills" class="page"><div class="hero"><h2>Solaris Skills Library</h2><p>Repeatable operating standards for research, validation, debugging, UI, and quality.</p></div><div class="grid"><div class="card"><h3>SK-006 — RAG Research</h3><p>Use authoritative sources, compare evidence, cite, and summarize neutrally.</p></div><div class="card"><h3>SK-014 — Debugging</h3><p>Reproduce, isolate, correct root cause, and retest the full workflow.</p></div><div class="card"><h3>SK-018 — Summary-to-Detail Navigation</h3><p>Overview charts link to dedicated workspaces with full data, sources, trends, and actions.</p></div></div></section>
-<section id="notifications" class="page"><div class="hero"><h2>Notifications</h2><p>A dedicated workspace for future Solaris Nexus notifications.</p></div><div class="card placeholder-panel"><h3>Notifications foundation</h3><p>Notification delivery, preferences, and history are not implemented in this release.</p></div></section>
-<section id="settings" class="page"><div class="hero"><h2>Settings</h2><p>Manage approved Solaris Nexus preferences. Future preference areas remain clearly identified until implementation is authorized.</p></div><div class="settings-layout"><nav class="settings-categories" aria-label="Settings categories"><a class="settings-category active" href="#settings-appearance" aria-current="page">Appearance <span>Available</span></a><span class="settings-category future" aria-disabled="true">Accessibility <span>Future</span></span><span class="settings-category future" aria-disabled="true">Notifications <span>Future</span></span><span class="settings-category future" aria-disabled="true">Language <span>Future</span></span></nav><div class="settings-content"><section class="settings-panel" id="settings-appearance" aria-labelledby="settings-appearance-title"><div><h3 id="settings-appearance-title">Appearance</h3><p>Choose how Solaris Nexus appears on this device.</p></div><div class="setting-row"><div><h4>Theme</h4><p class="small">Your selection is saved in this browser.</p></div><div class="settings-theme-options" role="group" aria-label="Settings theme"><button class="settings-theme-choice" type="button" data-theme-choice="dark" aria-pressed="true"><span aria-hidden="true">●</span><span>Dark</span></button><button class="settings-theme-choice" type="button" data-theme-choice="light" aria-pressed="false"><span aria-hidden="true">☀</span><span>Light</span></button></div><span class="visually-hidden" id="theme-status" aria-live="polite">Current theme: Dark</span></div></section><section class="settings-future" aria-labelledby="settings-future-title"><h3 id="settings-future-title">Future preferences</h3><p>Accessibility preferences, including improved visibility or zoom, notification preferences, and language preferences are placeholders only. No controls are implemented in this release.</p></section></div></div></section>
-</main></div>
-<div class="drawer-layer" id="intelligence-drawer-layer" hidden>
-<button class="drawer-backdrop" id="drawer-backdrop" type="button" aria-label="Close intelligence drawer"></button>
-<aside class="intelligence-drawer" id="intelligence-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" tabindex="-1">
-<div class="drawer-header"><div><button class="drawer-return" id="drawer-return" type="button" aria-label="Return to Intelligence Center">← Return to Intelligence Center</button><div class="demo-label">Governed intelligence — preliminary pending Board disposition.</div><div class="drawer-source" id="drawer-source"></div><h2 id="drawer-title"></h2></div><button class="drawer-close" id="drawer-close" type="button" aria-label="Close intelligence drawer">×</button></div>
-<div class="drawer-meta"><span id="drawer-published"></span><span id="drawer-reading-time"></span><span id="drawer-evidence"></span></div>
-<div class="drawer-body">
-<section><h3>Solaris Executive Summary</h3><p id="drawer-summary"></p></section>
-<section><h3>Key Takeaways</h3><ul id="drawer-takeaways"></ul></section>
-<section><h3>Why It Matters</h3><p id="drawer-why"></p></section>
-<section><h3>Business Impact</h3><p id="drawer-business-impact"></p></section>
-<section><h3>Related Standards</h3><div class="drawer-tags" id="drawer-standards"></div></section>
-<section><h3>Related Solaris Modules</h3><div class="drawer-tags" id="drawer-modules"></div></section>
-<section><h3>Categories</h3><div class="drawer-tags" id="drawer-categories"></div></section>
-<section><h3>Board Recommendation</h3><p id="drawer-recommendation"></p></section>
-<section><label for="chair-notes"><h3>Chair Notes</h3></label><textarea id="chair-notes" rows="5" placeholder="Add session-only Chair notes"></textarea><div class="small">Saved for this browser session only.</div></section>
-</div>
-<div class="drawer-actions"><button class="bookmark-control" id="bookmark-control" type="button" aria-pressed="false">☆ Bookmark</button><a class="source-button" id="original-source" target="_blank" rel="noopener noreferrer">Read Original Article</a><span class="source-pending" id="source-pending" hidden>Source link pending verification</span></div>
-</aside>
-</div>
-<footer class="footer">© 2026 Powered by Solaris Labs - Technology for Human-Centered AI</footer>
-<script src="data.js" defer></script>
-<script src="app.js" defer></script>
-</body></html>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <a class="wordmark" href="#home" aria-label="Solaris Lucerna home">
+      <span data-company-name>SOLARIS LUCERNA</span>
+      <small data-company-tagline>Illuminating Responsible Intelligence</small>
+    </a>
+    <button class="menu-button" id="site-menu-button" type="button" aria-expanded="false" aria-controls="site-navigation">
+      <span aria-hidden="true">Menu</span>
+      <span class="menu-glyph" aria-hidden="true"></span>
+      <span class="visually-hidden">Open primary navigation</span>
+    </button>
+    <nav class="site-navigation" id="site-navigation" aria-label="Primary navigation">
+      <div class="mobile-nav-heading">
+        <span>Navigation</span>
+        <button class="menu-close" id="site-menu-close" type="button" aria-label="Close primary navigation">×</button>
+      </div>
+      <ul data-primary-navigation></ul>
+    </nav>
+  </header>
+  <button class="nav-backdrop" id="site-nav-backdrop" type="button" aria-label="Close primary navigation" hidden></button>
+
+  <main id="main-content">
+    <section class="hero section" id="home" aria-labelledby="hero-title">
+      <div class="page-container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">Executive guidance for responsible AI</p>
+          <h1 id="hero-title" data-company-name>SOLARIS LUCERNA</h1>
+          <p class="hero-tagline" data-company-tagline>Illuminating Responsible Intelligence</p>
+          <p class="hero-intro">Guiding organizations through AI adoption, governance, risk awareness, and operational readiness.</p>
+          <div class="button-group">
+            <a class="button button-primary" href="#solutions">Explore Our Solutions</a>
+            <a class="button button-secondary" href="#lens">Discover <span data-product-name></span></a>
+          </div>
+        </div>
+        <figure class="hero-art-placeholder" data-required-asset="assets/brand/solaris-lucerna-hero-approved.webp">
+          <div class="art-placement" role="img" aria-label="Reserved placement for the approved Solaris Lucerna cinematic sunrise and horizon artwork">
+            <span>Approved cinematic hero artwork</span>
+            <strong>Production asset pending</strong>
+          </div>
+          <figcaption>The final approved standalone artwork should be added at the documented asset path without alteration.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section-intro" id="about" aria-labelledby="what-we-do-title">
+      <div class="page-container intro-grid">
+        <div>
+          <p class="eyebrow">What Solaris Lucerna Does</p>
+          <h2 id="what-we-do-title">Clarity for decisions that carry real responsibility.</h2>
+        </div>
+        <div class="intro-copy">
+          <p>Solaris Lucerna helps leaders see the governance, risk, workforce, and operational implications of AI more clearly—before adoption outpaces oversight.</p>
+          <p>Our work brings structure to complex decisions while keeping professional judgment, accountability, and human impact firmly in view.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solutions" aria-labelledby="solutions-title">
+      <div class="page-container">
+        <div class="section-heading">
+          <p class="eyebrow">Core Solutions</p>
+          <h2 id="solutions-title">Responsible adoption begins with an operating model leaders can trust.</h2>
+          <p>Focused advisory support across governance, risk, adoption, workforce readiness, and ongoing executive alignment.</p>
+        </div>
+        <div class="solution-grid" id="solution-cards"></div>
+      </div>
+    </section>
+
+    <section class="section lens-section" id="lens" aria-labelledby="lens-title">
+      <div class="page-container lens-layout">
+        <div class="lens-copy">
+          <p class="eyebrow">Meet <span data-product-name></span></p>
+          <h2 id="lens-title">Executive intelligence for governed AI decisions.</h2>
+          <p class="product-expansion" data-product-expansion></p>
+          <p><span data-product-name></span> is an executive AI-governance intelligence and decision-support platform being developed to organize evidence, surface risk, and support operational alignment.</p>
+          <p class="development-note"><strong>In development:</strong> Capabilities are being introduced through controlled releases. <span data-product-name></span> does not replace legal, technical, governance, or executive judgment.</p>
+          <a class="text-link" href="#contact">Discuss the <span data-product-name></span> roadmap <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="capability-panel">
+          <p class="panel-label">Decision-support focus</p>
+          <ul id="lens-capabilities"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section responsible-section" aria-labelledby="responsible-title">
+      <div class="page-container responsible-grid">
+        <div>
+          <p class="eyebrow">Responsible AI</p>
+          <h2 id="responsible-title">Innovation moves further when governance moves with it.</h2>
+        </div>
+        <blockquote>
+          <p>“AI can amplify human capabilities, but amplification without oversight introduces risk.”</p>
+        </blockquote>
+        <p>The question is no longer whether AI can perform useful work. The question is how organizations can responsibly govern systems that increasingly influence decisions, content, and human behavior.</p>
+      </div>
+    </section>
+
+    <section class="section resources-section" id="resources" aria-labelledby="resources-title">
+      <div class="page-container">
+        <div class="section-heading">
+          <p class="eyebrow">Resources &amp; Publications</p>
+          <h2 id="resources-title">Executive materials for a changing governance landscape.</h2>
+          <p>Future publications will provide practical context without overstating certainty or substituting for professional advice.</p>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card"><span class="status-label">Coming Soon</span><p class="resource-type">Executive Guide</p><h3>Responsible AI governance for executive leaders</h3><p>Publication details will be added after content and governance approval.</p></article>
+          <article class="resource-card"><span class="status-label">Coming Soon</span><p class="resource-type">Research</p><h3>Human judgment in AI-enabled organizations</h3><p>Research details will be added only when an approved publication is available.</p></article>
+          <article class="resource-card"><span class="status-label">Coming Soon</span><p class="resource-type">Frameworks</p><h3>Operational readiness and oversight</h3><p>Downloadable resources will be linked after final production review.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta" id="contact" aria-labelledby="contact-title">
+      <div class="page-container cta-panel">
+        <div>
+          <p class="eyebrow">Begin with clarity</p>
+          <h2 id="contact-title">Make responsible AI visible, governable, and operational.</h2>
+        </div>
+        <div>
+          <p>The contact experience and approved form integration will be completed in the next interior-page phase. No inquiry data is collected by this preview.</p>
+          <span class="button button-disabled" aria-disabled="true">Contact Solaris Lucerna — Coming Soon</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-container footer-grid">
+      <div class="footer-brand">
+        <strong data-company-name>SOLARIS LUCERNA</strong>
+        <span data-company-tagline>Illuminating Responsible Intelligence</span>
+      </div>
+      <nav aria-label="Footer navigation"><ul data-primary-navigation></ul></nav>
+      <p>© 2026 Solaris Lucerna. Responsible intelligence supports—and does not replace—professional judgment.</p>
+    </div>
+  </footer>
+</body>
+</html>
