@@ -32,6 +32,17 @@
     });
   }
 
+  function updateCurrentNavigation() {
+    const currentHash = window.location.hash || "#home";
+    document.querySelectorAll("[data-primary-navigation] a").forEach((link) => {
+      if (link.getAttribute("href") === currentHash) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
   function renderSolutions() {
     const container = document.querySelector("#solution-cards");
     site.solutions.forEach((solution, index) => {
@@ -105,6 +116,7 @@
   populateText("[data-product-name]", site.product.name);
   populateText("[data-product-expansion]", site.product.expansion);
   renderNavigation();
+  updateCurrentNavigation();
   renderSolutions();
   renderLensCapabilities();
 
@@ -128,4 +140,5 @@
       closeMenu(false);
     }
   });
+  window.addEventListener("hashchange", updateCurrentNavigation);
 })();

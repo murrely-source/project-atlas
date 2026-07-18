@@ -1,4 +1,4 @@
-# Solaris Lucerna Website V2.0
+# Solaris Lucerna Website V2.0 — Project Aurora
 
 This repository contains the in-review Solaris Lucerna public website and the preserved Project Atlas/Solaris Nexus engineering prototype.
 
@@ -31,6 +31,8 @@ The current repository Pages URL is [https://murrely-source.github.io/project-at
 
 ## Audit and plan
 
+- [Project Aurora Phase 1 audit](docs/project-aurora-audit.md)
+- [Project Aurora phased plan](docs/project-aurora-plan.md)
 - [Solaris Lucerna V2 audit](docs/solaris-lucerna-v2-audit.md)
 - [Solaris Lucerna V2 phased plan](docs/solaris-lucerna-v2-plan.md)
 - [Engineering Principles](ENGINEERING_PRINCIPLES.md)

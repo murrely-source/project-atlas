@@ -2,6 +2,31 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.20.2] - 2026-07-18
+### Changed
+- Removed the frame, border, panel background, padding, rounded corners, shadow, and overlay surrounding the approved homepage hero artwork.
+- Matched the hero section to the artwork's near-black deep navy edge so the full uncropped composition blends directly into the page.
+
+## [0.20.1] - 2026-07-18
+### Changed
+- Replaced the temporary homepage hero-artwork placeholder with the approved `hero-sunrise.png` production asset.
+- Preserved the artwork's native 1536×1024 proportions with responsive intrinsic sizing and no cropping, filters, overlays, or animation.
+
+## [0.20.0] - 2026-07-18
+### Added
+- Added the Project Aurora Phase 1 repository audit, architecture summary, and phased implementation plan.
+- Added a calm educational homepage passage that places AI within the longer history of tools extending human capability and explains governance before presenting services.
+
+### Changed
+- Replaced the hero's grid-like decoration with a restrained atmospheric treatment aligned with the Solaris Lucerna visual standards.
+- Centralized the public typography stacks as design tokens and added a reusable responsive narrative layout.
+- Updated the accessible primary-navigation state when visitors move between homepage sections.
+
+### Governance
+- Preserved the governed internal preview, intelligence dataset, deployment boundary, and historical naming records unchanged.
+- Retained the explicit approved-artwork handoff rather than cropping a brand guide or introducing substitute imagery.
+- Kept Phase 2 interior pages, integrations, publications, and unapproved factual content outside this change.
+
 ## [0.19.0] - 2026-07-18
 ### Added
 - Added the Solaris Lucerna V2 repository audit and phased implementation plan.

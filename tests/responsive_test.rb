@@ -16,12 +16,13 @@ failures << "mobile layout breakpoint is missing" unless css.include?("@media (m
 failures << "small-phone layout breakpoint is missing" unless css.include?("@media (max-width: 420px)")
 failures << "hero does not collapse on tablet" unless css.match?(/@media \(max-width: 980px\).*?\.hero-layout, \.lens-layout \{ grid-template-columns: 1fr; \}/m)
 failures << "content grids do not collapse on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.solution-grid, \.resource-grid \{ grid-template-columns: 1fr; \}/m)
+failures << "narrative layout does not collapse on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.perspective-layout \{ grid-template-columns: 1fr; \}/m)
 failures << "mobile navigation drawer is missing" unless css.match?(/@media \(max-width: 767px\).*?\.site-navigation \{ position: fixed;.*?transform: translateX\(105%\);/m)
 failures << "mobile navigation open state is missing" unless css.include?('.site-navigation.is-open { transform: translateX(0); visibility: visible; }')
 failures << "mobile scroll lock is missing" unless css.include?("body.nav-open { overflow: hidden; }")
 failures << "mobile menu does not close after selection" unless script.match?(/event\.target\.closest\("a"\).*?closeMenu\(\)/m)
 failures << "touch targets are undersized" unless css.include?("min-height: 44px") && css.include?("min-height: 48px") && css.include?("min-height: 52px")
-failures << "hero placeholder may overflow" unless css.match?(/@media \(max-width: 767px\).*?\.hero-art-placeholder \{ min-height: 280px;/m)
+failures << "hero artwork is not responsive" unless css.include?(".hero-art-placeholder img { width: 100%; height: auto; }")
 failures << "footer does not stack on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.footer-grid \{ grid-template-columns: 1fr; \}/m)
 
 unless failures.empty?

@@ -25,6 +25,7 @@ abort("FAIL: mobile close behavior is missing") unless script.include?('navigati
 abort("FAIL: Escape close is missing") unless script.match?(/event\.key === "Escape" && menuOpen/)
 abort("FAIL: focus return is missing") unless script.include?("menuButton.focus()")
 abort("FAIL: focus containment is missing") unless script.include?("function trapMenuFocus(event)")
+abort("FAIL: current navigation state does not follow the selected section") unless script.include?("function updateCurrentNavigation()") && script.include?('window.addEventListener("hashchange", updateCurrentNavigation)')
 abort("FAIL: navigation selection does not close mobile menu and restore focus") unless script.include?('event.target.closest("a")') && script.match?(/event\.target\.closest\("a"\).*?closeMenu\(\)/m)
 
 puts "PASS: Solaris Lucerna public navigation"
