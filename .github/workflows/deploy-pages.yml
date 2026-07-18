@@ -1,4 +1,4 @@
-name: Deploy Solaris Nexus Founder's Preview
+name: Deploy Solaris Lucerna Website Preview
 
 on:
   push:

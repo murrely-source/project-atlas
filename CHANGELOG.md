@@ -2,6 +2,22 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.19.0] - 2026-07-18
+### Added
+- Added the Solaris Lucerna V2 repository audit and phased implementation plan.
+- Added centralized Solaris Lucerna and LENS configuration.
+- Added a dependency-free public website design system, accessible shared navigation, and executive-facing homepage.
+- Added explicit production-asset guidance for the pending approved cinematic hero artwork.
+
+### Changed
+- Changed the GitHub Pages entry point from the Nexus dashboard to the Solaris Lucerna public homepage while preserving the existing static deployment architecture.
+- Renamed the Pages workflow for the Solaris Lucerna website preview.
+- Updated repository documentation and public-site validation contracts.
+
+### Governance
+- Preserved the complete former entry point at `app/nexus-preview.html` and retained its application logic, styles, theme implementation, governed intelligence dataset, and internal engineering references.
+- Did not crop the brand-standard boards, invent client claims, add unapproved imagery, fabricate publications, activate unfinished LENS capabilities, or add a non-functional data-collecting contact form.
+
 ## [0.18.1] - 2026-07-15
 ### Changed
 - Replaced the three-part application footer with the exact approved statement: **© 2026 Powered by Solaris Labs - Technology for Human-Centered AI**.

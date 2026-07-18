@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
-# WCAG contrast checks for core Solaris Nexus theme token pairs.
+# WCAG contrast checks for Solaris Lucerna public design tokens.
 
-css = File.read(File.expand_path("../app/styles.css", __dir__), encoding: "UTF-8")
-dark_block = css[/\A:root \{(.*?)\n\}/m, 1]
-light_block = css[/:root\[data-theme="light"\] \{(.*?)\n\}/m, 1]
+css = File.read(File.expand_path("../app/site.css", __dir__), encoding: "UTF-8")
+root_block = css[/\A:root \{(.*?)\n\}/m, 1]
 
 def variables(block)
   block.scan(/--([\w-]+):\s*(#[0-9a-f]{6});/i).to_h
@@ -20,26 +19,19 @@ def contrast(first, second)
   (values[0] + 0.05) / (values[1] + 0.05)
 end
 
-dark = variables(dark_block)
-light = variables(light_block)
+tokens = variables(root_block)
 pairs = {
-  "dark body text" => [dark["text"], dark["page-bg"]],
-  "dark muted text" => [dark["text-muted"], dark["page-bg"]],
-  "dark interactive text" => [dark["interactive-text"], dark["interactive-bg"]],
-  "dark corporate wordmark" => [dark["corporate-wordmark"], dark["header-bg"]],
-  "dark corporate tagline" => [dark["corporate-tagline"], dark["header-bg"]],
-  "light body text" => [light["text"], light["page-bg"]],
-  "light muted text" => [light["text-muted"], light["page-bg"]],
-  "light interactive text" => [light["interactive-text"], light["interactive-bg"]],
-  "light corporate wordmark" => [light["corporate-wordmark"], light["header-bg"]],
-  "light corporate tagline" => [light["corporate-tagline"], light["header-bg"]],
-  "light success badge" => [light["badge-ok-text"], light["badge-ok-bg"]],
-  "light warning badge" => [light["badge-watch-text"], light["badge-watch-bg"]],
-  "light action badge" => [light["badge-act-text"], light["badge-act-bg"]]
+  "dark body text" => [tokens["text"], tokens["midnight"]],
+  "dark muted text" => [tokens["text-muted"], tokens["midnight"]],
+  "cyan supporting text" => [tokens["cyan-soft"], tokens["midnight"]],
+  "gold button text" => ["#1a1106", tokens["gold"]],
+  "light-section body text" => ["#536271", tokens["white"]],
+  "light-section heading" => [tokens["midnight"], tokens["white"]],
+  "light status text" => [tokens["solaris-blue"], "#ffffff"]
 }
 
-failures = pairs.map do |label, (foreground, background)|
-  ratio = contrast(foreground, background)
+failures = pairs.map do |label, colors|
+  ratio = contrast(*colors)
   "#{label}: #{ratio.round(2)}:1" if ratio < 4.5
 end.compact
 
@@ -48,5 +40,5 @@ unless failures.empty?
   exit 1
 end
 
-puts "PASS: core theme contrast pairs meet WCAG AA normal-text target"
+puts "PASS: Solaris Lucerna core text pairs meet WCAG AA"
 pairs.each { |label, colors| puts "  #{label}: #{contrast(*colors).round(2)}:1" }
