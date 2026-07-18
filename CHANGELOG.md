@@ -2,6 +2,11 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.20.3] - 2026-07-18
+### Changed
+- Integrated the approved sunrise artwork directly into the hero background and removed the separate image component.
+- Preserved the complete composition with contained, bottom-centered sizing on the matching solid deep navy background.
+
 ## [0.20.2] - 2026-07-18
 ### Changed
 - Removed the frame, border, panel background, padding, rounded corners, shadow, and overlay surrounding the approved homepage hero artwork.
