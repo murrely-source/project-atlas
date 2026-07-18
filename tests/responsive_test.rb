@@ -27,7 +27,7 @@ failures << "mobile menu does not close after selection" unless script.match?(/e
 failures << "touch targets are undersized" unless css.include?("min-height: 44px") && css.include?("min-height: 48px") && css.include?("min-height: 52px")
 failures << "hero does not span the viewport" unless css.match?(/\.hero \{[^}]*width: 100vw;/)
 failures << "hero background does not preserve the full-width composition" unless css.include?("background-size: 100% auto;") && css.include?("background-position: center bottom;") && css.include?("background-repeat: no-repeat;")
-failures << "footer does not stack on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.footer-grid \{ grid-template-columns: 1fr; \}/m)
+failures << "simplified footer is not centered responsively" unless css.match?(/\.footer-content \{[^}]*display: flex;[^}]*align-items: center;[^}]*justify-content: center;/) && css.match?(/\.site-footer p span \{ display: block; \}/)
 
 unless failures.empty?
   failures.each { |failure| warn "FAIL: #{failure}" }

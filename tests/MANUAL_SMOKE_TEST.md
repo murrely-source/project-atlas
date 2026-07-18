@@ -17,7 +17,7 @@ Run after each public-site UI change.
 - [ ] Planned LENS capability language is clearly marked **In development**.
 - [ ] Resource cards are marked **Coming Soon** and do not claim nonexistent publications.
 - [ ] The contact preview collects no personal information and does not imply a working form integration.
-- [ ] The footer navigation and brand identity are legible and accurate.
+- [ ] The footer contains only the centered two-line copyright statement beneath the existing divider; no duplicate brand lockup or navigation appears.
 
 ## Accessibility and interaction
 

@@ -2,6 +2,11 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.21.1] - 2026-07-18
+### Changed
+- Simplified the public website footer to one centered, two-line copyright and professional-judgment statement.
+- Removed the duplicate Solaris Lucerna brand lockup, tagline, footer navigation, and their footer-only layout styles while preserving the existing divider, typography, colors, and responsive behavior.
+
 ## [0.21.0] - 2026-07-18
 ### Fixed
 - Replaced the legacy mobile adaptation of `.site-navigation` with a dedicated, deterministic `.mobile-nav-overlay` component.
