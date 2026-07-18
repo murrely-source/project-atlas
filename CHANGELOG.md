@@ -2,6 +2,11 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.20.5] - 2026-07-18
+### Fixed
+- Replaced the mobile navigation drawer's near-black surface with an opaque deep navy background.
+- Increased mobile link and close-control contrast and added a clear current-page treatment without changing desktop navigation or menu behavior.
+
 ## [0.20.4] - 2026-07-18
 ### Changed
 - Extended the hero artwork across the full viewport width while retaining the existing contained text layout.
