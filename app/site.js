@@ -8,6 +8,7 @@
   const backdrop = document.querySelector("#site-nav-backdrop");
   const desktopNavigation = window.matchMedia("(min-width: 768px)");
   let menuOpen = false;
+  let lockedScrollPosition = 0;
 
   function populateText(selector, value) {
     document.querySelectorAll(selector).forEach((element) => {
@@ -74,6 +75,8 @@
       return;
     }
     menuOpen = true;
+    lockedScrollPosition = window.scrollY;
+    document.body.style.top = `-${lockedScrollPosition}px`;
     navigation.classList.add("is-open");
     backdrop.hidden = false;
     document.body.classList.add("nav-open");
@@ -89,6 +92,8 @@
     navigation.classList.remove("is-open");
     backdrop.hidden = true;
     document.body.classList.remove("nav-open");
+    document.body.style.top = "";
+    window.scrollTo(0, lockedScrollPosition);
     menuButton.setAttribute("aria-expanded", "false");
     if (restoreFocus) {
       menuButton.focus();
