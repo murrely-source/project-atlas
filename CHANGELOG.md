@@ -2,6 +2,15 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.21.0] - 2026-07-18
+### Fixed
+- Replaced the legacy mobile adaptation of `.site-navigation` with a dedicated, deterministic `.mobile-nav-overlay` component.
+- Added explicit opaque overlay, label, link, visited-state, selected-state, divider, close-button, SVG, focus, viewport-height, and hidden-state contracts.
+- Replaced transform/visibility mobile state transitions with the native `hidden` attribute and direct `aria-expanded`/`aria-hidden` synchronization.
+
+### Governance
+- Preserved the existing desktop navigation, centralized navigation data, header dimensions, homepage hero, page content, typography, and all non-navigation sections.
+
 ## [0.20.9] - 2026-07-18
 ### Fixed
 - Replaced fragmented mobile navigation color overrides with one menu-scoped `--mobile-navigation-foreground` contract inherited by the heading, links, selected item, and close control.

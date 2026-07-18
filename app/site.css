@@ -54,10 +54,8 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
 .site-navigation a::after { position: absolute; right: 0; bottom: -.55rem; left: 0; height: 1px; background: var(--gold); content: ""; transform: scaleX(0); transform-origin: left; transition: transform .18s ease; }
 .site-navigation a:hover, .site-navigation a:focus-visible, .site-navigation a[aria-current="page"] { color: var(--soft-white); }
 .site-navigation a:hover::after, .site-navigation a[aria-current="page"]::after { transform: scaleX(1); }
-.menu-button, .mobile-nav-heading { display: none; }
-.menu-button, .menu-close { min-width: 44px; min-height: 44px; border: 1px solid var(--border-strong); border-radius: 8px; background: var(--surface); color: var(--soft-white); cursor: pointer; }
-.nav-backdrop { position: fixed; inset: 0; z-index: 85; width: 100%; height: 100%; padding: 0; border: 0; background: rgba(3, 7, 12, .74); cursor: pointer; }
-.nav-backdrop[hidden] { display: none; }
+.menu-button { display: none; min-width: 44px; min-height: 44px; border: 1px solid var(--border-strong); border-radius: 8px; background: var(--surface); color: var(--soft-white); cursor: pointer; }
+.mobile-nav-overlay { display: none; }
 
 .hero { width: 100vw; min-height: calc(100vh - 82px); display: grid; align-items: center; overflow: hidden; background-color: #000310; background-image: url("assets/brand/hero-sunrise.png"); background-position: center bottom; background-repeat: no-repeat; background-size: 100% auto; }
 .hero-layout { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(380px, .9fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: center; }
@@ -161,16 +159,22 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
   .menu-glyph { position: relative; }
   .menu-glyph::before { position: absolute; top: -5px; }
   .menu-glyph::after { position: absolute; top: 5px; }
-  .site-navigation { --mobile-navigation-foreground: #f2f6fa; position: fixed; inset: 0; z-index: 300; width: 100%; min-height: 100vh; min-height: 100dvh; padding: 16px; overflow-y: auto; overscroll-behavior: contain; border: 0; background: #0d2637; color: var(--mobile-navigation-foreground); opacity: 1; transform: translateX(105%); visibility: hidden; transition: transform .2s ease, visibility .2s ease; -webkit-overflow-scrolling: touch; }
-  .site-navigation.is-open { color: var(--mobile-navigation-foreground); opacity: 1; transform: translateX(0); visibility: visible; }
-  .mobile-nav-heading { display: flex; align-items: center; justify-content: space-between; padding-bottom: 1rem; border-bottom: 1px solid var(--border-strong); color: inherit; opacity: 1; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; -webkit-text-fill-color: currentColor; }
-  .menu-close { border-color: var(--cyan); background: var(--solaris-blue); color: inherit; opacity: 1; font-size: 1.6rem; -webkit-text-fill-color: currentColor; }
-  .site-navigation ul { display: grid; gap: 0; padding-top: 1rem; opacity: 1; }
-  .site-navigation li { border-bottom: 1px solid var(--border-strong); opacity: 1; }
-  .site-navigation a { display: flex; align-items: center; min-height: 52px; color: inherit; opacity: 1; font-size: 1rem; -webkit-text-fill-color: currentColor; }
-  .site-navigation a:hover, .site-navigation a:focus-visible { color: inherit; }
-  .site-navigation a[aria-current="page"] { padding-inline: 12px; border-left: 3px solid var(--gold); background: var(--solaris-blue); color: inherit; opacity: 1; }
-  .site-navigation a::after { display: none; }
+  .site-navigation { display: none; }
+  .mobile-nav-overlay { position: fixed; inset: 0; z-index: 9999; width: 100%; height: 100vh; min-height: 100vh; padding: 16px; overflow-y: auto; background-color: #03131f; color: #f4f7fa; opacity: 1; visibility: visible; filter: none; mix-blend-mode: normal; -webkit-text-fill-color: currentColor; }
+  .mobile-nav-overlay { height: 100dvh; min-height: 100dvh; }
+  .mobile-nav-overlay[hidden] { display: none; }
+  .mobile-nav-overlay:not([hidden]) { display: block; }
+  .mobile-nav-overlay, .mobile-nav-overlay nav, .mobile-nav-overlay ul, .mobile-nav-overlay li, .mobile-nav-overlay a, .mobile-nav-overlay button, .mobile-nav-overlay span, .mobile-nav-overlay svg, .mobile-nav-overlay path { opacity: 1; filter: none; mix-blend-mode: normal; text-shadow: none; }
+  .mobile-nav-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid rgba(244, 247, 250, .18); }
+  .mobile-nav-label { color: #9fdff2; opacity: 1; font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; -webkit-text-fill-color: #9fdff2; }
+  .mobile-nav-close { min-width: 48px; min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 1px solid rgba(244, 247, 250, .18); border-radius: 8px; background-color: #08283a; color: #f4f7fa; opacity: 1; cursor: pointer; -webkit-text-fill-color: #f4f7fa; }
+  .mobile-nav-close svg { color: #f4f7fa; opacity: 1; }
+  .mobile-nav-close path { fill: none; stroke: #f4f7fa; stroke-linecap: round; stroke-width: 2; }
+  .mobile-nav-list { display: grid; gap: 0; padding: 16px 0 0; margin: 0; list-style: none; }
+  .mobile-nav-list li { margin: 0; border-bottom: 1px solid rgba(244, 247, 250, .18); }
+  .mobile-nav-link, .mobile-nav-link:link, .mobile-nav-link:visited, .mobile-nav-link:hover, .mobile-nav-link:focus, .mobile-nav-link:active { min-height: 52px; display: flex; align-items: center; padding-inline: 12px; color: #f4f7fa; opacity: 1; font-weight: 600; text-decoration: none; -webkit-text-fill-color: #f4f7fa; }
+  .mobile-nav-link--active, .mobile-nav-link--active:link, .mobile-nav-link--active:visited, .mobile-nav-link--active:hover, .mobile-nav-link--active:focus, .mobile-nav-link--active:active { border-left: 3px solid #f5ad4e; background-color: #08283a; color: #ffffff; -webkit-text-fill-color: #ffffff; }
+  .mobile-nav-link:focus-visible, .mobile-nav-close:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
   .hero-layout { gap: 3rem; }
   .intro-grid, .responsible-grid, .cta-panel { grid-template-columns: 1fr; }
   .perspective-layout { grid-template-columns: 1fr; }
