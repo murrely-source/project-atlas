@@ -2,6 +2,11 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.21.2] - 2026-07-18
+### Fixed
+- Corrected the wide-desktop homepage hero grid so the `SOLARIS LUCERNA` heading uses a stable, responsive 48rem copy track instead of a viewport-dependent fractional track that could clip the final glyph.
+- Preserved the existing heading scale, two-line treatment, hero artwork, alignment, and navigation while explicitly allowing glyph overflow within the hero copy wrapper.
+
 ## [0.21.1] - 2026-07-18
 ### Changed
 - Simplified the public website footer to one centered, two-line copyright and professional-judgment statement.
