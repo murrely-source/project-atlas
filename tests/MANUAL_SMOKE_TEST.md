@@ -11,7 +11,7 @@ Run after each public-site UI change.
 - [ ] The primary navigation contains Home, Solutions, LENS, Resources, About, and Contact in that order.
 - [ ] Navigation links move to the correct homepage sections without reloading.
 - [ ] The hero includes the approved supporting copy and both approved calls to action.
-- [ ] The approved `hero-sunrise.png` artwork spans the full viewport as a seamless hero background without side gutters, horizontal cropping, distortion, overlays, filters, or placeholder content.
+- [ ] The approved `hero-sunrise.png` artwork spans the full viewport as a seamless hero background without side gutters, distortion, or placeholder content; the localized left readability gradient remains subtle and preserves the sunrise.
 - [ ] Core Solutions renders five approved categories without pricing or unsupported claims.
 - [ ] LENS is expanded as **Lucerna Executive Navigation System** and is described as decision support rather than autonomous judgment.
 - [ ] Planned LENS capability language is clearly marked **In development**.
@@ -33,7 +33,7 @@ Run after each public-site UI change.
 
 - [ ] Review at 1440px, 1024px, 768px, 390px, and 320px.
 - [ ] At 1280px, 1440px, 1600px, 1728px, and 1920px, `SOLARIS LUCERNA` remains two lines, the final `A` is fully visible, and no horizontal scrollbar appears.
-- [ ] At the same desktop widths, the supporting paragraph and both calls to action sit below the brightest sunrise glow, remain fully visible, and retain clear space above the hero boundary.
+- [ ] At 1280px, 1366px, 1440px, 1600px, 1728px, 1920px, and 2560px, the supporting paragraph and both calls to action remain readable, grouped, fully visible, and clear of the hero boundary.
 - [ ] The hero, solutions, LENS panel, responsible-AI section, resources, CTA, and footer reflow without page-level horizontal scrolling.
 - [ ] The Dark Edition remains the primary experience; the Light Edition resources section remains readable and distinctly Solaris Lucerna.
 - [ ] No logo, wordmark, or text is stretched, clipped, or too small to read.

@@ -2,6 +2,12 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.21.4] - 2026-07-18
+### Changed
+- Refactored the Project Aurora homepage Hero into one fluid responsive content stack with explicit heading and support groups, deterministic two-line heading rendering from the centralized company name, fluid vertical rhythm, and stable viewport-height limits.
+- Replaced the empty two-column desktop grid and desktop-only support margin patch with a single layout model shared by laptop, ultrawide, tablet, and mobile widths.
+- Added a localized left-side readability gradient over the unchanged approved sunrise artwork so copy contrast remains stable as the image focal area shifts across viewport aspect ratios.
+
 ## [0.21.3] - 2026-07-18
 ### Changed
 - Grouped the homepage hero supporting paragraph and calls to action and moved that group lower at desktop widths using responsive flow spacing.
