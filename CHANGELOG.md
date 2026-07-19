@@ -2,6 +2,13 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.21.9] - 2026-07-18
+### Fixed
+- Preserved a visible word boundary in the dynamically rendered secondary Hero CTA so its accessible and visual label reads **Discover LENS** rather than **DiscoverLENS**.
+
+### Governance
+- Preserved centralized LENS naming, the existing `#lens` destination, button component, styling, dimensions, states, Hero layout, and artwork.
+
 ## [0.21.8] - 2026-07-18
 ### Changed
 - Removed the supporting positioning sentence from the Hero so the approved identity, tagline, calls to action, and sunrise remain the only focal elements.
