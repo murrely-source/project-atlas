@@ -26,15 +26,23 @@ failures << "mobile scroll lock is missing" unless css.include?("body.nav-open {
 failures << "mobile menu does not close after selection" unless script.match?(/event\.target\.closest\("a"\).*?closeMenu\(\)/m)
 failures << "touch targets are undersized" unless css.include?("min-height: 44px") && css.include?("min-height: 48px") && css.include?("min-height: 52px")
 failures << "hero does not use a stable full-width layout" unless css.match?(/\.hero \{[^}]*width: 100%;[^}]*min-height: clamp\(40rem, calc\(100svh - var\(--hero-header-offset\)\), 56rem\);[^}]*display: grid;/)
-failures << "hero artwork does not use a stable focal treatment" unless css.include?('url("assets/brand/hero-sunrise.png")') && css.include?("background-position: center, center bottom;") && css.include?("background-size: cover;")
-failures << "hero localized readability gradient is missing" unless css.match?(/\.hero \{[^}]*background-image: linear-gradient\(90deg, rgba\(0, 3, 16, \.88\).*?rgba\(0, 3, 16, \.64\) 62%.*?transparent 100%\), url\("assets\/brand\/hero-sunrise\.png"\);/)
-failures << "hero uses a viewport-width padding dependency" unless css.match?(/\.hero-layout \{[^}]*padding-block: clamp\(4rem, 8vh, 7rem\);/)
-failures << "hero copy is not a fluid responsive stack" unless css.match?(/\.hero-copy \{[^}]*width: 100%;[^}]*display: grid;[^}]*gap: clamp\(2\.75rem, 6vh, 4\.25rem\);[^}]*min-width: 0;/)
+hero_rule = css[/\.hero \{([^}]*)\}/, 1].to_s
+failures << "hero artwork does not use a stable focal treatment" unless hero_rule.include?('background-image: url("assets/brand/hero-sunrise.png");') && hero_rule.include?("background-position: center bottom;") && hero_rule.include?("background-size: cover;")
+failures << "hero artwork is dimmed or filtered" if hero_rule.match?(/linear-gradient|opacity|filter|background-blend-mode/)
+failures << "hero does not use a coordinated two-region layout" unless css.match?(/\.hero-layout \{[^}]*display: grid;[^}]*grid-template-rows: auto auto;[^}]*align-content: center;[^}]*gap: clamp\(1\.75rem, 4vh, 3rem\);[^}]*padding-block: clamp\(3\.5rem, 7vh, 6rem\);/)
 failures << "hero heading does not preserve a reliable two-line structure" unless html.scan('class="hero-title-line"').length == 2 && script.include?("function renderHeroTitle()") && script.include?('line.className = "hero-title-line"') && css.match?(/\.hero-title-line \{[^}]*display: block;[^}]*max-inline-size: 100%;[^}]*white-space: nowrap;/)
-failures << "hero heading and support groups are incomplete" unless html.match?(/<div class="hero-heading">.*?<\/div>\s*<div class="hero-support">\s*<p class="hero-intro">.*?<div class="button-group">/m)
-failures << "hero support is not a bounded content group" unless css.match?(/\.hero-support \{[^}]*max-width: 36rem;[^}]*display: grid;[^}]*gap: 2rem;/)
-failures << "obsolete desktop-only hero patch remains" if css.include?("@media (min-width: 981px)") || css.include?("grid-template-columns: minmax(0, 48rem) minmax(0, 1fr)") || css.include?(".hero { min-height: auto;")
+failures << "hero heading and support groups are incomplete" unless html.match?(/<div class="page-container hero-layout">\s*<div class="hero-heading">.*?<\/div>\s*<div class="hero-support">\s*<p class="hero-intro">.*?<div class="button-group">/m)
+failures << "hero support is not confined to its readable image region" unless css.match?(/\.hero-support \{[^}]*width: min\(100%, 32rem\);[^}]*display: grid;[^}]*gap: clamp\(1\.5rem, 3vh, 2rem\);[^}]*align-self: start;/)
+failures << "hero desktop calls to action can wrap unpredictably" unless css.include?(".hero-support .button-group { flex-wrap: nowrap; }")
+failures << "obsolete Hero implementation remains" if html.include?('class="hero-copy"') || css.include?(".hero-copy") || css.include?("@media (min-width: 981px)") || css.include?("grid-template-columns: minmax(0, 48rem) minmax(0, 1fr)") || css.include?(".hero { min-height: auto;") || css.include?(".hero::before")
 failures << "simplified footer is not centered responsively" unless css.match?(/\.footer-content \{[^}]*display: flex;[^}]*align-items: center;[^}]*justify-content: center;/) && css.match?(/\.site-footer p span \{ display: block; \}/)
+
+[1280, 1366, 1440, 1600, 1728, 1920, 2560].each do |viewport_width|
+  container_width = [viewport_width - 40, 1200].min
+  container_start = (viewport_width - container_width) / 2.0
+  support_end = container_start + [container_width, 512].min
+  failures << "hero support crosses the sunrise center at #{viewport_width}px" unless support_end < viewport_width / 2.0
+end
 
 unless failures.empty?
   failures.each { |failure| warn "FAIL: #{failure}" }
@@ -42,4 +50,5 @@ unless failures.empty?
 end
 
 puts "PASS: Solaris Lucerna responsive contracts"
-puts "  desktop, tablet, mobile navigation, grids, hero, touch targets, and footer behavior validated"
+puts "  Hero geometry validated at 1280, 1366, 1440, 1600, 1728, 1920, and 2560px"
+puts "  tablet, mobile navigation, grids, touch targets, and footer behavior validated"

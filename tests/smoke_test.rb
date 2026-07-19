@@ -38,7 +38,8 @@ failures << "approved hero artwork is missing" unless File.file?(hero_asset) && 
 failures << "temporary hero placeholder remains" if html.match?(/Production asset pending|data-required-asset|art-placement/)
 failures << "hero artwork remains a framed image component" if html.include?("hero-art-placeholder") || html.include?('src="assets/brand/hero-sunrise.png"') || css.include?(".hero-art-placeholder")
 failures << "hero background does not match the artwork's deep navy edge" unless css.include?("background-color: #000310;")
-failures << "hero localized readability treatment is missing" unless css.match?(/background-image: linear-gradient\(90deg,.*?url\("assets\/brand\/hero-sunrise\.png"\)/)
+hero_rule = css[/\.hero \{([^}]*)\}/, 1].to_s
+failures << "hero artwork is modified by a dimming treatment" if hero_rule.match?(/linear-gradient|opacity|filter|background-blend-mode/) || css.include?(".hero::before")
 failures << "Poppins and Montserrat design families are missing" unless css.include?('--font-heading: Poppins') && css.include?('--font-body: Montserrat')
 failures << "WCAG focus treatment is missing" unless css.include?(":focus-visible") && html.include?("Skip to main content")
 failures << "reduced-motion treatment is missing" unless css.include?("prefers-reduced-motion: reduce")
