@@ -125,3 +125,43 @@ A feature is not complete when required accessibility checks fail. Human review 
 
 ## Maintenance
 Accessibility must be preserved through refactoring, content updates, dependency changes, responsive changes, theme changes, and new platform capabilities. Regression coverage and this standard should be updated when defects, research, standards changes, or validated user feedback reveal a stronger engineering practice.
+
+## Project Aurora public website
+
+### Accessibility philosophy and target
+The Solaris Lucerna public website treats accessibility as a design and engineering requirement from the first content decision through release and maintenance. Project Aurora targets WCAG 2.2 Level AA. Automated checks provide repeatable regression protection, but they do not establish conformance on their own; keyboard, screen-reader, zoom, responsive, visual, and browser review remain required release evidence.
+
+### Testing methodology
+Every public-site change must run all files matching `tests/*_test.rb` and complete `tests/MANUAL_SMOKE_TEST.md` in proportion to its impact. Pull requests to `main` run the source-contract suite in GitHub Actions, and Pages deployment is gated on the same suite. The manual protocol covers continuous resizing, supported browsers and viewports, keyboard operation, representative screen-reader output, 100–400% zoom, text spacing, Forced Colors, reduced motion, console behavior, and performance observations.
+
+Repository checks intentionally distinguish what they prove:
+
+- Static tests verify source structure, approved content contracts, focus and menu state logic, responsive design contracts, token contrast, relative asset resolution, and the approved Hero artwork checksum.
+- Human browser review verifies computed layout, rendered focus, keyboard behavior, assistive-technology announcements, continuous reflow, viewport zoom, and perceived content order.
+- Contrast over the Hero image must be measured from actual rendered raster pixels beneath each text element at the tested viewport. A fallback-color, design-token, average-image, or sampled-source-image ratio is not acceptable evidence for text rendered over the artwork.
+
+If compatible automated browser tooling such as axe-core, Lighthouse, or an HTML validator is introduced later, it must supplement rather than replace these checks. Tool warnings must be investigated and may not be suppressed without recorded justification.
+
+### Keyboard navigation and focus
+- Native links and buttons remain the default interactive elements.
+- Tab and Shift+Tab must follow document order; Enter and Space must operate controls according to native expectations; Escape must close the mobile navigation dialog.
+- The skip link must become visible on focus and move focus to the main content.
+- Focus indicators must remain visible in standard and Forced Colors modes and must not be obscured by the sticky header or mobile overlay.
+- Opening the mobile navigation moves focus into the dialog, contains focus while open, makes background content inert, locks page scrolling, and updates `aria-expanded` and `aria-hidden`. Closing it by its button, Escape, backdrop, or navigation selection restores focus to the menu button and restores the previous scroll position.
+
+### Semantic requirements
+The public page must retain one `h1`, a logical heading hierarchy, document language, a skip link, and semantic `header`, `nav`, `main`, `section`, `article`, and `footer` elements where they express the content. Decorative artwork must not create redundant screen-reader output. ARIA must describe real state and behavior; it must not replace native semantics or compensate for incorrect structure.
+
+### Approved contrast practices
+Text and control states must meet WCAG 2.2 AA in their actual rendered context. Normal text requires at least 4.5:1; large text requires at least 3:1. Focus indicators and meaningful non-text boundaries require applicable non-text contrast. Color-token tests protect stable solid-color combinations, while raster-background text requires viewport-specific pixel measurement. Forced Colors mode must expose the Hero heading and essential controls without relying on clipped gradient text.
+
+### Hero accessibility strategy
+The permanent Hero uses the approved, unchanged sunrise as decorative CSS background imagery, so it is not announced as content. The primary identity and supporting copy are two semantic, source-ordered regions in one grid flow. The heading uses explicit line elements for predictable two-line presentation without preventing user text-spacing adaptation. Content widths and fluid spacing keep the supporting region in the darker portion of the composition without image dimming, filters, an opaque panel, or a full-image overlay. Any future artwork, crop, focal-position, typography, or content-placement change requires renewed actual-pixel contrast and responsive review.
+
+### Future developer guidance
+- Change the smallest coherent contract and remove obsolete rules rather than accumulating breakpoint patches.
+- Preserve the Hero image checksum unless a new approved master and controlled requirement explicitly supersede it.
+- Keep accessibility checks behavior-focused; do not make tests pass by weakening their assertions.
+- Add regression coverage when correcting a defect, and update the manual protocol when the behavior cannot be established from source alone.
+- Record unavailable tooling, unperformed browser or assistive-technology checks, and other evidence gaps as unresolved risks.
+- Do not declare WCAG conformance from automated source checks alone.
