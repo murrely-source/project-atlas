@@ -2,6 +2,34 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.21.7] - 2026-07-18
+### Fixed
+- Replaced split document scroll-padding values with one shared sticky-header token and one `scroll-margin-top` contract for every navigable section.
+- Aligned the About section's document position with the approved primary-navigation order, removing the apparent backward jump between Resources, About, and Contact.
+- Prevented mobile navigation selection from restoring the pre-menu scroll position before native fragment navigation while preserving scroll restoration for ordinary menu dismissal.
+
+### Validation
+- Added navigation regression coverage for unique IDs, one section per destination, document-order parity, absence of hidden anchor workarounds, shared offsets, and native anchor scrolling.
+
+## [0.21.6] - 2026-07-18
+### Added
+- Added a public-site accessibility contract covering semantics, focus, target sizes, mobile-dialog behavior, forced colors, reduced motion, decorative imagery, and preservation of the approved Hero-artwork checksum.
+- Added Project Aurora testing, contrast-evidence, Hero accessibility, keyboard/focus, semantic, and future-maintenance guidance to the repository accessibility standard.
+- Added pull-request validation and a pre-deployment quality gate that runs every repository Ruby check before GitHub Pages publication.
+- Expanded the manual protocol to cover explicit keyboard commands, 100–400% zoom, continuous resizing, layout stability, rendering responsiveness, actual raster-pixel contrast, representative screen readers, and supported browsers.
+
+### Changed
+- Aligned both permanent Hero content regions to the consistently dark upper portion of the unchanged sunrise artwork, using shared grid flow rather than image modification or viewport-specific offsets.
+- Removed Hero title nowrap behavior to improve user-defined text-spacing resilience and added a forced-colors fallback for the gradient-filled heading.
+- Added native `inert` background isolation and backdrop close behavior to the public mobile navigation dialog.
+- Expanded desktop wordmark and navigation link targets to a minimum height of 44 CSS pixels.
+- Clarified that automated fallback-color contrast is a regression check rather than evidence for text rendered over raster artwork.
+- Recorded unavailable or incompatible browser, assistive-technology, Lighthouse, axe-core, and HTML5-validator tooling separately from passing source checks.
+
+### Removed
+- Removed no-op Hero item-alignment declarations that did not affect the auto-sized grid rows.
+- Consolidated the duplicate mobile-overlay viewport-height selector while preserving `vh` fallback and `dvh` progressive support.
+
 ## [0.21.5] - 2026-07-18
 ### Changed
 - Established the permanent Project Aurora Hero baseline as a coordinated two-region grid containing the primary identity and a narrower supporting-content region.

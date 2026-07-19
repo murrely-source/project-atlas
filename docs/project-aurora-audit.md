@@ -19,18 +19,18 @@ The repository is a dependency-free static website and preserved internal intell
 
 ## Component hierarchy
 
-The public website uses reusable patterns for its wordmark, primary/footer navigation, mobile navigation drawer, page containers, headings, buttons, solution cards, resource cards, LENS capability panel, and final call-to-action panel. Content and product identity are separated through `brand-config.js`; behavior remains in `site.js`; presentation remains in `site.css`.
+The public website uses reusable patterns for its wordmark, primary and mobile navigation, page containers, headings, buttons, solution cards, resource cards, LENS capability panel, final call-to-action panel, and simplified footer. Content and product identity are separated through `brand-config.js`; behavior remains in `site.js`; presentation remains in `site.css`.
 
 ## Asset organization
 
-Public and legacy assets are under `app/assets/`; governed brand references are under `docs/brand/`. The repository contains Solaris Lucerna brand-standard boards but not a standalone approved hero artwork, licensed local Poppins/Montserrat files, favicon, or social-preview image. Repository policy prohibits cropping the brand guide into a production asset, so the hero retains an explicit governed asset handoff rather than substitute artwork.
+Public and legacy assets are under `app/assets/`; governed brand references are under `docs/brand/`. The approved standalone `app/assets/brand/hero-sunrise.png` artwork is present and is used without dimming, overlays, filters, or a duplicate accessible image. Licensed local Poppins/Montserrat files, a favicon, and a social-preview image are not present.
 
 ## Technical debt and opportunities
 
 - The preserved internal HTML is compressed and tightly coupled to global DOM selectors.
 - Static tests verify contracts but do not replace browser or assistive-technology testing.
 - There is no linter, formatter, type checker, package audit, or production build.
-- The site has no responsive-image pipeline because approved standalone imagery is not yet available.
+- The site has no responsive-image pipeline or alternate-density Hero sources for the approved standalone artwork.
 - The public site has no canonical production domain, contact backend, analytics, or approved social metadata image.
 - Poppins and Montserrat currently depend on local availability and otherwise use system fallbacks.
 - The homepage navigation previously left Home marked current after following another section; Phase 1 now synchronizes the accessible current state with the selected hash.
@@ -38,7 +38,14 @@ Public and legacy assets are under `app/assets/`; governed brand references are 
 
 ## Accessibility observations
 
-The public site includes semantic landmarks, a single primary heading, a skip link, visible focus states, keyboard-operable navigation, mobile-menu focus containment and restoration, reduced-motion handling, responsive touch targets, and contrast-tested tokens. Manual keyboard, screen-reader, zoom, and device review remains required before production approval.
+The public site includes semantic landmarks, a single primary heading, a skip link, visible focus states, keyboard-operable navigation, native mobile-dialog background isolation, focus containment and restoration, backdrop and Escape close behavior, reduced-motion handling, forced-colors treatment, responsive touch targets, and contrast-tested tokens. Actual rendered Hero contrast, keyboard, screen-reader, text-spacing, zoom, orientation, browser, and device review remain required before production approval.
+
+## Validation capability and known limitations
+
+- All repository Ruby source-contract checks now run for pull requests to `main` and gate GitHub Pages deployment. They cover the public structure, navigation, responsive contracts, solid-color contrast, Hero-image integrity, and preservation of governed intelligence.
+- The repository has no package manager, compiled production build, linter, type checker, browser-automation dependency, axe-core integration, or Lighthouse integration. Adding a front-end dependency stack solely to report those tools would increase scope and is deferred to the approved follow-on phase.
+- The host Mac's bundled `tidy` validator predates HTML5 and reports valid `header`, `nav`, `main`, and inline `svg` elements as unrecognized. Its output is a tool-compatibility limitation and is not used as markup evidence.
+- The in-app browser-control runtime fails during initialization with `Cannot redefine property: process`. Chrome, Safari, Firefox, Edge, continuous resize, actual raster-pixel contrast, keyboard, screen-reader, zoom, reduced-motion, and performance observations therefore remain documented human review items; none are represented as completed by source tests.
 
 ## Branding and naming disposition
 
@@ -46,4 +53,4 @@ Solaris Lucerna and LENS are centralized for the public website. User-facing pub
 
 ## Phase 1 conclusion
 
-The static architecture supports the Project Aurora homepage and shared design system with low operational complexity. Remaining production blockers are approved standalone artwork, licensed font files or an approved font-hosting policy, a confirmed production domain, and human accessibility/brand review.
+The static architecture supports the Project Aurora homepage and shared design system with low operational complexity. Remaining production blockers are licensed font files or an approved font-hosting policy, a confirmed production domain, actual rendered-pixel Hero contrast evidence, and human accessibility/brand review.
