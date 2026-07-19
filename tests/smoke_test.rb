@@ -7,6 +7,7 @@ html = File.read(File.join(app, "index.html"), encoding: "UTF-8")
 css = File.read(File.join(app, "site.css"), encoding: "UTF-8")
 script = File.read(File.join(app, "site.js"), encoding: "UTF-8")
 config = File.read(File.join(app, "brand-config.js"), encoding: "UTF-8")
+contact_config = File.read(File.join(app, "contact-config.js"), encoding: "UTF-8")
 workflow = File.read(File.join(root, ".github", "workflows", "deploy-pages.yml"), encoding: "UTF-8")
 failures = []
 
@@ -15,7 +16,7 @@ failures << "public metadata title is missing" unless html.include?("<title>Sola
 failures << "meta description is missing" unless html.include?('name="description"') && html.include?("AI adoption, governance, risk awareness, and operational readiness")
 failures << "Open Graph text metadata is incomplete" unless %w[og:type og:site_name og:title og:description].all? { |property| html.include?(%[property="#{property}"]) }
 failures << "Twitter text metadata is incomplete" unless html.include?('name="twitter:card"') && html.include?('name="twitter:title"') && html.include?('name="twitter:description"')
-failures << "shared public assets are not loaded" unless html.include?('href="site.css"') && html.include?('src="brand-config.js"') && html.include?('src="site.js"')
+failures << "shared public assets are not loaded" unless html.include?('href="site.css"') && html.include?('src="brand-config.js"') && html.include?('src="contact-config.js"') && html.include?('src="site.js"')
 failures << "centralized corporate identity is incomplete" unless config.include?('companyName: "Solaris Lucerna"') && config.include?('tagline: "Illuminating Responsible Intelligence"')
 failures << "LENS name is not centralized" unless config.include?('name: "LENS"') && config.include?('heroCtaLabel: "Discover LENS"') && config.include?('expansion: "Lucerna Executive Navigation System"')
 failures << "retired Nexus name remains user-facing" if html.match?(/\bNexus\b/i)
@@ -28,8 +29,15 @@ failures << "secondary Hero CTA is not a single text node" if html.match?(/data-
 failures << "secondary Hero CTA accessible name is overridden" if html.match?(/<a[^>]*data-product-cta[^>]*aria-label=/)
 failures << "product naming is duplicated outside the approved fallback" unless html.scan(/\bLENS\b/).length == 1 && !html.include?("Lucerna Executive Navigation System")
 failures << "LENS oversight limitation is missing" unless html.include?("does not replace legal, technical, governance, or executive judgment")
-failures << "resource placeholders are not governed" unless html.scan("Coming Soon").length >= 4 && !html.match?(/lorem ipsum/i)
-failures << "contact preview collects data without an approved integration" if html.match?(/<form|<input|<textarea|<select/)
+failures << "resource placeholders are not governed" unless html.scan("Coming Soon").length >= 3 && !html.match?(/lorem ipsum/i)
+failures << "production contact form is incomplete" unless html.include?('<form class="contact-form" id="contact-form" novalidate>') && %w[fullName company email phone subject message].all? { |name| html.include?(%[name="#{name}"]) }
+failures << "contact endpoint is not centralized" unless contact_config.scan(/https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec/).length == 1 && !html.include?("AKfycbw30") && !script.include?("AKfycbw30")
+failures << "Turnstile frontend configuration is incomplete" unless contact_config.include?('turnstileSiteKey: "0x4AAAAAAD5JTPEstTe-ZHcG"') && html.include?("https://challenges.cloudflare.com/turnstile/v0/api.js") && script.include?("window.turnstile.render")
+failures << "contact request does not use preflight-safe JSON transport" unless script.include?('"Content-Type": "text/plain;charset=UTF-8"') && script.include?("body: JSON.stringify(payload)") && script.include?('redirect: "follow"')
+failures << "connectivity probe could be mistaken for delivery" unless script.include?('result.status !== "success"') && !script.include?('result.status === "ok"')
+failures << "contact success message is incorrect" unless html.include?("Thank you. Your message has been received. We'll be in touch shortly.")
+failures << "temporary connectivity page is exposed in production navigation" if html.include?("contact-connectivity-test.html") || config.include?("contact-connectivity-test.html")
+failures << "private contact values are exposed in public files" if [html, script, config, contact_config].any? { |content| content.match?(/TURNSTILE_SECRET_KEY|CONTACT_RECIPIENT|CONTACT_CC/) }
 footer = html[/<footer class="site-footer">(.*?)<\/footer>/m, 1].to_s
 failures << "footer branding remains duplicated" if footer.match?(/data-company-name|data-company-tagline|footer-brand/)
 failures << "footer navigation remains duplicated" if footer.match?(/<nav|data-primary-navigation|Home|Solutions|LENS|Resources|About|Contact/)
@@ -48,7 +56,7 @@ failures << "reduced-motion treatment is missing" unless css.include?("prefers-r
 failures << "legacy Nexus preview was deleted" unless File.file?(File.join(app, "nexus-preview.html")) && File.file?(File.join(app, "data", "intelligence.json"))
 failures << "GitHub Pages no longer publishes only app/" unless workflow.include?("path: ./app")
 
-%w[site.css brand-config.js site.js].each do |path|
+%w[site.css brand-config.js contact-config.js site.js].each do |path|
   failures << "missing public asset: #{path}" unless File.file?(File.join(app, path))
 end
 
