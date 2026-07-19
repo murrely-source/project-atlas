@@ -23,7 +23,7 @@ failures << "legacy advisory name remains user-facing" if html.match?(/Solaris A
 failures << "homepage sections are incomplete" unless %w[home about perspective solutions lens resources contact].all? { |id| html.include?(%[id="#{id}"]) }
 failures << "educational narrative does not precede services" unless html.index('id="perspective"') < html.index('id="solutions"')
 failures << "Project Aurora narrative is incomplete" unless html.include?("next chapter in a much longer human story") && html.include?("Governance is how organizations make those decisions visible")
-failures << "approved homepage calls to action are missing" unless html.include?("Explore Our Solutions") && html.include?("Discover&nbsp;<span data-product-name></span>")
+failures << "approved homepage calls to action are missing" unless html.include?("Explore Our Solutions") && html.include?("<span>Discover <span data-product-name></span></span>")
 failures << "product naming is duplicated outside centralized configuration" if html.match?(/\bLENS\b|Lucerna Executive Navigation System/)
 failures << "LENS oversight limitation is missing" unless html.include?("does not replace legal, technical, governance, or executive judgment")
 failures << "resource placeholders are not governed" unless html.scan("Coming Soon").length >= 4 && !html.match?(/lorem ipsum/i)
