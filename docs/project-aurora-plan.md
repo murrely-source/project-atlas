@@ -18,7 +18,7 @@ Review gate: Engineering, Brand, Governance, Accessibility, and Executive review
 ## Phase 2 — Recommended, not implemented
 
 1. Build dedicated Solutions and LENS pages after service language and current-versus-planned capabilities are approved.
-2. Add the approved standalone hero artwork, local licensed fonts, favicon, and social-preview image.
+2. Add local licensed fonts, a favicon, a social-preview image, and an approved responsive-image pipeline for the existing Hero artwork.
 3. Establish reusable publication collections and detail pages using approved resources only.
 4. Implement About with verified company and founder information.
 5. Select a contact backend and approve privacy, retention, validation, success, and error behavior before collecting data.

@@ -6,6 +6,7 @@
   const mobileOverlay = document.querySelector("#mobile-navigation-overlay");
   const mobileClose = document.querySelector("#mobile-navigation-close");
   const desktopNavigation = window.matchMedia("(min-width: 768px)");
+  const backgroundContent = document.querySelectorAll(".skip-link, .site-header, main, .site-footer");
   let menuOpen = false;
   let lockedScrollPosition = 0;
 
@@ -108,24 +109,28 @@
     document.body.style.top = `-${lockedScrollPosition}px`;
     mobileOverlay.hidden = false;
     mobileOverlay.setAttribute("aria-hidden", "false");
+    backgroundContent.forEach((element) => { element.inert = true; });
     document.body.classList.add("nav-open");
     menuButton.setAttribute("aria-expanded", "true");
     window.requestAnimationFrame(() => mobileClose.focus());
   }
 
-  function closeMenu(restoreFocus = true) {
+  function closeMenu({ restoreFocus = true, restoreScroll = true } = {}) {
     if (!menuOpen) {
       return;
     }
     menuOpen = false;
     mobileOverlay.hidden = true;
     mobileOverlay.setAttribute("aria-hidden", "true");
+    backgroundContent.forEach((element) => { element.inert = false; });
     document.body.classList.remove("nav-open");
     document.body.style.top = "";
-    window.scrollTo(0, lockedScrollPosition);
+    if (restoreScroll) {
+      window.scrollTo(0, lockedScrollPosition);
+    }
     menuButton.setAttribute("aria-expanded", "false");
     if (restoreFocus) {
-      menuButton.focus();
+      menuButton.focus({ preventScroll: true });
     }
   }
 
@@ -160,8 +165,10 @@
   mobileClose.addEventListener("click", () => closeMenu());
   mobileOverlay.addEventListener("keydown", trapMenuFocus);
   mobileOverlay.addEventListener("click", (event) => {
-    if (event.target.closest("a")) {
+    if (event.target === mobileOverlay) {
       closeMenu();
+    } else if (event.target.closest("a")) {
+      closeMenu({ restoreScroll: false });
     }
   });
   document.addEventListener("keydown", (event) => {
@@ -172,7 +179,7 @@
   });
   desktopNavigation.addEventListener("change", (event) => {
     if (event.matches) {
-      closeMenu(false);
+      closeMenu({ restoreFocus: false });
     }
   });
   window.addEventListener("hashchange", updateCurrentNavigation);

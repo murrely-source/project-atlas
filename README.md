@@ -25,7 +25,7 @@ The former application entry point is retained at `app/nexus-preview.html`. Its 
 
 ## Deployment
 
-GitHub Actions publishes only `app/` to GitHub Pages when approved changes reach `main`, or when an authorized maintainer runs the Pages workflow manually. This feature branch must be reviewed before merge or deployment.
+GitHub Actions runs every repository Ruby validation check for pull requests targeting `main`. On an approved push to `main` or an authorized manual run, those same checks must pass before the workflow publishes only `app/` to GitHub Pages. This feature branch must be reviewed before merge or deployment.
 
 The current repository Pages URL is [https://murrely-source.github.io/project-atlas/](https://murrely-source.github.io/project-atlas/). A production Solaris Lucerna domain and canonical URL have not yet been approved in this repository.
 
@@ -47,3 +47,5 @@ Run all repository Ruby checks:
 Then follow `tests/MANUAL_SMOKE_TEST.md` for browser, responsive, keyboard, visual, and console review.
 
 The repository has no package manager, type checker, linter, or production build step. GitHub Pages serves the static files directly.
+
+The source-contract suite does not replace human accessibility review. In particular, Hero text over raster artwork must be measured using actual rendered foreground and background pixels at the required viewport sizes; the token/fallback contrast check is not evidence of image contrast.
