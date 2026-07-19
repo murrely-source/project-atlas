@@ -2,6 +2,12 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.21.5] - 2026-07-18
+### Changed
+- Established the permanent Project Aurora Hero baseline as a coordinated two-region grid containing the primary identity and a narrower supporting-content region.
+- Removed the intermediate copy wrapper and all image-dimming logic; the approved sunrise now renders directly at its original brightness, color, and illumination.
+- Centered both content regions above the horizon with shared fluid spacing and height constraints, while retaining deterministic title lines and the existing small-phone button behavior.
+
 ## [0.21.4] - 2026-07-18
 ### Changed
 - Refactored the Project Aurora homepage Hero into one fluid responsive content stack with explicit heading and support groups, deterministic two-line heading rendering from the centralized company name, fluid vertical rhythm, and stable viewport-height limits.
