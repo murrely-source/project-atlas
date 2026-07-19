@@ -2,6 +2,14 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.22.1] - 2026-07-19
+### Changed
+- Refactored the Contact form into a shared two-column grid with a fixed 10.5rem label track and one fluid control track so every input, Subject, Message, Turnstile widget, action, and validation message aligns consistently.
+- Top-aligned the Message label with its textarea and retained a one-column mobile form layout below the existing breakpoint.
+
+### Governance
+- Preserved all form semantics, labels, Solaris Lucerna styling, endpoint configuration, Turnstile integration, validation, and submission behavior without changing backend logic.
+
 ## [0.22.0] - 2026-07-19
 ### Added
 - Replaced the public Contact placeholder with a semantic six-field contact form, inline validation, focusable error summary, announced progress and result states, and the approved success message.

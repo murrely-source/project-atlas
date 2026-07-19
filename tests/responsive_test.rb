@@ -17,7 +17,8 @@ failures << "mobile layout breakpoint is missing" unless css.include?("@media (m
 failures << "small-phone layout breakpoint is missing" unless css.include?("@media (max-width: 420px)")
 failures << "LENS layout does not collapse on tablet" unless css.match?(/@media \(max-width: 980px\).*?\.lens-layout \{ grid-template-columns: 1fr; \}/m)
 failures << "content grids do not collapse on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.solution-grid, \.resource-grid \{ grid-template-columns: 1fr; \}/m)
-failures << "contact fields do not collapse on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.contact-form-grid \{ grid-template-columns: 1fr; \}.*?\.form-field-wide \{ grid-column: auto; \}/m)
+failures << "contact desktop label and control tracks are inconsistent" unless css.include?("--contact-label-width: 10.5rem") && css.match?(/\.form-field, \.turnstile-field \{[^}]*grid-template-columns: var\(--contact-label-width\) minmax\(0, 1fr\);/) && css.match?(/\.form-field input, \.form-field textarea \{[^}]*grid-column: 2;[^}]*width: 100%;/)
+failures << "contact fields do not collapse on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.contact-form-grid \{ grid-template-columns: 1fr; \}.*?\.form-field, \.turnstile-field, \.contact-form-actions \{ grid-template-columns: 1fr; \}/m)
 failures << "contact controls are not touch friendly" unless css.match?(/\.form-field input, \.form-field textarea \{[^}]*min-height: 48px;/) && css.match?(/\.button \{[^}]*min-height: 48px;/)
 failures << "narrative layout does not collapse on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.perspective-layout \{ grid-template-columns: 1fr; \}/m)
 mobile_css = css[/@media \(max-width: 767px\) \{(.*?)\n\}/m, 1].to_s
