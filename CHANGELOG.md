@@ -2,6 +2,14 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.22.2] - 2026-07-19
+### Fixed
+- Versioned the public `site.js` resource URL so browsers cannot retain a pre-contact script after receiving the production Contact form markup.
+
+### Validation
+- Confirmed the form ID, submit control, deferred script order, form selector, active submit listener, Turnstile token callback, visible status states, and configured Apps Script POST path remain intact.
+- Added a regression contract requiring the handler-bearing public script URL to remain cache-versioned.
+
 ## [0.22.1] - 2026-07-19
 ### Changed
 - Refactored the Contact form into a shared two-column grid with a fixed 10.5rem label track and one fluid control track so every input, Subject, Message, Turnstile widget, action, and validation message aligns consistently.
