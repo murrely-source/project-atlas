@@ -2,6 +2,15 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.22.3] - 2026-07-19
+### Fixed
+- Connected the Contact form helpers through an explicit `initializeContactForm()` lifecycle that registers the active submit handler after the deferred page script has access to the DOM.
+- Invoked Turnstile initialization when the API is already available while preserving the global `onSolarisTurnstileReady` callback for normal deferred loading.
+- Added guarded JSON parsing, preserved fail-safe handling for connectivity `status: "ok"`, and advanced the public script version so the corrected wiring cannot be masked by a cached file.
+
+### Validation
+- Added regression contracts for submit-listener registration, initializer invocation, configured endpoint use, Turnstile initialization, and entry into and restoration from the Sending state.
+
 ## [0.22.2] - 2026-07-19
 ### Fixed
 - Versioned the public `site.js` resource URL so browsers cannot retain a pre-contact script after receiving the production Contact form markup.

@@ -260,7 +260,11 @@
 
   window.onSolarisTurnstileReady = initializeContactTurnstile;
 
-  if (contactForm) {
+  function initializeContactForm() {
+    if (!contactForm) {
+      return;
+    }
+
     contactForm.addEventListener("focusout", (event) => {
       if (event.target.matches("input, textarea")) {
         setContactFieldError(event.target, contactFieldMessage(event.target));
@@ -275,7 +279,6 @@
 
     contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      clearContactErrorSummary();
       contactStatus.textContent = "";
 
       const errors = validateContactForm();
@@ -284,6 +287,7 @@
         return;
       }
 
+      clearContactErrorSummary();
       const formData = new FormData(contactForm);
       const payload = {
         fullName: formData.get("fullName").trim(),
@@ -304,7 +308,12 @@
           body: JSON.stringify(payload),
           redirect: "follow"
         });
-        const result = await response.json();
+        let result;
+        try {
+          result = await response.json();
+        } catch (_error) {
+          throw new Error("The contact endpoint returned an unreadable response.");
+        }
 
         if (!response.ok || result.status !== "success") {
           throw new Error("The contact endpoint did not accept the submission.");
@@ -336,6 +345,10 @@
   updateCurrentNavigation();
   renderSolutions();
   renderLensCapabilities();
+  initializeContactForm();
+  if (window.turnstile) {
+    initializeContactTurnstile();
+  }
 
   menuButton.addEventListener("click", openMenu);
   mobileClose.addEventListener("click", () => closeMenu());
