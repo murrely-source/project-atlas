@@ -4,7 +4,6 @@ window.SOLARIS_SITE = Object.freeze({
   companyName: "Solaris Lucerna",
   companyDisplayName: "SOLARIS LUCERNA",
   tagline: "Illuminating Responsible Intelligence",
-  positioning: "Guiding organizations through AI adoption, governance, risk awareness, and operational readiness.",
   product: Object.freeze({
     name: "LENS",
     expansion: "Lucerna Executive Navigation System",
