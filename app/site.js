@@ -15,6 +15,18 @@
     });
   }
 
+  function renderHeroTitle() {
+    const heading = document.querySelector("[data-hero-company-name]");
+    const words = site.companyDisplayName.trim().split(/\s+/);
+    heading.replaceChildren(...words.map((word) => {
+      const line = document.createElement("span");
+      line.className = "hero-title-line";
+      line.textContent = word;
+      return line;
+    }));
+    heading.setAttribute("aria-label", site.companyDisplayName);
+  }
+
   function renderNavigation() {
     document.querySelectorAll("[data-primary-navigation]").forEach((list) => {
       list.replaceChildren();
@@ -135,6 +147,7 @@
 
   populateText("[data-company-name]", site.companyDisplayName);
   populateText("[data-company-tagline]", site.tagline);
+  renderHeroTitle();
   populateText("[data-product-name]", site.product.name);
   populateText("[data-product-expansion]", site.product.expansion);
   renderNavigation();

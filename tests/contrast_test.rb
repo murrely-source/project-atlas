@@ -19,11 +19,21 @@ def contrast(first, second)
   (values[0] + 0.05) / (values[1] + 0.05)
 end
 
+def blend(foreground, background, alpha)
+  foreground_channels = foreground.delete_prefix("#").scan(/../).map { |value| value.to_i(16) }
+  background_channels = background.delete_prefix("#").scan(/../).map { |value| value.to_i(16) }
+  channels = foreground_channels.zip(background_channels).map do |front, back|
+    (front * alpha + back * (1 - alpha)).round
+  end
+  "##{channels.map { |value| value.to_s(16).rjust(2, "0") }.join}"
+end
+
 tokens = variables(root_block)
 pairs = {
   "dark body text" => [tokens["text"], tokens["midnight"]],
   "dark muted text" => [tokens["text-muted"], tokens["midnight"]],
   "cyan supporting text" => [tokens["cyan-soft"], tokens["midnight"]],
+  "hero supporting text over worst-case shaded artwork" => ["#c5cdd7", blend("#000310", "#ffffff", 0.73)],
   "gold button text" => ["#1a1106", tokens["gold"]],
   "light-section body text" => ["#536271", tokens["white"]],
   "light-section heading" => [tokens["midnight"], tokens["white"]],
