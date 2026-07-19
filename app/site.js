@@ -7,8 +7,18 @@
   const mobileClose = document.querySelector("#mobile-navigation-close");
   const desktopNavigation = window.matchMedia("(min-width: 768px)");
   const backgroundContent = document.querySelectorAll(".skip-link, .site-header, main, .site-footer");
+  const contactConfig = window.SOLARIS_CONTACT_CONFIG;
+  const contactForm = document.querySelector("#contact-form");
+  const contactSubmit = document.querySelector("#contact-submit");
+  const contactStatus = document.querySelector("#contact-status");
+  const contactSuccess = document.querySelector("#contact-success");
+  const contactErrorSummary = document.querySelector("#contact-error-summary");
+  const contactErrorList = document.querySelector("#contact-error-list");
+  const contactTurnstileError = document.querySelector("#contact-turnstile-error");
   let menuOpen = false;
   let lockedScrollPosition = 0;
+  let turnstileToken = "";
+  let turnstileWidgetId = null;
 
   function populateText(selector, value) {
     document.querySelectorAll(selector).forEach((element) => {
@@ -148,6 +158,171 @@
       event.preventDefault();
       first.focus();
     }
+  }
+
+  function contactFieldMessage(field) {
+    const value = field.value.trim();
+    const requiredMessages = {
+      fullName: "Enter your full name.",
+      company: "Enter your company.",
+      email: "Enter your email address.",
+      subject: "Enter a subject.",
+      message: "Enter your message."
+    };
+
+    if (field.required && value === "") {
+      return requiredMessages[field.name];
+    }
+    if (field.name === "email" && field.validity.typeMismatch) {
+      return "Enter a valid email address.";
+    }
+    return "";
+  }
+
+  function setContactFieldError(field, message) {
+    const error = document.querySelector(`#${field.id}-error`);
+    field.setAttribute("aria-invalid", message ? "true" : "false");
+    error.textContent = message;
+  }
+
+  function clearContactErrorSummary() {
+    contactErrorList.replaceChildren();
+    contactErrorSummary.hidden = true;
+  }
+
+  function showContactErrorSummary(errors) {
+    contactErrorList.replaceChildren(...errors.map((error) => {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = `#${error.id}`;
+      link.textContent = error.message;
+      item.append(link);
+      return item;
+    }));
+    contactErrorSummary.hidden = false;
+    contactErrorSummary.focus();
+  }
+
+  function validateContactForm() {
+    const errors = [];
+    contactForm.querySelectorAll("input, textarea").forEach((field) => {
+      const message = contactFieldMessage(field);
+      setContactFieldError(field, message);
+      if (message) {
+        errors.push({ id: field.id, message });
+      }
+    });
+
+    const turnstileMessage = turnstileToken ? "" : "Complete the security verification.";
+    contactTurnstileError.textContent = turnstileMessage;
+    if (turnstileMessage) {
+      errors.push({ id: "contact-turnstile", message: turnstileMessage });
+    }
+    return errors;
+  }
+
+  function setContactSubmitting(isSubmitting) {
+    contactForm.setAttribute("aria-busy", String(isSubmitting));
+    contactSubmit.disabled = isSubmitting;
+    contactSubmit.textContent = isSubmitting ? "Sending..." : "Send Message";
+    contactStatus.textContent = isSubmitting ? "Sending your message." : "";
+  }
+
+  function resetContactTurnstile() {
+    turnstileToken = "";
+    if (turnstileWidgetId !== null && window.turnstile) {
+      window.turnstile.reset(turnstileWidgetId);
+    }
+  }
+
+  function initializeContactTurnstile() {
+    if (!contactForm || !contactConfig || !contactConfig.turnstileSiteKey || !window.turnstile || turnstileWidgetId !== null) {
+      return;
+    }
+
+    turnstileWidgetId = window.turnstile.render("#contact-turnstile", {
+      sitekey: contactConfig.turnstileSiteKey,
+      size: "flexible",
+      callback(token) {
+        turnstileToken = token;
+        contactTurnstileError.textContent = "";
+      },
+      "expired-callback"() {
+        turnstileToken = "";
+        contactTurnstileError.textContent = "Security verification expired. Please complete it again.";
+      },
+      "error-callback"() {
+        turnstileToken = "";
+        contactTurnstileError.textContent = "Security verification is temporarily unavailable. Please try again.";
+      }
+    });
+  }
+
+  window.onSolarisTurnstileReady = initializeContactTurnstile;
+
+  if (contactForm) {
+    contactForm.addEventListener("focusout", (event) => {
+      if (event.target.matches("input, textarea")) {
+        setContactFieldError(event.target, contactFieldMessage(event.target));
+      }
+    });
+
+    contactForm.addEventListener("input", (event) => {
+      if (event.target.matches("input, textarea") && event.target.getAttribute("aria-invalid") === "true") {
+        setContactFieldError(event.target, contactFieldMessage(event.target));
+      }
+    });
+
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      clearContactErrorSummary();
+      contactStatus.textContent = "";
+
+      const errors = validateContactForm();
+      if (errors.length > 0) {
+        showContactErrorSummary(errors);
+        return;
+      }
+
+      const formData = new FormData(contactForm);
+      const payload = {
+        fullName: formData.get("fullName").trim(),
+        company: formData.get("company").trim(),
+        email: formData.get("email").trim(),
+        phone: formData.get("phone").trim(),
+        subject: formData.get("subject").trim(),
+        message: formData.get("message").trim(),
+        turnstileToken
+      };
+
+      setContactSubmitting(true);
+
+      try {
+        const response = await fetch(contactConfig.endpointUrl, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=UTF-8" },
+          body: JSON.stringify(payload),
+          redirect: "follow"
+        });
+        const result = await response.json();
+
+        if (!response.ok || result.status !== "success") {
+          throw new Error("The contact endpoint did not accept the submission.");
+        }
+
+        contactForm.reset();
+        resetContactTurnstile();
+        contactForm.hidden = true;
+        contactSuccess.hidden = false;
+        contactSuccess.focus();
+      } catch (error) {
+        console.error("Contact submission failed.", error);
+        contactStatus.textContent = "We couldn't send your message. Please try again in a few moments.";
+        resetContactTurnstile();
+      } finally {
+        setContactSubmitting(false);
+      }
+    });
   }
 
   populateText("[data-company-name]", site.companyDisplayName);

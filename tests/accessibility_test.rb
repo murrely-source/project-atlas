@@ -43,7 +43,27 @@ approved_hero_checksum = "3a71e74dc8a8cc2e6c60e1ec17379679982007720c54f53e56bf93
 failures << "approved Hero artwork changed" unless File.file?(hero_artwork) && Digest::SHA256.file(hero_artwork).hexdigest == approved_hero_checksum
 
 failures << "ambiguous link wording remains" if html.match?(/>\s*(?:click here|read more|learn more)\s*</i)
-failures << "unlabelled public form controls are present" if html.match?(/<(?:input|select|textarea)\b/)
+contact_fields = {
+  "contact-full-name" => true,
+  "contact-company" => true,
+  "contact-email" => true,
+  "contact-phone" => false,
+  "contact-subject" => true,
+  "contact-message" => true
+}
+contact_fields.each do |id, required|
+  failures << "contact field ##{id} has no explicit label" unless html.include?(%[for="#{id}"])
+  control = html[/<(?:input|textarea)\b[^>]*id="#{Regexp.escape(id)}"[^>]*>/, 0].to_s
+  failures << "contact field ##{id} is missing" if control.empty?
+  failures << "contact field ##{id} required state is incorrect" unless control.include?(" required") == required
+  failures << "contact field ##{id} lacks inline error association" unless control.include?(%[aria-describedby="#{id}-error"])
+end
+failures << "contact error summary is not focusable or announced" unless html.include?('id="contact-error-summary" role="alert" tabindex="-1" hidden') && script.include?("contactErrorSummary.focus()")
+failures << "contact status is not announced" unless html.include?('id="contact-status" role="status" aria-live="polite"')
+failures << "contact success state is not focusable or announced" unless html.include?('id="contact-success" role="status" tabindex="-1" hidden') && script.include?("contactSuccess.focus()")
+failures << "contact inline validation does not expose invalid state" unless script.include?('field.setAttribute("aria-invalid", message ? "true" : "false")')
+failures << "contact submission state is not accessible" unless script.include?('contactForm.setAttribute("aria-busy", String(isSubmitting))') && script.include?("contactSubmit.disabled = isSubmitting") && script.include?('"Sending..."')
+failures << "Turnstile does not have an accessible visible label" unless html.include?('id="turnstile-label">Security verification') && html.include?('id="contact-turnstile" aria-labelledby="turnstile-label"')
 
 failures << "Project Aurora accessibility guidance is incomplete" unless accessibility_standard.include?("## Project Aurora public website") && accessibility_standard.include?("actual rendered raster pixels") && accessibility_standard.include?("Hero accessibility strategy")
 failures << "manual accessibility protocol is incomplete" unless %w[100% 125% 150% 200% 400%].all? { |zoom| manual_test.include?(zoom) } && manual_test.include?("Tab, Shift+Tab, Enter, Space, Escape")

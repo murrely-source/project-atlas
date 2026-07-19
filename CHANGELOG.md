@@ -2,6 +2,20 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.22.0] - 2026-07-19
+### Added
+- Replaced the public Contact placeholder with a semantic six-field contact form, inline validation, focusable error summary, announced progress and result states, and the approved success message.
+- Added isolated public configuration for the verified Apps Script endpoint and Cloudflare Turnstile Site Key.
+- Added explicit Managed Turnstile rendering, token expiry/error handling, preflight-safe JSON transport, duplicate-submit protection, and responsive contact controls.
+
+### Security
+- Kept the Turnstile Secret Key, email routing, and all other private values out of the public repository files.
+- Required a future production backend response with `status: "success"`; the existing connectivity probe's `status: "ok"` cannot produce a false message-delivery confirmation.
+- Preserved the temporary connectivity page as an unlinked diagnostic file and did not expose it through public navigation.
+
+### Validation
+- Replaced the former no-form test guards with positive contact semantics, configuration, transport, Turnstile, accessibility, responsive, and fail-safe delivery contracts.
+
 ## [0.21.9] - 2026-07-18
 ### Fixed
 - Replaced the secondary Hero CTA's split text-and-product construction with one configuration-driven text node whose visible and accessible label is exactly **Discover LENS**.

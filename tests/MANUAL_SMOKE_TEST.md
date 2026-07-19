@@ -17,7 +17,13 @@ Run after each public-site UI change.
 - [ ] LENS is expanded as **Lucerna Executive Navigation System** and is described as decision support rather than autonomous judgment.
 - [ ] Planned LENS capability language is clearly marked **In development**.
 - [ ] Resource cards are marked **Coming Soon** and do not claim nonexistent publications.
-- [ ] The contact preview collects no personal information and does not imply a working form integration.
+- [ ] The Contact section contains labelled Full Name, Company, Email Address, Phone Number, Subject, and Message fields; only Phone Number is optional.
+- [ ] Required and malformed-email errors appear inline and in the focusable error summary without clearing entered values.
+- [ ] Cloudflare Turnstile renders on an approved hostname, expires and resets safely, and prevents submission without a valid token.
+- [ ] During submission, the button is disabled, reads **Sending...**, and duplicate submission is prevented.
+- [ ] Only an explicit production acceptance response shows **Thank you. Your message has been received. We'll be in touch shortly.** and clears the form.
+- [ ] Network, CORS, HTTP, malformed-response, and rejected-submission failures retain the form and display the friendly retry message without technical details.
+- [ ] The temporary `contact-connectivity-test.html` page is not linked from the public page or either navigation.
 - [ ] The footer contains only the centered two-line copyright statement beneath the existing divider; no duplicate brand lockup or navigation appears.
 
 ## Accessibility and interaction

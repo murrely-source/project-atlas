@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solaris Lucerna Contact Connectivity Test</title>
+</head>
+<body>
+  <main>
+    <h1>Contact Connectivity Test</h1>
+    <button id="test-connection" type="button">Test Connection</button>
+    <pre id="test-output" role="status" aria-live="polite">Ready.</pre>
+  </main>
+
+  <script>
+    "use strict";
+
+    const endpoint = "https://script.google.com/macros/s/AKfycbw30Kri7ZVY7xE7d1PyKIn5RaRKWsTXQDlfA9GRMCVQwzUfLRyUCyhZ96d8k74GXHY7/exec";
+    const button = document.querySelector("#test-connection");
+    const output = document.querySelector("#test-output");
+
+    function display(lines) {
+      output.textContent = lines.join("\n");
+    }
+
+    button.addEventListener("click", async () => {
+      button.disabled = true;
+      display(["Testing connection…"]);
+
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=UTF-8"
+          },
+          body: JSON.stringify({
+            probe: "solaris-lucerna-contact-connectivity"
+          }),
+          redirect: "follow"
+        });
+
+        const responseText = await response.text();
+        const result = [
+          `HTTP status: ${response.status} ${response.statusText}`
+        ];
+
+        if (!response.ok) {
+          result.push(`Readable error: The endpoint returned HTTP ${response.status}.`);
+        }
+
+        try {
+          const responseJson = JSON.parse(responseText);
+          result.push("Returned JSON:");
+          result.push(JSON.stringify(responseJson, null, 2));
+        } catch (error) {
+          result.push(`Invalid JSON: ${error.message}`);
+          result.push("Returned text:");
+          result.push(responseText || "(empty response)");
+        }
+
+        display(result);
+      } catch (error) {
+        if (!navigator.onLine) {
+          display([
+            "Network error: The browser reports that it is offline.",
+            `Readable error: ${error.message}`
+          ]);
+        } else {
+          display([
+            "CORS failure or network error: The browser did not expose a readable response.",
+            "Check the browser Console and Network panels for a CORS message or network error code.",
+            `Readable error: ${error.message}`
+          ]);
+        }
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
