@@ -11,7 +11,7 @@ Run after each public-site UI change.
 - [ ] The primary navigation contains Home, Solutions, LENS, Resources, About, and Contact in that order.
 - [ ] Navigation links move to the correct homepage sections without reloading.
 - [ ] Every navigation destination aligns beneath the sticky header with the same visual offset; moving through the navigation in order always moves through the page in the same order.
-- [ ] The hero includes the approved supporting copy and both approved calls to action.
+- [ ] The hero contains the Solaris Lucerna identity, approved tagline, and both approved calls to action without an additional supporting sentence over the artwork.
 - [ ] The approved `hero-sunrise.png` artwork spans the full viewport as a seamless hero background without side gutters, distortion, dimming, overlays, filters, or placeholder content.
 - [ ] Core Solutions renders five approved categories without pricing or unsupported claims.
 - [ ] LENS is expanded as **Lucerna Executive Navigation System** and is described as decision support rather than autonomous judgment.

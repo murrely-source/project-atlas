@@ -2,6 +2,18 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.21.8] - 2026-07-18
+### Changed
+- Removed the supporting positioning sentence from the Hero so the approved identity, tagline, calls to action, and sunrise remain the only focal elements.
+- Simplified the second Hero grid region to the existing call-to-action group without changing button labels, order, or styling.
+
+### Removed
+- Removed the unused Hero-introduction style and the now-unneeded positioning value from public brand configuration.
+- Removed the obsolete fallback-color contrast pair for the deleted Hero sentence.
+
+### Validation
+- Added a regression contract preventing the removed sentence, class, style, or unused configuration property from returning to the Hero.
+
 ## [0.21.7] - 2026-07-18
 ### Fixed
 - Replaced split document scroll-padding values with one shared sticky-header token and one `scroll-margin-top` contract for every navigable section.
