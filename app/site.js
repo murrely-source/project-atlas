@@ -154,6 +154,7 @@
   populateText("[data-company-tagline]", site.tagline);
   renderHeroTitle();
   populateText("[data-product-name]", site.product.name);
+  populateText("[data-product-cta]", site.product.heroCtaLabel);
   populateText("[data-product-expansion]", site.product.expansion);
   renderNavigation();
   renderMobileNavigation();

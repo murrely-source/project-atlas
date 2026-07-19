@@ -4,7 +4,7 @@ All notable changes to Project Atlas will be documented here.
 
 ## [0.21.9] - 2026-07-18
 ### Fixed
-- Grouped the secondary Hero CTA copy and dynamic product name into one inline text context, ensuring its accessible and visual label renders as **Discover LENS** rather than **DiscoverLENS** inside the flex button.
+- Replaced the secondary Hero CTA's split text-and-product construction with one configuration-driven text node whose visible and accessible label is exactly **Discover LENS**.
 
 ### Governance
 - Preserved centralized LENS naming, the existing `#lens` destination, button component, styling, dimensions, states, Hero layout, and artwork.
