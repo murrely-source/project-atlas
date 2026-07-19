@@ -33,6 +33,7 @@ Run after each public-site UI change.
 
 - [ ] Review at 1440px, 1024px, 768px, 390px, and 320px.
 - [ ] At 1280px, 1440px, 1600px, 1728px, and 1920px, `SOLARIS LUCERNA` remains two lines, the final `A` is fully visible, and no horizontal scrollbar appears.
+- [ ] At the same desktop widths, the supporting paragraph and both calls to action sit below the brightest sunrise glow, remain fully visible, and retain clear space above the hero boundary.
 - [ ] The hero, solutions, LENS panel, responsible-AI section, resources, CTA, and footer reflow without page-level horizontal scrolling.
 - [ ] The Dark Edition remains the primary experience; the Light Edition resources section remains readable and distinctly Solaris Lucerna.
 - [ ] No logo, wordmark, or text is stretched, clipped, or too small to read.

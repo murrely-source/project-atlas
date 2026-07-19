@@ -29,6 +29,8 @@ failures << "hero does not span the viewport" unless css.match?(/\.hero \{[^}]*w
 failures << "hero background does not preserve the full-width composition" unless css.include?("background-size: 100% auto;") && css.include?("background-position: center bottom;") && css.include?("background-repeat: no-repeat;")
 failures << "wide-screen hero copy is still constrained by the legacy split grid" unless css.include?("grid-template-columns: minmax(0, 48rem) minmax(0, 1fr);")
 failures << "hero copy does not explicitly allow glyph overflow" unless css.match?(/\.hero-copy \{[^}]*overflow: visible;/)
+failures << "hero supporting copy and calls to action are not grouped" unless html.match?(/<div class="hero-support">\s*<p class="hero-intro">.*?<div class="button-group">/m)
+failures << "wide-screen hero support spacing is missing" unless css.match?(/@media \(min-width: 981px\) \{\s*\.hero-support \{ margin-top: clamp\(3rem, 7vh, 4\.5rem\); \}\s*\}/m)
 failures << "simplified footer is not centered responsively" unless css.match?(/\.footer-content \{[^}]*display: flex;[^}]*align-items: center;[^}]*justify-content: center;/) && css.match?(/\.site-footer p span \{ display: block; \}/)
 
 unless failures.empty?
