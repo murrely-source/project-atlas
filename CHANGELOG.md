@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-07-20 — Solaris Workspace repository extraction
+
+- Migrated the committed Sprint 1 Solaris Workspace application to the private standalone `murrely-source/solaris-workspace` repository.
+- Removed the Workspace runtime and Workspace-only CI workflow from Project Atlas after the standalone repository passed its locked install, dependency audit, lint, strict type, contract test, production build, route, and responsive validation.
+- Preserved the original Sprint 1 changelog entry, requirement, and ADR-002 for historical traceability.
+- Added ADR-003 to establish the corrected repository boundary without changing the public Solaris Lucerna website, governed intelligence, public-site tests, or GitHub Pages deployment.
+
 ## 2026-07-20 — Solaris Workspace Sprint 1 foundation
 
 - Added an isolated strict-TypeScript Next.js App Router application under `workspace/` without changing the public `app/` deployment boundary.
