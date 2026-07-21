@@ -2,6 +2,8 @@
 
 This repository contains the in-review Solaris Lucerna public website and the preserved Project Atlas/Solaris Nexus engineering prototype.
 
+It also contains the isolated Sprint 1 foundation for the Solaris Workspace executive operating application under `workspace/`. The Workspace has its own Next.js build and is not included in the public GitHub Pages artifact.
+
 ## Public-site preview
 
 The public entry point is `app/index.html`. It uses dependency-free HTML, CSS, and browser JavaScript:
@@ -22,6 +24,22 @@ Then open:
 ## Preserved Nexus prototype
 
 The former application entry point is retained at `app/nexus-preview.html`. Its supporting `styles.css`, `theme-init.js`, `data.js`, `app.js`, and governed `data/intelligence.json` files remain in place for traceability and controlled future decisions.
+
+## Solaris Workspace
+
+The `workspace/` directory is a strict-TypeScript Next.js App Router application with a responsive shell, executive dashboard, all charter modules, shared domain models, and clearly identified foundation records. Authentication, Supabase persistence, and AI are intentionally deferred pending approved architecture and configuration.
+
+Run it independently:
+
+```bash
+cd workspace
+pnpm install
+pnpm dev
+```
+
+Validate it with `pnpm check`. See `docs/requirements/SOLARIS_WORKSPACE_SPRINT_1.md` and `docs/dhf/ADR-002_SOLARIS_WORKSPACE_APPLICATION_BOUNDARY.md` for scope and architectural rationale.
+
+Changes under `workspace/` are independently checked by `.github/workflows/workspace-ci.yml`. That workflow does not publish the Workspace and does not alter the existing public GitHub Pages artifact.
 
 ## Deployment
 

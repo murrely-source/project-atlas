@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-07-20 — Solaris Workspace Sprint 1 foundation
+
+- Added an isolated strict-TypeScript Next.js App Router application under `workspace/` without changing the public `app/` deployment boundary.
+- Added the responsive, accessible Workspace shell, executive dashboard, and routes for Business, Documents, Projects, Research, Knowledge, Standards, Clients, Tasks, Meetings, Calendar, Decisions, and Settings.
+- Established shared typed document, project, work-item, module, and repository contracts.
+- Added clearly labeled foundation records using only charter-named projects and document types; no live business, client, research, or standards data was invented.
+- Kept authentication, Supabase persistence, and AI explicitly deferred pending governed architecture and configuration.
+- Added a lockfile-controlled PostCSS security override; the production dependency audit reports no known vulnerabilities.
+- Added an independent Workspace CI workflow for locked installation, production dependency auditing, linting, strict type checking, tests, and production builds without changing the public Pages artifact.
+- Added Sprint 1 requirements, ADR-002, local validation, and Workspace documentation.
+
 All notable changes to Project Atlas will be documented here.
 
 ## [0.22.3] - 2026-07-19

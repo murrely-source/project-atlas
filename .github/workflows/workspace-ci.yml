@@ -1,0 +1,50 @@
+name: Solaris Workspace CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "workspace/**"
+      - ".github/workflows/workspace-ci.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "workspace/**"
+      - ".github/workflows/workspace-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: workspace
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+
+      - name: Configure Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: workspace/pnpm-lock.yaml
+
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Audit production dependencies
+        run: pnpm audit --prod
+
+      - name: Run Workspace quality gate
+        run: pnpm check
