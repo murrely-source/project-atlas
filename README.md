@@ -23,6 +23,12 @@ Then open:
 
 The former application entry point is retained at `app/nexus-preview.html`. Its supporting `styles.css`, `theme-init.js`, `data.js`, `app.js`, and governed `data/intelligence.json` files remain in place for traceability and controlled future decisions.
 
+## Solaris Workspace
+
+Solaris Workspace was extracted after Sprint 1 technical review and is now maintained in the private standalone repository [murrely-source/solaris-workspace](https://github.com/murrely-source/solaris-workspace). This repository retains the original Sprint 1 requirement and architecture records for traceability but no longer contains or validates the Workspace runtime.
+
+See `docs/requirements/SOLARIS_WORKSPACE_SPRINT_1.md`, `docs/dhf/ADR-002_SOLARIS_WORKSPACE_APPLICATION_BOUNDARY.md`, and `docs/dhf/ADR-003_SOLARIS_WORKSPACE_REPOSITORY_EXTRACTION.md` for the controlled history and repository-boundary decision.
+
 ## Deployment
 
 GitHub Actions runs every repository Ruby validation check for pull requests targeting `main`. On an approved push to `main` or an authorized manual run, those same checks must pass before the workflow publishes only `app/` to GitHub Pages. This feature branch must be reviewed before merge or deployment.
