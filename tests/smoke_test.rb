@@ -29,6 +29,7 @@ failures << "approved homepage calls to action are missing" unless html.include?
 failures << "secondary Hero CTA is not a single text node" if html.match?(/data-product-cta[^>]*>[^<]*<span/)
 failures << "secondary Hero CTA accessible name is overridden" if html.match?(/<a[^>]*data-product-cta[^>]*aria-label=/)
 failures << "product naming is duplicated outside the approved fallback" unless html.scan(/\bLENS\b/).length == 1 && !html.include?("Lucerna Executive Navigation System")
+failures << "LENS identity hierarchy is incomplete" unless html.match?(%r{<h2 id="lens-title">Executive Intelligence Platform</h2>\s*<p class="eyebrow">Solaris <span data-product-name></span></p>\s*<p class="product-expansion" data-product-expansion></p>\s*<p class="product-expansion">Coming Soon</p>})
 failures << "LENS development status is unclear" unless html.include?("Coming Soon") && html.include?("currently in active design and development")
 failures << "LENS human-judgment limitation is missing" unless html.include?("Rather than replacing human judgment") && html.include?("Technology is never the hero. Humanity is.")
 
