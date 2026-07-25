@@ -29,7 +29,19 @@ failures << "approved homepage calls to action are missing" unless html.include?
 failures << "secondary Hero CTA is not a single text node" if html.match?(/data-product-cta[^>]*>[^<]*<span/)
 failures << "secondary Hero CTA accessible name is overridden" if html.match?(/<a[^>]*data-product-cta[^>]*aria-label=/)
 failures << "product naming is duplicated outside the approved fallback" unless html.scan(/\bLENS\b/).length == 1 && !html.include?("Lucerna Executive Navigation System")
-failures << "LENS oversight limitation is missing" unless html.include?("does not replace legal, technical, governance, or executive judgment")
+failures << "LENS development status is unclear" unless html.include?("Coming Soon") && html.include?("currently in active design and development")
+failures << "LENS human-judgment limitation is missing" unless html.include?("Rather than replacing human judgment") && html.include?("Technology is never the hero. Humanity is.")
+
+expected_lens_capabilities = [
+  "Executive Governance Dashboards",
+  "AI Risk & Readiness Insights",
+  "Regulatory & Standards Monitoring",
+  "Research & Knowledge Repository",
+  "Governance Assessments",
+  "Decision Support",
+  "Advisory Engagement Tracking"
+]
+failures << "planned LENS capabilities are incomplete" unless expected_lens_capabilities.all? { |capability| config.include?(capability) }
 failures << "resource placeholders are not governed" unless html.scan("Coming Soon").length >= 3 && !html.match?(/lorem ipsum/i)
 failures << "production contact form is incomplete" unless html.include?('<form class="contact-form" id="contact-form" novalidate>') && %w[fullName company email phone subject message].all? { |name| html.include?(%[name="#{name}"]) }
 failures << "contact endpoint is not centralized" unless contact_config.scan(/https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec/).length == 1 && !html.include?("AKfycbw30") && !script.include?("AKfycbw30")
