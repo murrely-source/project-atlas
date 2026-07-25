@@ -20,6 +20,11 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.22.5] - 2026-07-25
+
+### Changed
+- Added the full “Lucerna Executive Navigation System” expansion directly beneath the Solaris LENS product name in the existing platform section.
+
 ## [0.22.4] - 2026-07-25
 
 ### Changed
