@@ -20,6 +20,15 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.22.4] - 2026-07-25
+
+### Changed
+- Refined the Solaris LENS section to identify the platform as a long-term executive intelligence vision currently in active design and development.
+- Reframed all listed capabilities as a planned roadmap and added the approved governance-first, human-centered positioning.
+
+### Governance
+- Preserved the existing LENS layout, product-name configuration, navigation, styling system, responsive behavior, and accessibility semantics while removing language that could imply currently available platform functionality.
+
 ## [0.22.3] - 2026-07-19
 ### Fixed
 - Connected the Contact form helpers through an explicit `initializeContactForm()` lifecycle that registers the active submit handler after the deferred page script has access to the DOM.

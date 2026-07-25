@@ -26,12 +26,12 @@ window.SOLARIS_SITE = Object.freeze({
     Object.freeze({ title: "High Touch / High Tech™", description: "Ongoing advisory support that combines executive guidance with carefully governed technology." })
   ]),
   lensCapabilities: Object.freeze([
-    "Governance readiness",
-    "Risk identification",
-    "Responsible AI adoption",
-    "Policy guidance",
-    "Assessment support",
-    "Executive insight",
-    "Operational alignment"
+    "Executive Governance Dashboards",
+    "AI Risk & Readiness Insights",
+    "Regulatory & Standards Monitoring",
+    "Research & Knowledge Repository",
+    "Governance Assessments",
+    "Decision Support",
+    "Advisory Engagement Tracking"
   ])
 });
