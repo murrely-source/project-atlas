@@ -20,6 +20,12 @@
 
 All notable changes to Project Atlas will be documented here.
 
+## [0.22.6] - 2026-07-25
+
+### Added
+- Added the approved Solaris Lucerna horizon favicon in ICO, 16×16 PNG, 32×32 PNG, and 180×180 Apple touch-icon formats.
+- Added relative favicon metadata references that work from both the custom domain and the existing GitHub Pages project path.
+
 ## [0.22.5] - 2026-07-25
 
 ### Changed
