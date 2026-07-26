@@ -17,6 +17,14 @@ failures << "meta description is missing" unless html.include?('name="descriptio
 failures << "Open Graph text metadata is incomplete" unless %w[og:type og:site_name og:title og:description].all? { |property| html.include?(%[property="#{property}"]) }
 failures << "Twitter text metadata is incomplete" unless html.include?('name="twitter:card"') && html.include?('name="twitter:title"') && html.include?('name="twitter:description"')
 failures << "shared public assets are not loaded" unless html.include?('href="site.css"') && html.include?('src="brand-config.js"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.3"')
+favicon_references = [
+  'rel="icon" href="favicon.ico" sizes="any"',
+  'rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"',
+  'rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"',
+  'rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"'
+]
+failures << "approved Solaris Lucerna favicon references are incomplete" unless favicon_references.all? { |reference| html.include?(reference) }
+failures << "approved Solaris Lucerna favicon files are incomplete" unless %w[favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png].all? { |filename| File.file?(File.join(app, filename)) }
 failures << "contact handler script is not cache-versioned" unless html.include?('src="site.js?v=0.22.3"')
 failures << "centralized corporate identity is incomplete" unless config.include?('companyName: "Solaris Lucerna"') && config.include?('tagline: "Illuminating Responsible Intelligence"')
 failures << "LENS name is not centralized" unless config.include?('name: "LENS"') && config.include?('heroCtaLabel: "Discover LENS"') && config.include?('expansion: "Lucerna Executive Navigation System"')
