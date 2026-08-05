@@ -14,7 +14,7 @@ Run after each public-site UI change.
 - [ ] The hero contains the Solaris Lucerna identity, approved tagline, and both approved calls to action without an additional supporting sentence over the artwork.
 - [ ] The approved `hero-sunrise.png` artwork spans the full viewport as a seamless hero background without side gutters, distortion, dimming, overlays, filters, or placeholder content.
 - [ ] Core Solutions renders five approved categories without pricing or unsupported claims.
-- [ ] LENS is presented as an **Executive Intelligence Platform** and described as complementing rather than replacing human judgment.
+- [ ] LENS is presented as the **Lucerna Executive Navigation System**, Solaris Lucerna's platform for responsible AI governance and executive navigation, and is described as complementing rather than replacing human judgment.
 - [ ] Planned LENS capability language is clearly marked **Coming Soon**, and its status is **active design and development**.
 - [ ] Resource cards are marked **Coming Soon** and do not claim nonexistent publications.
 - [ ] The Contact section contains labelled Full Name, Company, Email Address, Phone Number, Subject, and Message fields; only Phone Number is optional.
