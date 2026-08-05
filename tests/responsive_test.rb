@@ -21,6 +21,8 @@ failures << "contact desktop label and control tracks are inconsistent" unless c
 failures << "contact fields do not collapse on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.contact-form-grid \{ grid-template-columns: 1fr; \}.*?\.form-field, \.turnstile-field, \.contact-form-actions \{ grid-template-columns: 1fr; \}/m)
 failures << "contact controls are not touch friendly" unless css.match?(/\.form-field input, \.form-field textarea \{[^}]*min-height: 48px;/) && css.match?(/\.button \{[^}]*min-height: 48px;/)
 failures << "narrative layout does not collapse on mobile" unless css.match?(/@media \(max-width: 767px\).*?\.perspective-layout \{ grid-template-columns: 1fr; \}/m)
+failures << "Responsible AI narrative is not grouped in one desktop column" unless html.match?(/<div class="responsible-copy">\s*<blockquote>.*?<\/blockquote>\s*<p>The question is no longer whether AI can perform useful work\./m) && css.match?(/\.responsible-copy \{ display: grid; gap: 2rem; \}/)
+failures << "Responsible AI mobile spacing changed" unless css.match?(/@media \(max-width: 767px\).*?\.responsible-copy \{ gap: 3rem; \}/m)
 mobile_css = css[/@media \(max-width: 767px\) \{(.*?)\n\}/m, 1].to_s
 mobile_overlay_rule = mobile_css[/\.mobile-nav-overlay \{([^}]*)\}/, 1].to_s
 failures << "desktop navigation is not hidden at the mobile breakpoint" unless mobile_css.include?(".site-navigation { display: none; }")
