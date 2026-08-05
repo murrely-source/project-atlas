@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-04 — LENS page refinement
+
+- Promoted LENS to the primary product heading and retained the exact Lucerna Executive Navigation System expansion beneath it.
+- Replaced the former “Coming Soon” product label with the accurate “In Development” status.
+- Added scoped spacing beneath the final Planned Capabilities divider without changing the panel, responsive layout, or visual system.
+
 ## 2026-08-04 — LENS platform architecture alignment
 
 - Aligned the existing public product section with the approved architecture in which LENS is the Lucerna Executive Navigation System and Solaris Lucerna's platform for responsible AI governance and executive navigation.
