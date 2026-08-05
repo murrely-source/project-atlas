@@ -15,7 +15,8 @@ Run after each public-site UI change.
 - [ ] The approved `hero-sunrise.png` artwork spans the full viewport as a seamless hero background without side gutters, distortion, dimming, overlays, filters, or placeholder content.
 - [ ] Core Solutions renders five approved categories without pricing or unsupported claims.
 - [ ] LENS is presented as the **Lucerna Executive Navigation System**, Solaris Lucerna's platform for responsible AI governance and executive navigation, and is described as complementing rather than replacing human judgment.
-- [ ] Planned LENS capability language is clearly marked **Coming Soon**, and its status is **active design and development**.
+- [ ] LENS is clearly marked **In Development**, and its detailed status remains **active design and development**.
+- [ ] The Planned Capabilities sequence note has additional breathing room beneath the final capability divider without changing the panel layout.
 - [ ] Resource cards are marked **Coming Soon** and do not claim nonexistent publications.
 - [ ] The Contact section contains labelled Full Name, Company, Email Address, Phone Number, Subject, and Message fields; only Phone Number is optional.
 - [ ] Required and malformed-email errors appear inline and in the focusable error summary without clearing entered values.
