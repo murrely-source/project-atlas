@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-08-05 — About positioning copy revision
+
+- Replaced the generic “What Solaris Lucerna Does” headline and supporting text with the approved four-paragraph positioning copy describing the advisory practice, intended audience, governance challenge, human-centered approach, and relationship with LENS.
+- Preserved the existing About section structure, typography, styling, navigation, responsive behavior, and surrounding content.
+
 ## 2026-08-04 — Responsible AI desktop spacing refinement
 
 - Grouped the Responsible AI quotation and supporting paragraph into one right-column narrative so desktop grid row sizing no longer creates an excessive vertical gap, while preserving the existing mobile spacing.
