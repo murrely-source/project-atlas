@@ -116,7 +116,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
 .capability-panel ul { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; padding: 0; margin: 0; list-style: none; }
 .capability-panel li { min-height: 58px; display: flex; align-items: center; padding: .7rem; border-bottom: 1px solid rgba(158, 223, 240, .15); color: var(--soft-white); font-size: .86rem; }
 .capability-panel li::before { width: 6px; height: 6px; flex: 0 0 auto; margin-right: .7rem; border-radius: 50%; background: var(--gold); content: ""; }
-.capability-panel > .capability-sequence-note { margin-top: 1.5rem; }
+.capability-panel > .capability-sequence-note { margin-top: 2rem; }
 
 .responsible-section { background: #111822; }
 .responsible-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 7vw, 7rem); align-items: start; }

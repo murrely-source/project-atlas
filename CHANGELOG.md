@@ -4,7 +4,7 @@
 
 - Promoted LENS to the primary product heading and retained the exact Lucerna Executive Navigation System expansion beneath it.
 - Replaced the former “Coming Soon” product label with the accurate “In Development” status.
-- Added scoped spacing beneath the final Planned Capabilities divider without changing the panel, responsive layout, or visual system.
+- Matched the scoped spacing beneath the final Planned Capabilities divider to the panel's existing `2rem` section rhythm without changing the panel, responsive layout, or visual system.
 
 ## 2026-08-04 — LENS platform architecture alignment
 

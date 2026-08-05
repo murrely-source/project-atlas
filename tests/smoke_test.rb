@@ -41,7 +41,7 @@ failures << "LENS identity hierarchy is incomplete" unless html.match?(%r{<h2 id
 failures << "LENS is not presented as the complete platform" unless html.include?("is the Lucerna Executive Navigation System, Solaris Lucerna's platform for responsible AI governance and executive navigation") && !html.include?("Solaris <span data-product-name></span>")
 failures << "LENS development status is unclear" unless html.include?("In Development") && html.include?("currently in active design and development")
 failures << "LENS human-judgment limitation is missing" unless html.include?("Rather than replacing human judgment") && html.include?("Technology is never the hero. Humanity is.")
-failures << "LENS capability sequence note spacing is missing" unless html.include?('class="capability-sequence-note"') && css.include?(".capability-panel > .capability-sequence-note { margin-top: 1.5rem; }")
+failures << "LENS capability sequence note spacing is missing" unless html.include?('class="capability-sequence-note"') && css.include?(".capability-panel > .capability-sequence-note { margin-top: 2rem; }")
 
 expected_lens_capabilities = [
   "Executive Governance Dashboards",
