@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-04 — Responsible AI desktop spacing refinement
+
+- Grouped the Responsible AI quotation and supporting paragraph into one right-column narrative so desktop grid row sizing no longer creates an excessive vertical gap, while preserving the existing mobile spacing.
+
 ## 2026-08-04 — LENS page refinement
 
 - Promoted LENS to the primary product heading and retained the exact Lucerna Executive Navigation System expansion beneath it.
