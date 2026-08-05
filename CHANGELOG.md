@@ -3,6 +3,7 @@
 ## 2026-08-04 — Responsible AI desktop spacing refinement
 
 - Grouped the Responsible AI quotation and supporting paragraph into one right-column narrative so desktop grid row sizing no longer creates an excessive vertical gap, while preserving the existing mobile spacing.
+- Versioned the production stylesheet reference so the corrected structural layout and its approved desktop/mobile spacing are loaded immediately after deployment instead of being masked by a cached stylesheet.
 
 ## 2026-08-04 — LENS page refinement
 
