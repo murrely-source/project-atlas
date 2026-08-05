@@ -8,7 +8,7 @@ window.SOLARIS_SITE = Object.freeze({
     name: "LENS",
     heroCtaLabel: "Discover LENS",
     expansion: "Lucerna Executive Navigation System",
-    description: "An executive AI-governance intelligence and decision-support platform."
+    description: "Solaris Lucerna's platform for responsible AI governance and executive navigation."
   }),
   navigation: Object.freeze([
     Object.freeze({ label: "Home", href: "#home" }),

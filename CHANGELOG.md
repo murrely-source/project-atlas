@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-08-04 — LENS platform architecture alignment
+
+- Aligned the existing public product section with the approved architecture in which LENS is the Lucerna Executive Navigation System and Solaris Lucerna's platform for responsible AI governance and executive navigation.
+- Preserved the existing development-status disclosures, planned-capability language, navigation, layout, styling, accessibility, legacy preview, and governed historical records.
+
 ## 2026-07-20 — Solaris Workspace repository extraction
 
 - Migrated the committed Sprint 1 Solaris Workspace application to the private standalone `murrely-source/solaris-workspace` repository.
