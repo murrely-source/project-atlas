@@ -81,15 +81,16 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
 .intro-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(2rem, 7vw, 7rem); align-items: start; }
 .intro-copy { max-width: 670px; color: var(--text-muted); font-size: 1.05rem; }
 .intro-copy p:last-child { margin-bottom: 0; }
-.perspective-section { overflow: hidden; background: var(--midnight-deep); }
-.perspective-layout { display: grid; grid-template-columns: minmax(80px, .28fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); }
+.perspective-section { overflow: hidden; background: radial-gradient(circle at 18% 52%, rgba(1, 80, 115, .13), transparent 34%), var(--midnight-deep); }
+.perspective-layout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(80px, .28fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); }
 .perspective-marker { position: relative; min-height: 420px; }
 .perspective-marker::before { position: absolute; top: 50%; right: 0; left: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--solaris-blue), var(--cyan), var(--gold)); content: ""; }
 .perspective-marker span { position: absolute; top: calc(50% - 5px); right: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 30px rgba(245, 177, 93, .55); }
 .perspective-copy { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .7fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
 .perspective-copy > .eyebrow { grid-column: 1 / -1; margin-bottom: 0; }
 .perspective-copy h2 { margin-bottom: 0; }
-.perspective-text { max-width: 620px; padding-top: .4rem; color: var(--text-muted); font-size: 1.04rem; }
+.perspective-text { max-width: 650px; padding-top: .4rem; color: var(--text-muted); font-size: 1.04rem; }
+.perspective-hinge { max-width: 46ch; margin-block: clamp(2.75rem, 5vw, 4.5rem); color: var(--soft-white); font-family: var(--font-heading); font-size: clamp(1.18rem, 1.8vw, 1.48rem); line-height: 1.5; }
 .perspective-text p:last-child { margin-bottom: 0; }
 .section-heading { display: grid; gap: .35rem; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
 .section-heading > p:last-child { max-width: 700px; color: var(--text-muted); }
@@ -170,7 +171,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
 
 @media (max-width: 980px) {
   .lens-layout { grid-template-columns: 1fr; }
-  .perspective-copy { grid-template-columns: 1fr; }
+  .perspective-copy { grid-template-columns: 1fr; gap: 2rem; }
   .solution-card, .solution-card:nth-child(4) { grid-column: span 3; }
   .intro-grid, .responsible-grid, .cta-panel { gap: 3rem; }
 }

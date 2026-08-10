@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-09 — “A Longer View” narrative enhancement
+
+- Replaced the existing homepage narrative with the approved four-stage account of human ingenuity, expanding capability, AI responsibility, and informed governance.
+- Gave the approved narrative hinge deliberate breathing room and restrained typographic emphasis within the existing perspective layout.
+- Deepened the established horizon atmosphere with a lightweight CSS illumination treatment while preserving the Dark Edition identity, responsive architecture, accessibility, and surrounding content.
+
 ## 2026-08-05 — About positioning copy revision
 
 - Replaced the generic “What Solaris Lucerna Does” headline and supporting text with the approved four-paragraph positioning copy describing the advisory practice, intended audience, governance challenge, human-centered approach, and relationship with LENS.
