@@ -16,7 +16,7 @@ failures << "public metadata title is missing" unless html.include?("<title>Sola
 failures << "meta description is missing" unless html.include?('name="description"') && html.include?("AI adoption, governance, risk awareness, and operational readiness")
 failures << "Open Graph text metadata is incomplete" unless %w[og:type og:site_name og:title og:description].all? { |property| html.include?(%[property="#{property}"]) }
 failures << "Twitter text metadata is incomplete" unless html.include?('name="twitter:card"') && html.include?('name="twitter:title"') && html.include?('name="twitter:description"')
-failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.4"') && html.include?('src="brand-config.js"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.3"')
+failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.5"') && html.include?('src="brand-config.js"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.3"')
 favicon_references = [
   'rel="icon" href="favicon.ico" sizes="any"',
   'rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"',
@@ -26,7 +26,7 @@ favicon_references = [
 failures << "approved Solaris Lucerna favicon references are incomplete" unless favicon_references.all? { |reference| html.include?(reference) }
 failures << "approved Solaris Lucerna favicon files are incomplete" unless %w[favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png].all? { |filename| File.file?(File.join(app, filename)) }
 failures << "contact handler script is not cache-versioned" unless html.include?('src="site.js?v=0.22.3"')
-failures << "Responsible AI layout stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.4"')
+failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.5"')
 failures << "centralized corporate identity is incomplete" unless config.include?('companyName: "Solaris Lucerna"') && config.include?('tagline: "Illuminating Responsible Intelligence"')
 failures << "LENS name is not centralized" unless config.include?('name: "LENS"') && config.include?('heroCtaLabel: "Discover LENS"') && config.include?('expansion: "Lucerna Executive Navigation System"') && config.include?("Solaris Lucerna's platform for responsible AI governance and executive navigation")
 failures << "retired Nexus name remains user-facing" if html.match?(/\bNexus\b/i)
@@ -42,7 +42,14 @@ approved_about_copy = [
 ]
 failures << "approved About positioning copy is incomplete or altered" unless approved_about_copy.all? { |copy| html.include?(copy) }
 failures << "About section label changed" unless html.include?('<p class="eyebrow">What Solaris Lucerna Does</p>')
-failures << "Project Aurora narrative is incomplete" unless html.include?("next chapter in a much longer human story") && html.include?("Governance is how organizations make those decisions visible")
+approved_longer_view_copy = [
+  "Artificial intelligence is the next chapter in a much longer human story.",
+  "People have always created tools that extend memory, communication, calculation, and reach. AI continues that history of expanding human capability.",
+  "Humanity finally built machines capable of learning patterns from enormous stores of human knowledge—and then had to learn how to govern what it had created.",
+  "That responsibility begins with making the decisions surrounding AI visible, accountable, and aligned with the responsibilities of the organizations that make them. Governance creates the conditions for informed progress—not fear, and not unchecked adoption."
+]
+failures << "approved A Longer View narrative is incomplete or altered" unless approved_longer_view_copy.all? { |copy| html.include?(copy) }
+failures << "A Longer View narrative hierarchy is incomplete" unless html.include?('<p class="perspective-hinge">Humanity finally built') && css.include?(".perspective-hinge")
 failures << "approved homepage calls to action are missing" unless html.include?("Explore Our Solutions") && html.include?('href="#lens" data-product-cta>Discover LENS</a>') && script.include?('populateText("[data-product-cta]", site.product.heroCtaLabel)')
 failures << "secondary Hero CTA is not a single text node" if html.match?(/data-product-cta[^>]*>[^<]*<span/)
 failures << "secondary Hero CTA accessible name is overridden" if html.match?(/<a[^>]*data-product-cta[^>]*aria-label=/)
