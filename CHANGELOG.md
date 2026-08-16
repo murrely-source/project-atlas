@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-16 — Solutions narrative presentation
+
+- Removed the obsolete generated numbered-card presentation from Solutions and rendered the approved copy as a continuous semantic narrative.
+- Reused the established Solaris Lucerna content width, typography, spacing scale, dividers, color tokens, and restrained gold emphasis without changing any other section.
+- Versioned the existing public stylesheet and interaction script so cached card styling or rendering code cannot reappear after deployment.
+
 ## 2026-08-16 — Solutions product-first copy alignment
 
 - Replaced the Solutions section's advisory-oriented language with the approved product-first Solaris Lucerna positioning.

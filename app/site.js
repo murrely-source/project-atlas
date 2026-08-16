@@ -84,23 +84,6 @@
     });
   }
 
-  function renderSolutions() {
-    const container = document.querySelector("#solution-cards");
-    site.solutions.forEach((solution, index) => {
-      const article = document.createElement("article");
-      article.className = "solution-card";
-      const number = document.createElement("span");
-      number.className = "card-number";
-      number.textContent = String(index + 1).padStart(2, "0");
-      const title = document.createElement("h3");
-      title.textContent = solution.title;
-      const description = document.createElement("p");
-      description.textContent = solution.description;
-      article.append(number, title, description);
-      container.append(article);
-    });
-  }
-
   function renderLensCapabilities() {
     const list = document.querySelector("#lens-capabilities");
     site.lensCapabilities.forEach((capability) => {
@@ -343,7 +326,6 @@
   renderNavigation();
   renderMobileNavigation();
   updateCurrentNavigation();
-  renderSolutions();
   renderLensCapabilities();
   initializeContactForm();
   if (window.turnstile) {

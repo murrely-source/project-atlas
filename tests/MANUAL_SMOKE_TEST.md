@@ -13,7 +13,7 @@ Run after each public-site UI change.
 - [ ] Every navigation destination aligns beneath the sticky header with the same visual offset; moving through the navigation in order always moves through the page in the same order.
 - [ ] The hero contains the Solaris Lucerna identity, approved tagline, and both approved calls to action without an additional supporting sentence over the artwork.
 - [ ] The approved `hero-sunrise.png` artwork spans the full viewport as a seamless hero background without side gutters, distortion, dimming, overlays, filters, or placeholder content.
-- [ ] Solutions renders the approved product-first narrative in full, without consulting, advisory, service, future-product, pricing, or unsupported capability claims.
+- [ ] Solutions renders the approved product-first copy as one continuous narrative hierarchy without numbered cards, consulting, advisory, service, future-product, pricing, or unsupported capability claims.
 - [ ] LENS is presented as the **Lucerna Executive Navigation System**, Solaris Lucerna's platform for responsible AI governance and executive navigation, and is described as complementing rather than replacing human judgment.
 - [ ] LENS is clearly marked **In Development**, and its detailed status remains **active design and development**.
 - [ ] The Planned Capabilities sequence note has additional breathing room beneath the final capability divider without changing the panel layout.

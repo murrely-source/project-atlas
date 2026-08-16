@@ -16,7 +16,7 @@ failures << "public metadata title is missing" unless html.include?("<title>Sola
 failures << "meta description is missing" unless html.include?('name="description"') && html.include?("AI adoption, governance, risk awareness, and operational readiness")
 failures << "Open Graph text metadata is incomplete" unless %w[og:type og:site_name og:title og:description].all? { |property| html.include?(%[property="#{property}"]) }
 failures << "Twitter text metadata is incomplete" unless html.include?('name="twitter:card"') && html.include?('name="twitter:title"') && html.include?('name="twitter:description"')
-failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.5"') && html.include?('src="brand-config.js?v=0.22.7"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.3"')
+failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.8"') && html.include?('src="brand-config.js?v=0.22.7"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.8"')
 favicon_references = [
   'rel="icon" href="favicon.ico" sizes="any"',
   'rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"',
@@ -25,9 +25,9 @@ favicon_references = [
 ]
 failures << "approved Solaris Lucerna favicon references are incomplete" unless favicon_references.all? { |reference| html.include?(reference) }
 failures << "approved Solaris Lucerna favicon files are incomplete" unless %w[favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png].all? { |filename| File.file?(File.join(app, filename)) }
-failures << "contact handler script is not cache-versioned" unless html.include?('src="site.js?v=0.22.3"')
+failures << "public interaction script is not cache-versioned" unless html.include?('src="site.js?v=0.22.8"')
 failures << "Solutions content configuration is not cache-versioned" unless html.include?('src="brand-config.js?v=0.22.7"')
-failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.5"')
+failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.8"')
 failures << "centralized corporate identity is incomplete" unless config.include?('companyName: "Solaris Lucerna"') && config.include?('tagline: "Illuminating Responsible Intelligence"')
 failures << "LENS name is not centralized" unless config.include?('name: "LENS"') && config.include?('heroCtaLabel: "Discover LENS"') && config.include?('expansion: "Lucerna Executive Navigation System"') && config.include?("Solaris Lucerna's platform for responsible AI governance and executive navigation")
 failures << "retired Nexus name remains user-facing" if html.match?(/\bNexus\b/i)
@@ -56,7 +56,7 @@ approved_solutions_html_copy = [
   "Technology built with responsibility at its foundation.",
   "Solaris Lucerna develops AI-powered technology designed to extend human capability while keeping accountability, oversight, security, and responsible data practices part of how that technology is built and operated."
 ]
-approved_solutions_card_copy = [
+approved_solutions_narrative_copy = [
   "We approach artificial intelligence not simply as a capability to deploy, but as technology that must function responsibly within the human systems it serves.",
   "That means asking more than what AI can do.",
   "We consider how people remain informed and accountable, how decisions can be understood and challenged, how information is protected, how risk is identified and monitored, and how systems continue to earn trust as they evolve.",
@@ -66,14 +66,16 @@ approved_solutions_card_copy = [
   "Capability and responsibility should advance together.",
   "Our first expression of that principle is LENS."
 ]
-solutions_config = config[/solutions: Object\.freeze\(\[(.*?)\]\),\s*lensCapabilities:/m, 1].to_s
 failures << "approved Solutions heading copy is incomplete or altered" unless approved_solutions_html_copy.all? { |copy| html.include?(copy) }
-failures << "approved Solutions narrative is incomplete or altered" unless approved_solutions_card_copy.all? { |copy| solutions_config.include?(copy) }
-failures << "Solutions retains retired advisory or service positioning" if solutions_config.match?(/advisory|consulting|service/i)
+failures << "approved Solutions narrative is incomplete or altered" unless approved_solutions_narrative_copy.all? { |copy| html.include?(copy) }
+solutions_section = html[/<section class="section" id="solutions".*?<\/section>/m].to_s
+failures << "Solutions retains retired advisory or service positioning" if solutions_section.match?(/advisory|consulting|service/i)
+failures << "obsolete numbered Solutions cards remain" if html.include?('id="solution-cards"') || config.include?("solutions: Object.freeze") || script.include?("renderSolutions") || css.match?(/\.solution-(grid|card)|\.card-number/)
+failures << "Solutions narrative hierarchy is incomplete" unless html.include?('class="solutions-narrative"') && html.include?('class="solutions-question"') && html.include?('<h3>Responsible intelligence by design</h3>') && html.include?('class="solutions-principle-statement"')
 failures << "approved homepage calls to action are missing" unless html.include?("Explore Our Solutions") && html.include?('href="#lens" data-product-cta>Discover LENS</a>') && script.include?('populateText("[data-product-cta]", site.product.heroCtaLabel)')
 failures << "secondary Hero CTA is not a single text node" if html.match?(/data-product-cta[^>]*>[^<]*<span/)
 failures << "secondary Hero CTA accessible name is overridden" if html.match?(/<a[^>]*data-product-cta[^>]*aria-label=/)
-failures << "product naming is duplicated outside approved copy" unless html.scan(/\bLENS\b/).length == 3 && html.include?("Lucerna Executive Navigation System")
+failures << "product naming is duplicated outside approved copy" unless html.scan(/\bLENS\b/).length == 4 && html.include?("Lucerna Executive Navigation System")
 failures << "LENS identity hierarchy is incomplete" unless html.match?(%r{<h2 id="lens-title"><span data-product-name></span></h2>\s*<p class="eyebrow" data-product-expansion></p>\s*<p class="product-expansion">In Development</p>})
 failures << "LENS is not presented as the complete platform" unless html.include?("is the Lucerna Executive Navigation System, Solaris Lucerna's platform for responsible AI governance and executive navigation") && !html.include?("Solaris <span data-product-name></span>")
 failures << "LENS development status is unclear" unless html.include?("In Development") && html.include?("currently in active design and development")
