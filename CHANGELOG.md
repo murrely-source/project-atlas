@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-08-16 — Solutions product-first copy alignment
+
+- Replaced the Solutions section's advisory-oriented language with the approved product-first Solaris Lucerna positioning.
+- Preserved the existing five-card structure, visual design, responsive behavior, navigation, and dedicated LENS section while introducing no future products or unsupported capabilities.
+
 ## 2026-08-09 — “A Longer View” narrative enhancement
 
 - Replaced the existing homepage narrative with the approved four-stage account of human ingenuity, expanding capability, AI responsibility, and informed governance.

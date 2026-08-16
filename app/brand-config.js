@@ -19,11 +19,11 @@ window.SOLARIS_SITE = Object.freeze({
     Object.freeze({ label: "Contact", href: "#contact" })
   ]),
   solutions: Object.freeze([
-    Object.freeze({ title: "AI Governance", description: "Governance assessments, policy direction, controls, and decision accountability." }),
-    Object.freeze({ title: "AI Risk and Readiness", description: "Risk awareness, readiness reviews, shadow AI review, and operational alignment." }),
-    Object.freeze({ title: "Responsible AI Adoption", description: "Practical guidance for adopting AI with appropriate oversight, access controls, and data integrity." }),
-    Object.freeze({ title: "Human Firewall", description: "Workforce readiness, critical judgment, human oversight, and responsible AI behavior." }),
-    Object.freeze({ title: "High Touch / High Tech™", description: "Ongoing advisory support that combines executive guidance with carefully governed technology." })
+    Object.freeze({ title: "We approach artificial intelligence not simply as a capability to deploy, but as technology that must function responsibly within the human systems it serves.", description: "That means asking more than what AI can do." }),
+    Object.freeze({ title: "We consider how people remain informed and accountable, how decisions can be understood and challenged, how information is protected, how risk is identified and monitored, and how systems continue to earn trust as they evolve.", description: "" }),
+    Object.freeze({ title: "Responsible intelligence by design", description: "Governance is not an addition to our products. It is part of their foundation." }),
+    Object.freeze({ title: "From initial design through deployment, monitoring, improvement, and eventual retirement, Solaris Lucerna products are developed around a simple principle:", description: "" }),
+    Object.freeze({ title: "Capability and responsibility should advance together.", description: "Our first expression of that principle is LENS." })
   ]),
   lensCapabilities: Object.freeze([
     "Executive Governance Dashboards",
