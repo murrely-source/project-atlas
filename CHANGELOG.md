@@ -4,6 +4,7 @@
 
 - Replaced the Solutions section's advisory-oriented language with the approved product-first Solaris Lucerna positioning.
 - Preserved the existing five-card structure, visual design, responsive behavior, navigation, and dedicated LENS section while introducing no future products or unsupported capabilities.
+- Versioned the centralized public content configuration so the approved Solutions copy is loaded immediately after deployment instead of being masked by a cached advisory-era file.
 
 ## 2026-08-09 — “A Longer View” narrative enhancement
 
