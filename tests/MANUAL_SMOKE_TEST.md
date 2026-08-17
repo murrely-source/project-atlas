@@ -8,7 +8,7 @@ Run after each public-site UI change.
 - [ ] The page title and description identify Solaris Lucerna and responsible AI guidance.
 - [ ] No user-facing Solaris Nexus, Project Atlas, advisory-name, or legacy website references appear.
 - [ ] The wordmark reads **SOLARIS LUCERNA** and the tagline reads **Illuminating Responsible Intelligence**.
-- [ ] The primary navigation contains Home, Solutions, LENS, Resources, About, and Contact in that order.
+- [ ] The primary navigation contains Home, Solutions, LENS, About, and Contact in that order.
 - [ ] Navigation links move to the correct homepage sections without reloading.
 - [ ] Every navigation destination aligns beneath the sticky header with the same visual offset; moving through the navigation in order always moves through the page in the same order.
 - [ ] The hero contains the Solaris Lucerna identity, approved tagline, and both approved calls to action without an additional supporting sentence over the artwork.
@@ -17,7 +17,7 @@ Run after each public-site UI change.
 - [ ] LENS is presented as the **Lucerna Executive Navigation System**, Solaris Lucerna's platform for responsible AI governance and executive navigation, and is described as complementing rather than replacing human judgment.
 - [ ] LENS is clearly marked **In Development**, and its detailed status remains **active design and development**.
 - [ ] The Planned Capabilities sequence note has additional breathing room beneath the final capability divider without changing the panel layout.
-- [ ] Resource cards are marked **Coming Soon** and do not claim nonexistent publications.
+- [ ] No Resources navigation item, section, placeholder, or broken `#resources` anchor remains.
 - [ ] The Contact section contains labelled Full Name, Company, Email Address, Phone Number, Subject, and Message fields; only Phone Number is optional.
 - [ ] Required and malformed-email errors appear inline and in the focusable error summary without clearing entered values.
 - [ ] Cloudflare Turnstile renders on an approved hostname, expires and resets safely, and prevents submission without a valid token.
@@ -50,8 +50,8 @@ Run after each public-site UI change.
 - [ ] At 1280px, 1440px, 1600px, 1728px, and 1920px, `SOLARIS LUCERNA` remains two lines, the final `A` is fully visible, and no horizontal scrollbar appears.
 - [ ] At 1280px, 1366px, 1440px, 1600px, 1728px, 1920px, and 2560px, the supporting paragraph and both calls to action remain readable, grouped, fully visible, and clear of the hero boundary.
 - [ ] Measure actual rendered foreground and raster-background pixels beneath the Hero text at every required width; normal text is at least 4.5:1 and large text is at least 3:1. Do not substitute token contrast or average image sampling.
-- [ ] The hero, solutions, LENS panel, responsible-AI section, resources, CTA, and footer reflow without page-level horizontal scrolling.
-- [ ] The Dark Edition remains the primary experience; the Light Edition resources section remains readable and distinctly Solaris Lucerna.
+- [ ] The hero, solutions, LENS panel, responsible-AI section, About, CTA, and footer reflow without page-level horizontal scrolling.
+- [ ] The Dark Edition remains the primary website experience.
 - [ ] No logo, wordmark, or text is stretched, clipped, or too small to read.
 - [ ] Poppins and Montserrat render where available; fallback typography remains usable when they are not installed.
 
