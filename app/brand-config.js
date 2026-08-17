@@ -18,13 +18,6 @@ window.SOLARIS_SITE = Object.freeze({
     Object.freeze({ label: "About", href: "#about" }),
     Object.freeze({ label: "Contact", href: "#contact" })
   ]),
-  solutions: Object.freeze([
-    Object.freeze({ title: "We approach artificial intelligence not simply as a capability to deploy, but as technology that must function responsibly within the human systems it serves.", description: "That means asking more than what AI can do." }),
-    Object.freeze({ title: "We consider how people remain informed and accountable, how decisions can be understood and challenged, how information is protected, how risk is identified and monitored, and how systems continue to earn trust as they evolve.", description: "" }),
-    Object.freeze({ title: "Responsible intelligence by design", description: "Governance is not an addition to our products. It is part of their foundation." }),
-    Object.freeze({ title: "From initial design through deployment, monitoring, improvement, and eventual retirement, Solaris Lucerna products are developed around a simple principle:", description: "" }),
-    Object.freeze({ title: "Capability and responsibility should advance together.", description: "Our first expression of that principle is LENS." })
-  ]),
   lensCapabilities: Object.freeze([
     "Executive Governance Dashboards",
     "AI Risk & Readiness Insights",
