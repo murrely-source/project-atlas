@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-16 — AI technology company positioning
+
+- Repositioned public metadata, Hero, LENS, About, and Contact copy around Solaris Lucerna as an AI technology company.
+- Identified LENS as Solaris Lucerna's first product and platform while preserving its in-development status and human-first limitations.
+- Removed public consultancy and advisory framing without changing the website layout, navigation, styling, or established responsible-AI philosophy.
+
 ## 2026-08-16 — Public Resources removal
 
 - Removed the placeholder Resources section from the Solaris Lucerna public website without adding a replacement surface.
