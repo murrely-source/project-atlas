@@ -14,7 +14,6 @@ window.SOLARIS_SITE = Object.freeze({
     Object.freeze({ label: "Home", href: "#home" }),
     Object.freeze({ label: "Solutions", href: "#solutions" }),
     Object.freeze({ label: "LENS", href: "#lens" }),
-    Object.freeze({ label: "Resources", href: "#resources" }),
     Object.freeze({ label: "About", href: "#about" }),
     Object.freeze({ label: "Contact", href: "#contact" })
   ]),

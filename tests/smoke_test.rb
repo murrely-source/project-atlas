@@ -16,7 +16,7 @@ failures << "public metadata title is missing" unless html.include?("<title>Sola
 failures << "meta description is missing" unless html.include?('name="description"') && html.include?("AI adoption, governance, risk awareness, and operational readiness")
 failures << "Open Graph text metadata is incomplete" unless %w[og:type og:site_name og:title og:description].all? { |property| html.include?(%[property="#{property}"]) }
 failures << "Twitter text metadata is incomplete" unless html.include?('name="twitter:card"') && html.include?('name="twitter:title"') && html.include?('name="twitter:description"')
-failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.8"') && html.include?('src="brand-config.js?v=0.22.7"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.8"')
+failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.9"') && html.include?('src="brand-config.js?v=0.22.8"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.8"')
 favicon_references = [
   'rel="icon" href="favicon.ico" sizes="any"',
   'rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"',
@@ -26,13 +26,14 @@ favicon_references = [
 failures << "approved Solaris Lucerna favicon references are incomplete" unless favicon_references.all? { |reference| html.include?(reference) }
 failures << "approved Solaris Lucerna favicon files are incomplete" unless %w[favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png].all? { |filename| File.file?(File.join(app, filename)) }
 failures << "public interaction script is not cache-versioned" unless html.include?('src="site.js?v=0.22.8"')
-failures << "Solutions content configuration is not cache-versioned" unless html.include?('src="brand-config.js?v=0.22.7"')
-failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.8"')
+failures << "public navigation configuration is not cache-versioned" unless html.include?('src="brand-config.js?v=0.22.8"')
+failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.9"')
 failures << "centralized corporate identity is incomplete" unless config.include?('companyName: "Solaris Lucerna"') && config.include?('tagline: "Illuminating Responsible Intelligence"')
 failures << "LENS name is not centralized" unless config.include?('name: "LENS"') && config.include?('heroCtaLabel: "Discover LENS"') && config.include?('expansion: "Lucerna Executive Navigation System"') && config.include?("Solaris Lucerna's platform for responsible AI governance and executive navigation")
 failures << "retired Nexus name remains user-facing" if html.match?(/\bNexus\b/i)
 failures << "legacy advisory name remains user-facing" if html.match?(/Solaris AI Risk|solarisadvisoryai/i)
-failures << "homepage sections are incomplete" unless %w[home about perspective solutions lens resources contact].all? { |id| html.include?(%[id="#{id}"]) }
+failures << "homepage sections are incomplete" unless %w[home about perspective solutions lens contact].all? { |id| html.include?(%[id="#{id}"]) }
+failures << "removed Resources surface remains" if html.match?(/id="resources"|Resources &amp; Publications|resource-(?:grid|card|type)|status-label/i) || config.match?(/label: "Resources"|href: "#resources"/) || css.match?(/\.resources-section|\.resource-(?:grid|card|type)|\.status-label/)
 failures << "educational narrative does not precede services" unless html.index('id="perspective"') < html.index('id="solutions"')
 approved_about_copy = [
   "Governance for AI decisions that matter.",
@@ -92,7 +93,6 @@ expected_lens_capabilities = [
   "Advisory Engagement Tracking"
 ]
 failures << "planned LENS capabilities are incomplete" unless expected_lens_capabilities.all? { |capability| config.include?(capability) }
-failures << "resource placeholders are not governed" unless html.scan("Coming Soon").length >= 3 && !html.match?(/lorem ipsum/i)
 failures << "production contact form is incomplete" unless html.include?('<form class="contact-form" id="contact-form" novalidate>') && %w[fullName company email phone subject message].all? { |name| html.include?(%[name="#{name}"]) }
 failures << "contact endpoint is not centralized" unless contact_config.scan(/https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec/).length == 1 && !html.include?("AKfycbw30") && !script.include?("AKfycbw30")
 failures << "Turnstile frontend configuration is incomplete" unless contact_config.include?('turnstileSiteKey: "0x4AAAAAAD5JTPEstTe-ZHcG"') && html.include?("https://challenges.cloudflare.com/turnstile/v0/api.js") && script.include?("window.turnstile.render")

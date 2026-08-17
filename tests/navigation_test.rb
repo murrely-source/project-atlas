@@ -11,7 +11,6 @@ expected = [
   ["Home", "#home"],
   ["Solutions", "#solutions"],
   ["LENS", "#lens"],
-  ["Resources", "#resources"],
   ["About", "#about"],
   ["Contact", "#contact"]
 ]
@@ -65,4 +64,4 @@ abort("FAIL: broken legacy mobile system remains active") if html.match?(/site-m
 abort("FAIL: iOS page-position lock is missing") unless script.include?("lockedScrollPosition = window.scrollY") && script.include?('document.body.style.top = `-${lockedScrollPosition}px`') && script.include?("window.scrollTo(0, lockedScrollPosition)")
 
 puts "PASS: Solaris Lucerna public navigation"
-puts "  approved six-link order and accessible mobile behavior validated"
+puts "  approved five-link order and accessible mobile behavior validated"

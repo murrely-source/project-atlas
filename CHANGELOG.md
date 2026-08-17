@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-16 — Public Resources removal
+
+- Removed the placeholder Resources section from the Solaris Lucerna public website without adding a replacement surface.
+- Removed the shared Resources navigation entry used by both desktop and mobile navigation.
+- Removed Resources-only styling and updated regression coverage for the approved five-link navigation and uninterrupted section flow.
+
 ## 2026-08-16 — Solutions narrative presentation
 
 - Removed the obsolete generated numbered-card presentation from Solutions and rendered the approved copy as a continuous semantic narrative.
