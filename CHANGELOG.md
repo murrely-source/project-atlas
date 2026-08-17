@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-16 — Solutions narrative rhythm
+
+- Tightened only the Solutions narrative's major vertical relationships so related copy remains visually connected without removing intentional pauses.
+- Preserved the existing dividers, typography, content width, and emphasis treatment.
+- Versioned the public stylesheet so the refined spacing is delivered reliably after deployment.
+
 ## 2026-08-16 — Solutions narrative presentation
 
 - Removed the obsolete generated numbered-card presentation from Solutions and rendered the approved copy as a continuous semantic narrative.
