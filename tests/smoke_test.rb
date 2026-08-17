@@ -76,9 +76,9 @@ solutions_section = html[/<section class="section" id="solutions".*?<\/section>/
 failures << "Solutions retains retired advisory or service positioning" if solutions_section.match?(/advisory|consulting|service/i)
 failures << "obsolete numbered Solutions cards remain" if html.include?('id="solution-cards"') || config.include?("solutions: Object.freeze") || script.include?("renderSolutions") || css.match?(/\.solution-(grid|card)|\.card-number/)
 failures << "Solutions narrative hierarchy is incomplete" unless html.include?('class="solutions-narrative"') && html.include?('class="solutions-question"') && html.include?('<h3>Responsible intelligence by design</h3>') && html.include?('class="solutions-principle-statement"')
-failures << "approved homepage calls to action are missing" unless html.include?("Explore Our Solutions") && html.include?('href="#lens" data-product-cta>Discover LENS</a>') && script.include?('populateText("[data-product-cta]", site.product.heroCtaLabel)')
-failures << "secondary Hero CTA is not a single text node" if html.match?(/data-product-cta[^>]*>[^<]*<span/)
-failures << "secondary Hero CTA accessible name is overridden" if html.match?(/<a[^>]*data-product-cta[^>]*aria-label=/)
+hero_section = html[/<section class="hero section".*?<\/section>/m].to_s
+failures << "removed Hero CTA remains" if hero_section.match?(/<a\b|data-product-cta|Explore Our Solutions|Discover LENS/)
+failures << "empty Hero action wrapper remains" if hero_section.match?(/hero-support|button-group/)
 failures << "product naming is incomplete" unless html.scan(/\bLENS\b/).length >= 4 && html.include?("Lucerna Executive Navigation System")
 failures << "LENS identity hierarchy is incomplete" unless html.match?(%r{<h2 id="lens-title"><span data-product-name></span></h2>\s*<p class="eyebrow" data-product-expansion></p>\s*<p class="product-expansion">In Development</p>})
 failures << "LENS is not presented as the first product and platform" unless html.include?("is the Lucerna Executive Navigation System, Solaris Lucerna's first product and platform for responsible AI governance and executive navigation") && !html.include?("Solaris <span data-product-name></span>")
