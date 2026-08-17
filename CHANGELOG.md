@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-16 — Narrative-first Hero
+
+- Removed the **Explore Our Solutions** and **Discover LENS** Hero calls to action so visitors continue through the page narrative.
+- Removed the now-empty Hero action wrapper without changing the Hero copy or its established visual treatment.
+- Preserved navigation, responsive rules, and all other website sections.
+
 ## 2026-08-16 — AI technology company positioning
 
 - Repositioned public metadata, Hero, LENS, About, and Contact copy around Solaris Lucerna as an AI technology company.
