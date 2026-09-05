@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-04 — LENS Intelligence prototype preview
+
+- Added the approved dark-edition LENS Intelligence prototype screenshot to the existing LENS section after Planned Capabilities and before Current Status.
+- Added the approved in-development introduction, meaningful alternative text, and illustrative-prototype disclosure.
+- Preserved the existing site structure, visual identity, navigation, and unrelated content while using the established responsive image and spacing conventions.
+
 ## 2026-08-16 — Narrative-first Hero
 
 - Removed the **Explore Our Solutions** and **Discover LENS** Hero calls to action so visitors continue through the page narrative.
