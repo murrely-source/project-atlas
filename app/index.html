@@ -17,10 +17,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Solaris Lucerna | Illuminating Responsible Intelligence">
   <meta name="twitter:description" content="Solaris Lucerna builds AI-powered products with responsible governance engineered into their foundation.">
-  <link rel="stylesheet" href="site.css?v=0.22.10">
+  <link rel="stylesheet" href="site.css?v=0.22.11">
   <script src="brand-config.js?v=0.22.9" defer></script>
   <script src="contact-config.js" defer></script>
-  <script src="site.js?v=0.22.8" defer></script>
+  <script src="site.js?v=0.22.9" defer></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onSolarisTurnstileReady&amp;render=explicit" defer></script>
 </head>
 <body>
@@ -130,9 +130,18 @@
             <h3>A Preview of LENS Intelligence</h3>
             <p>An early look at LENS Intelligence, currently in development as part of the Lucerna Executive Navigation System.</p>
             <figure>
-              <img src="assets/lens-intelligence-prototype-dark.png" width="789" height="699" alt="Prototype of the LENS Intelligence dashboard showing governance intelligence summaries, developing items, awareness indicators, and personalized intelligence panels.">
+              <button class="lens-prototype-trigger" id="lens-prototype-trigger" type="button" aria-haspopup="dialog" aria-controls="lens-prototype-dialog" aria-label="Open a larger view of the LENS Intelligence prototype">
+                <img src="assets/lens-intelligence-prototype-dark.png" width="789" height="699" alt="Prototype of the LENS Intelligence dashboard showing governance intelligence summaries, developing items, awareness indicators, and personalized intelligence panels.">
+                <span aria-hidden="true">View larger</span>
+              </button>
               <figcaption>Prototype shown for illustrative purposes. Interface, content, and capabilities may evolve during development.</figcaption>
             </figure>
+            <dialog class="lens-prototype-dialog" id="lens-prototype-dialog" aria-label="Expanded LENS Intelligence prototype">
+              <div class="lens-prototype-dialog-content">
+                <button class="lens-prototype-close" id="lens-prototype-close" type="button">Close</button>
+                <img src="assets/lens-intelligence-prototype-dark.png" width="789" height="699" alt="Expanded prototype of the LENS Intelligence dashboard showing governance intelligence summaries, developing items, awareness indicators, and personalized intelligence panels.">
+              </div>
+            </dialog>
           </div>
           <h3 class="panel-label">Current Status</h3>
           <p><span data-product-name></span> is currently in active design and development.</p>

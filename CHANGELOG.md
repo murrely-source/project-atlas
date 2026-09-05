@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-04 — LENS prototype enlarged view
+
+- Made the existing LENS Intelligence prototype preview operable by pointer and keyboard to open an enlarged modal view.
+- Added native dialog semantics, a visible close control, backdrop dismissal, Escape handling, scroll containment, and focus return.
+- Preserved the approved prototype image, disclosure, LENS section structure, and surrounding public-site content.
+
 ## 2026-09-04 — LENS Intelligence prototype preview
 
 - Added the approved dark-edition LENS Intelligence prototype screenshot to the existing LENS section after Planned Capabilities and before Current Status.

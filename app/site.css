@@ -29,6 +29,7 @@
 html { min-width: 320px; scroll-behavior: smooth; }
 body { margin: 0; overflow-x: hidden; background: var(--midnight); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.65; }
 body.nav-open { position: fixed; width: 100%; overflow: hidden; }
+body.prototype-preview-open { overflow: hidden; }
 button, a { font-family: var(--font-heading); }
 a { color: inherit; }
 img { display: block; max-width: 100%; }
@@ -126,8 +127,16 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
 .lens-prototype-preview > h3 { margin-bottom: .75rem; }
 .lens-prototype-preview > p { color: var(--text-muted); font-size: .9rem; }
 .lens-prototype-preview figure { margin: 1.25rem 0 0; }
-.lens-prototype-preview img { width: 100%; height: auto; }
+.lens-prototype-trigger { position: relative; width: 100%; padding: 0; overflow: hidden; border: 0; border-radius: 6px; background: transparent; color: var(--soft-white); cursor: zoom-in; }
+.lens-prototype-trigger img { width: 100%; height: auto; }
+.lens-prototype-trigger span { position: absolute; right: .75rem; bottom: .75rem; padding: .45rem .7rem; border: 1px solid rgba(158, 223, 240, .45); border-radius: 4px; background: rgba(8, 13, 20, .9); color: var(--soft-white); font-size: .72rem; font-weight: 600; }
 .lens-prototype-preview figcaption { margin-top: .75rem; color: var(--text-muted); font-size: .75rem; line-height: 1.55; }
+.lens-prototype-dialog { width: min(calc(100% - 2rem), 900px); max-width: none; max-height: calc(100dvh - 2rem); padding: 0; overflow: hidden; border: 1px solid var(--border-strong); border-radius: 10px; background: var(--midnight-deep); color: var(--text); box-shadow: var(--shadow); }
+.lens-prototype-dialog::backdrop { background: rgba(0, 3, 16, .88); }
+.lens-prototype-dialog-content { max-height: calc(100dvh - 2rem); padding: clamp(1rem, 3vw, 1.5rem); overflow: auto; }
+.lens-prototype-dialog-content img { width: 100%; height: auto; }
+.lens-prototype-close { min-width: 48px; min-height: 44px; display: block; margin: 0 0 1rem auto; padding: .55rem .85rem; border: 1px solid var(--border-strong); border-radius: 6px; background: var(--surface); color: var(--soft-white); font-weight: 600; cursor: pointer; }
+.lens-prototype-close:hover { border-color: var(--cyan); background: var(--surface-raised); }
 
 .responsible-section { background: #111822; }
 .responsible-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 7vw, 7rem); align-items: start; }

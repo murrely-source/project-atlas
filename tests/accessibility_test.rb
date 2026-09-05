@@ -30,6 +30,8 @@ failures << "mobile dialog does not isolate background content" unless script.in
 failures << "mobile dialog lacks Escape close" unless script.match?(/event\.key === "Escape" && menuOpen/)
 failures << "mobile dialog lacks backdrop close" unless script.include?("event.target === mobileOverlay")
 failures << "mobile dialog lacks focus containment or restoration" unless script.include?("function trapMenuFocus(event)") && script.include?("menuButton.focus({ preventScroll: true })")
+failures << "prototype dialog semantics are incomplete" unless html.include?('aria-haspopup="dialog"') && html.include?('aria-controls="lens-prototype-dialog"') && html.include?('<dialog class="lens-prototype-dialog" id="lens-prototype-dialog"')
+failures << "prototype dialog controls are incomplete" unless script.include?("prototypeDialog.showModal()") && script.include?('prototypeDialog.addEventListener("keydown"') && script.include?('event.key === "Escape" && prototypeDialog.open') && script.include?('prototypeDialog.addEventListener("close"') && script.include?('prototypeTrigger.focus({ preventScroll: true })')
 
 failures << "critical target sizes are incomplete" unless css.match?(/\.wordmark \{[^}]*min-height: 44px;/) && css.match?(/\.site-navigation a \{[^}]*min-height: 44px;/) && css.include?("min-height: 48px") && css.include?("min-height: 52px")
 failures << "Hero title prevents user text-spacing adaptation" if css.match?(/\.hero-title-line \{[^}]*white-space: nowrap;/)
