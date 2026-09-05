@@ -16,7 +16,7 @@ failures << "public metadata title is missing" unless html.include?("<title>Sola
 failures << "product-first meta description is missing" unless html.include?('name="description"') && html.include?("AI technology company building AI-powered products with responsible governance engineered into their foundation")
 failures << "Open Graph text metadata is incomplete" unless %w[og:type og:site_name og:title og:description].all? { |property| html.include?(%[property="#{property}"]) }
 failures << "Twitter text metadata is incomplete" unless html.include?('name="twitter:card"') && html.include?('name="twitter:title"') && html.include?('name="twitter:description"')
-failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.10"') && html.include?('src="brand-config.js?v=0.22.9"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.8"')
+failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.11"') && html.include?('src="brand-config.js?v=0.22.9"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.9"')
 favicon_references = [
   'rel="icon" href="favicon.ico" sizes="any"',
   'rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"',
@@ -25,9 +25,9 @@ favicon_references = [
 ]
 failures << "approved Solaris Lucerna favicon references are incomplete" unless favicon_references.all? { |reference| html.include?(reference) }
 failures << "approved Solaris Lucerna favicon files are incomplete" unless %w[favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png].all? { |filename| File.file?(File.join(app, filename)) }
-failures << "public interaction script is not cache-versioned" unless html.include?('src="site.js?v=0.22.8"')
+failures << "public interaction script is not cache-versioned" unless html.include?('src="site.js?v=0.22.9"')
 failures << "public navigation configuration is not cache-versioned" unless html.include?('src="brand-config.js?v=0.22.9"')
-failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.10"')
+failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.11"')
 failures << "centralized corporate identity is incomplete" unless config.include?('companyName: "Solaris Lucerna"') && config.include?('tagline: "Illuminating Responsible Intelligence"')
 failures << "LENS name is not centralized" unless config.include?('name: "LENS"') && config.include?('heroCtaLabel: "Discover LENS"') && config.include?('expansion: "Lucerna Executive Navigation System"') && config.include?("Solaris Lucerna's first product and platform for responsible AI governance and executive navigation")
 failures << "retired Nexus name remains user-facing" if html.match?(/\bNexus\b/i)
@@ -40,6 +40,7 @@ prototype_disclosure = "Prototype shown for illustrative purposes. Interface, co
 prototype_alt = "Prototype of the LENS Intelligence dashboard showing governance intelligence summaries, developing items, awareness indicators, and personalized intelligence panels."
 failures << "approved LENS Intelligence prototype preview is incomplete" unless File.file?(File.join(app, prototype_asset)) && [prototype_heading, prototype_support, prototype_disclosure, prototype_alt].all? { |copy| html.include?(copy) }
 failures << "LENS Intelligence prototype preview is not between Planned Capabilities and Current Status" unless html.index("Planned Capabilities") < html.index(prototype_heading) && html.index(prototype_heading) < html.index("Current Status")
+failures << "LENS Intelligence prototype lightbox is incomplete" unless html.include?('id="lens-prototype-trigger"') && html.include?('aria-haspopup="dialog"') && html.include?('id="lens-prototype-dialog"') && html.include?('id="lens-prototype-close"') && script.include?("prototypeDialog.showModal()") && script.include?('event.target === prototypeDialog') && script.include?('prototypeTrigger.focus({ preventScroll: true })')
 failures << "removed Resources surface remains" if html.match?(/id="resources"|Resources &amp; Publications|resource-(?:grid|card|type)|status-label/i) || config.match?(/label: "Resources"|href: "#resources"/) || css.match?(/\.resources-section|\.resource-(?:grid|card|type)|\.status-label/)
 failures << "educational narrative does not precede Solutions" unless html.index('id="perspective"') < html.index('id="solutions"')
 approved_about_copy = [

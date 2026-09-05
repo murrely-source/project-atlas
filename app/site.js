@@ -15,6 +15,9 @@
   const contactErrorSummary = document.querySelector("#contact-error-summary");
   const contactErrorList = document.querySelector("#contact-error-list");
   const contactTurnstileError = document.querySelector("#contact-turnstile-error");
+  const prototypeTrigger = document.querySelector("#lens-prototype-trigger");
+  const prototypeDialog = document.querySelector("#lens-prototype-dialog");
+  const prototypeClose = document.querySelector("#lens-prototype-close");
   let menuOpen = false;
   let lockedScrollPosition = 0;
   let turnstileToken = "";
@@ -141,6 +144,35 @@
       event.preventDefault();
       first.focus();
     }
+  }
+
+  function initializePrototypeDialog() {
+    if (!prototypeTrigger || !prototypeDialog || !prototypeClose) {
+      return;
+    }
+
+    prototypeTrigger.addEventListener("click", () => {
+      document.body.classList.add("prototype-preview-open");
+      prototypeDialog.showModal();
+      prototypeClose.focus();
+    });
+
+    prototypeClose.addEventListener("click", () => prototypeDialog.close());
+    prototypeDialog.addEventListener("click", (event) => {
+      if (event.target === prototypeDialog) {
+        prototypeDialog.close();
+      }
+    });
+    prototypeDialog.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && prototypeDialog.open) {
+        event.preventDefault();
+        prototypeDialog.close();
+      }
+    });
+    prototypeDialog.addEventListener("close", () => {
+      document.body.classList.remove("prototype-preview-open");
+      prototypeTrigger.focus({ preventScroll: true });
+    });
   }
 
   function contactFieldMessage(field) {
@@ -327,6 +359,7 @@
   renderMobileNavigation();
   updateCurrentNavigation();
   renderLensCapabilities();
+  initializePrototypeDialog();
   initializeContactForm();
   if (window.turnstile) {
     initializeContactTurnstile();
