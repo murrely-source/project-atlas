@@ -33,11 +33,11 @@ failures << "LENS name is not centralized" unless config.include?('name: "LENS"'
 failures << "retired Nexus name remains user-facing" if html.match?(/\bNexus\b/i)
 failures << "legacy advisory name remains user-facing" if html.match?(/Solaris AI Risk|solarisadvisoryai/i)
 failures << "homepage sections are incomplete" unless %w[home about perspective solutions lens contact].all? { |id| html.include?(%[id="#{id}"]) }
-prototype_asset = "assets/lens-intelligence-prototype-dark.png"
+prototype_asset = "assets/lens-intelligence-prototype-accessible-light.png"
 prototype_heading = "A Preview of LENS Intelligence"
 prototype_support = "An early look at LENS Intelligence, currently in development as part of the Lucerna Executive Navigation System."
 prototype_disclosure = "Prototype shown for illustrative purposes. Interface, content, and capabilities may evolve during development."
-prototype_alt = "Prototype of the LENS Intelligence dashboard showing governance intelligence summaries, developing items, awareness indicators, and personalized intelligence panels."
+prototype_alt = "Accessible Light Edition prototype of the LENS Intelligence dashboard showing governance intelligence summaries, developing items, awareness indicators, and personalized intelligence panels."
 failures << "approved LENS Intelligence prototype preview is incomplete" unless File.file?(File.join(app, prototype_asset)) && [prototype_heading, prototype_support, prototype_disclosure, prototype_alt].all? { |copy| html.include?(copy) }
 failures << "LENS Intelligence prototype preview is not between Planned Capabilities and Current Status" unless html.index("Planned Capabilities") < html.index(prototype_heading) && html.index(prototype_heading) < html.index("Current Status")
 failures << "LENS Intelligence prototype lightbox is incomplete" unless html.include?('id="lens-prototype-trigger"') && html.include?('aria-haspopup="dialog"') && html.include?('id="lens-prototype-dialog"') && html.include?('id="lens-prototype-close"') && script.include?("prototypeDialog.showModal()") && script.include?('event.target === prototypeDialog') && script.include?('prototypeTrigger.focus({ preventScroll: true })')
