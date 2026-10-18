@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18 — Approved LENS website mockup
+
+- Replaced the existing LENS promotional image with the exact owner-approved illustrative Intelligence mockup while preserving its existing preview and enlarged-view presentation.
+- Updated intrinsic dimensions and concise alternative text without changing surrounding copy, layout, styling, or website behavior.
+
 ## 2026-09-04 — LENS prototype enlarged view
 
 - Made the existing LENS Intelligence prototype preview operable by pointer and keyboard to open an enlarged modal view.
