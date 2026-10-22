@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22 — Revised LENS navigation website mockup
+
+- Replaced the illustrative LENS promotional image with the exact owner-approved revised-navigation mockup while preserving the existing page layout, enlarged view, and prototype disclosure.
+- Updated concise alternative text to identify the revised Governance navigation without representing the mockup's example content as live product data.
+
 ## 2026-10-18 — Approved LENS website mockup
 
 - Replaced the existing LENS promotional image with the exact owner-approved illustrative Intelligence mockup while preserving its existing preview and enlarged-view presentation.
