@@ -39,9 +39,11 @@ prototype_asset = "assets/lens-intelligence-prototype-accessible-light.png"
 prototype_heading = "A Preview of LENS Intelligence"
 prototype_support = "An early look at LENS Intelligence, currently in development as part of the Lucerna Executive Navigation System."
 prototype_disclosure = "Prototype shown for illustrative purposes. Interface, content, and capabilities may evolve during development."
-prototype_alt = "Illustrative LENS Intelligence interface with revised Governance navigation and example updates."
-failures << "approved LENS Intelligence prototype preview is incomplete" unless File.file?(File.join(app, prototype_asset)) && [prototype_heading, prototype_support, prototype_disclosure, prototype_alt].all? { |copy| html.include?(copy) }
-failures << "approved LENS Intelligence prototype image hash changed" unless Digest::SHA256.file(File.join(app, prototype_asset)).hexdigest == "bf8243db04fdd5e80e123d210c43d3f90d1d3cd557a94dfd64e2accf4c82283c"
+prototype_alt = "Concept mockup of the LENS Governance overview dashboard."
+prototype_expanded_alt = "Expanded concept mockup of the LENS Governance overview dashboard."
+prototype_dimensions = 'width="1839" height="855"'
+failures << "approved LENS Intelligence prototype preview is incomplete" unless File.file?(File.join(app, prototype_asset)) && [prototype_heading, prototype_support, prototype_disclosure, prototype_alt, prototype_expanded_alt, prototype_dimensions].all? { |copy| html.include?(copy) }
+failures << "approved LENS Intelligence prototype image hash changed" unless Digest::SHA256.file(File.join(app, prototype_asset)).hexdigest == "3126a33249cc6094f7f55d061ea77017e4fe0f6a6187fdaad36ba758f7ee6c33"
 failures << "LENS Intelligence prototype preview is not between Planned Capabilities and Current Status" unless html.index("Planned Capabilities") < html.index(prototype_heading) && html.index(prototype_heading) < html.index("Current Status")
 failures << "LENS Intelligence prototype lightbox is incomplete" unless html.include?('id="lens-prototype-trigger"') && html.include?('aria-haspopup="dialog"') && html.include?('id="lens-prototype-dialog"') && html.include?('id="lens-prototype-close"') && script.include?("prototypeDialog.showModal()") && script.include?('event.target === prototypeDialog') && script.include?('prototypeTrigger.focus({ preventScroll: true })')
 failures << "removed Resources surface remains" if html.match?(/id="resources"|Resources &amp; Publications|resource-(?:grid|card|type)|status-label/i) || config.match?(/label: "Resources"|href: "#resources"/) || css.match?(/\.resources-section|\.resource-(?:grid|card|type)|\.status-label/)
