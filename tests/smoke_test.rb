@@ -18,7 +18,7 @@ failures << "public metadata title is missing" unless html.include?("<title>Sola
 failures << "product-first meta description is missing" unless html.include?('name="description"') && html.include?("AI technology company building AI-powered products with responsible governance engineered into their foundation")
 failures << "Open Graph text metadata is incomplete" unless %w[og:type og:site_name og:title og:description].all? { |property| html.include?(%[property="#{property}"]) }
 failures << "Twitter text metadata is incomplete" unless html.include?('name="twitter:card"') && html.include?('name="twitter:title"') && html.include?('name="twitter:description"')
-failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.12"') && html.include?('src="brand-config.js?v=0.22.10"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.9"')
+failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.12"') && html.include?('src="brand-config.js?v=0.22.11"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.9"')
 favicon_references = [
   'rel="icon" href="favicon.ico" sizes="any"',
   'rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"',
@@ -28,7 +28,7 @@ favicon_references = [
 failures << "approved Solaris Lucerna favicon references are incomplete" unless favicon_references.all? { |reference| html.include?(reference) }
 failures << "approved Solaris Lucerna favicon files are incomplete" unless %w[favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png].all? { |filename| File.file?(File.join(app, filename)) }
 failures << "public interaction script is not cache-versioned" unless html.include?('src="site.js?v=0.22.9"')
-failures << "public navigation configuration is not cache-versioned" unless html.include?('src="brand-config.js?v=0.22.10"')
+failures << "public navigation configuration is not cache-versioned" unless html.include?('src="brand-config.js?v=0.22.11"')
 failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.12"')
 failures << "centralized corporate identity is incomplete" unless config.include?('companyName: "Solaris Lucerna"') && config.include?('tagline: "Illuminating Responsible Intelligence"')
 failures << "LENS name is not centralized" unless config.include?('name: "LENS"') && config.include?('heroCtaLabel: "Discover LENS"') && config.include?('expansion: "Lucerna Executive Navigation System"') && config.include?("Solaris Lucerna's first software platform, designed to help organizations govern their adoption and use of artificial intelligence")
@@ -45,7 +45,7 @@ prototype_dimensions = 'width="1839" height="855"'
 failures << "approved LENS Intelligence prototype preview is incomplete" unless File.file?(File.join(app, prototype_asset)) && [prototype_heading, prototype_support, prototype_disclosure, prototype_alt, prototype_expanded_alt, prototype_dimensions].all? { |copy| html.include?(copy) }
 failures << "approved LENS Intelligence prototype image hash changed" unless Digest::SHA256.file(File.join(app, prototype_asset)).hexdigest == "3126a33249cc6094f7f55d061ea77017e4fe0f6a6187fdaad36ba758f7ee6c33"
 failures << "LENS Intelligence prototype preview is not between Planned Capabilities and Current Status" unless html.index("Planned Capabilities") < html.index(prototype_heading) && html.index(prototype_heading) < html.index("Current Status")
-failures << "LENS Intelligence prototype lightbox is incomplete" unless html.include?('id="lens-prototype-trigger"') && html.include?('aria-haspopup="dialog"') && html.include?('id="lens-prototype-dialog"') && html.include?('id="lens-prototype-close"') && script.include?("prototypeDialog.showModal()") && script.include?('event.target === prototypeDialog') && script.include?('prototypeTrigger.focus({ preventScroll: true })')
+failures << "LENS Intelligence prototype lightbox is incomplete" unless html.include?('id="lens-prototype-trigger"') && html.include?('aria-haspopup="dialog"') && html.include?('aria-label="Open a larger view of the LENS Governance concept preview."') && html.include?('id="lens-prototype-dialog"') && html.include?('aria-label="Expanded LENS Governance concept preview"') && html.include?('id="lens-prototype-close"') && script.include?("prototypeDialog.showModal()") && script.include?('event.target === prototypeDialog') && script.include?('prototypeTrigger.focus({ preventScroll: true })')
 failures << "removed Resources surface remains" if html.match?(/id="resources"|Resources &amp; Publications|resource-(?:grid|card|type)|status-label/i) || config.match?(/label: "Resources"|href: "#resources"/) || css.match?(/\.resources-section|\.resource-(?:grid|card|type)|\.status-label/)
 failures << "educational narrative does not precede Solutions" unless html.index('id="perspective"') < html.index('id="solutions"')
 approved_about_copy = [
@@ -102,11 +102,12 @@ failures << "approved LENS section hierarchy is incomplete" unless html.index('c
 failures << "planned capabilities do not use the approved horizontal desktop layout" unless css.include?("grid-template-columns: repeat(5, minmax(0, 1fr));") && css.include?(".lens-supporting-content { display: grid;")
 
 expected_lens_capabilities = [
-  "LENS Intelligence — Provides a structured approach to identifying, reviewing, and presenting developments in artificial intelligence, governance, regulation, standards, and related areas that may inform organizational oversight.",
-  "LENS Diagnostic — Designed to evaluate an organization's AI governance capability, helping identify strengths, gaps, and opportunities for improvement. The Diagnostic focuses on organizational governance—not individual model performance testing or technical vulnerability scanning.",
-  "Governance — Envisions a structured environment for managing governance activities, accountability, oversight, and decisions associated with organizational AI use.",
-  "Knowledge — A governed environment for organizing and maintaining information and evidence that support responsible AI governance.",
-  "Ask LENS — An envisioned assistance capability intended to help users work with relevant information across the LENS environment while preserving human judgment and appropriate governance boundaries."
+  "LENS Intelligence: Planned to organize developments in AI, governance, regulation and standards for review, helping leaders identify information relevant to oversight.",
+  "LENS Diagnostic: Being designed to assess organizational AI governance strengths and gaps. Its scope does not include individual model performance testing or technical vulnerability scanning.",
+  "Governance: A planned workspace for organizing governance activities, responsibilities and decisions about organizational AI use.",
+  "Knowledge: A planned environment for organizing information and evidence that support AI governance.",
+  "Ask LENS: A planned assistance capability to help users work with relevant information across LENS, subject to human judgment and appropriate governance boundaries.",
+  "Tasks: A planned workspace for tracking assigned governance work, due dates and progress, with human oversight of completion and verification."
 ]
 failures << "planned LENS capabilities are incomplete" unless expected_lens_capabilities.all? { |capability| config.include?(capability) }
 failures << "neutral company contact language is missing" unless html.include?("Contact Solaris Lucerna with questions about the company, its technology, or LENS.")
@@ -119,7 +120,7 @@ failures << "Turnstile initialization is not connected" unless script.include?("
 failures << "configured contact endpoint is not used" unless script.include?("fetch(contactConfig.endpointUrl")
 failures << "contact Sending state is not entered and restored" unless script.include?("setContactSubmitting(true)") && script.match?(/finally \{\s*setContactSubmitting\(false\);\s*\}/)
 failures << "connectivity probe could be mistaken for delivery" unless script.include?('result.status !== "success"') && !script.include?('result.status === "ok"')
-failures << "contact success message is incorrect" unless html.include?("Thank you. Your message has been received. We'll be in touch shortly.")
+failures << "contact success message is incorrect" unless html.include?("Thank you. Your message has been received.") && !html.include?("We'll be in touch shortly.")
 failures << "temporary connectivity page is exposed in production navigation" if html.include?("contact-connectivity-test.html") || config.include?("contact-connectivity-test.html")
 failures << "private contact values are exposed in public files" if [html, script, config, contact_config].any? { |content| content.match?(/TURNSTILE_SECRET_KEY|CONTACT_RECIPIENT|CONTACT_CC/) }
 footer = html[/<footer class="site-footer">(.*?)<\/footer>/m, 1].to_s

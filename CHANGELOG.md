@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-08 — Approved LENS capability and accessibility copy
+
+- Replaced the six planned-capability descriptions with the approved public wording, including the planned Tasks workspace.
+- Updated the Governance concept-preview button and dialog accessible names and shortened the approved contact confirmation.
+- Preserved the existing development and sample-data disclosures, layout, styling, imagery, navigation, and product behavior.
+
 ## 2026-11-07 — LENS section horizontal presentation
 
 - Moved the approved LENS introduction above the supporting content and converted Planned Capabilities into a compact full-width horizontal presentation.
