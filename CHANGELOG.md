@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-07 — LENS Governance overview website mockup
+
+- Replaced the LENS promotional preview with the exact Founder-supplied Governance overview concept mockup while preserving the existing responsive layout, enlarged view, and prototype disclosure.
+- Updated the intrinsic dimensions and concise alternative text without representing the mockup, its sample data, or its depicted controls as released product functionality.
+
 ## 2026-10-22 — Revised LENS navigation website mockup
 
 - Replaced the illustrative LENS promotional image with the exact owner-approved revised-navigation mockup while preserving the existing page layout, enlarged view, and prototype disclosure.
