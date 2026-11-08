@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-07 — LENS section horizontal presentation
+
+- Moved the approved LENS introduction above the supporting content and converted Planned Capabilities into a compact full-width horizontal presentation.
+- Placed the existing concept preview and Current Status beneath the capability strip while preserving all approved copy, imagery, semantics, and interactions.
+- Added progressive tablet and mobile wrapping so the five capability descriptions remain readable without horizontal overflow.
+
 ## 2026-11-07 — Approved public LENS copy refresh
 
 - Updated the existing LENS introduction, planned-capability descriptions, concept-preview disclosure, and current-status copy with the Founder-approved public wording.
