@@ -18,10 +18,11 @@ window.SOLARIS_SITE = Object.freeze({
     Object.freeze({ label: "Contact", href: "#contact" })
   ]),
   lensCapabilities: Object.freeze([
-    "LENS Intelligence — Provides a structured approach to identifying, reviewing, and presenting developments in artificial intelligence, governance, regulation, standards, and related areas that may inform organizational oversight.",
-    "LENS Diagnostic — Designed to evaluate an organization's AI governance capability, helping identify strengths, gaps, and opportunities for improvement. The Diagnostic focuses on organizational governance—not individual model performance testing or technical vulnerability scanning.",
-    "Governance — Envisions a structured environment for managing governance activities, accountability, oversight, and decisions associated with organizational AI use.",
-    "Knowledge — A governed environment for organizing and maintaining information and evidence that support responsible AI governance.",
-    "Ask LENS — An envisioned assistance capability intended to help users work with relevant information across the LENS environment while preserving human judgment and appropriate governance boundaries."
+    "LENS Intelligence: Planned to organize developments in AI, governance, regulation and standards for review, helping leaders identify information relevant to oversight.",
+    "LENS Diagnostic: Being designed to assess organizational AI governance strengths and gaps. Its scope does not include individual model performance testing or technical vulnerability scanning.",
+    "Governance: A planned workspace for organizing governance activities, responsibilities and decisions about organizational AI use.",
+    "Knowledge: A planned environment for organizing information and evidence that support AI governance.",
+    "Ask LENS: A planned assistance capability to help users work with relevant information across LENS, subject to human judgment and appropriate governance boundaries.",
+    "Tasks: A planned workspace for tracking assigned governance work, due dates and progress, with human oversight of completion and verification."
   ])
 });
