@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-07 — Approved public LENS copy refresh
+
+- Updated the existing LENS introduction, planned-capability descriptions, concept-preview disclosure, and current-status copy with the Founder-approved public wording.
+- Preserved the existing page structure, Governance Overview concept image, navigation, styling, accessibility behavior, and public-site deployment boundary.
+- Added no LENS application, specification, product functionality, or release-status change.
+
 ## 2026-11-07 — LENS Governance overview website mockup
 
 - Replaced the LENS promotional preview with the exact Founder-supplied Governance overview concept mockup while preserving the existing responsive layout, enlarged view, and prototype disclosure.

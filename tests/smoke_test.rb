@@ -18,7 +18,7 @@ failures << "public metadata title is missing" unless html.include?("<title>Sola
 failures << "product-first meta description is missing" unless html.include?('name="description"') && html.include?("AI technology company building AI-powered products with responsible governance engineered into their foundation")
 failures << "Open Graph text metadata is incomplete" unless %w[og:type og:site_name og:title og:description].all? { |property| html.include?(%[property="#{property}"]) }
 failures << "Twitter text metadata is incomplete" unless html.include?('name="twitter:card"') && html.include?('name="twitter:title"') && html.include?('name="twitter:description"')
-failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.11"') && html.include?('src="brand-config.js?v=0.22.9"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.9"')
+failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.11"') && html.include?('src="brand-config.js?v=0.22.10"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.9"')
 favicon_references = [
   'rel="icon" href="favicon.ico" sizes="any"',
   'rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"',
@@ -28,17 +28,17 @@ favicon_references = [
 failures << "approved Solaris Lucerna favicon references are incomplete" unless favicon_references.all? { |reference| html.include?(reference) }
 failures << "approved Solaris Lucerna favicon files are incomplete" unless %w[favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png].all? { |filename| File.file?(File.join(app, filename)) }
 failures << "public interaction script is not cache-versioned" unless html.include?('src="site.js?v=0.22.9"')
-failures << "public navigation configuration is not cache-versioned" unless html.include?('src="brand-config.js?v=0.22.9"')
+failures << "public navigation configuration is not cache-versioned" unless html.include?('src="brand-config.js?v=0.22.10"')
 failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.11"')
 failures << "centralized corporate identity is incomplete" unless config.include?('companyName: "Solaris Lucerna"') && config.include?('tagline: "Illuminating Responsible Intelligence"')
-failures << "LENS name is not centralized" unless config.include?('name: "LENS"') && config.include?('heroCtaLabel: "Discover LENS"') && config.include?('expansion: "Lucerna Executive Navigation System"') && config.include?("Solaris Lucerna's first product and platform for responsible AI governance and executive navigation")
+failures << "LENS name is not centralized" unless config.include?('name: "LENS"') && config.include?('heroCtaLabel: "Discover LENS"') && config.include?('expansion: "Lucerna Executive Navigation System"') && config.include?("Solaris Lucerna's first software platform, designed to help organizations govern their adoption and use of artificial intelligence")
 failures << "retired Nexus name remains user-facing" if html.match?(/\bNexus\b/i)
 failures << "legacy advisory name remains user-facing" if html.match?(/Solaris AI Risk|solarisadvisoryai/i)
 failures << "homepage sections are incomplete" unless %w[home about perspective solutions lens contact].all? { |id| html.include?(%[id="#{id}"]) }
 prototype_asset = "assets/lens-intelligence-prototype-accessible-light.png"
-prototype_heading = "A Preview of LENS Intelligence"
-prototype_support = "An early look at LENS Intelligence, currently in development as part of the Lucerna Executive Navigation System."
-prototype_disclosure = "Prototype shown for illustrative purposes. Interface, content, and capabilities may evolve during development."
+prototype_heading = "A Preview of the LENS Experience"
+prototype_support = "An illustrative look at the LENS Governance workspace, showing how organizational governance activities, diagnostic scheduling, security-related actions, and decisions requiring attention could be presented in a unified experience."
+prototype_disclosure = "Concept preview: This interface contains sample data and represents an evolving product concept. The final interface, functionality, and available capabilities may differ as development progresses."
 prototype_alt = "Concept mockup of the LENS Governance overview dashboard."
 prototype_expanded_alt = "Expanded concept mockup of the LENS Governance overview dashboard."
 prototype_dimensions = 'width="1839" height="855"'
@@ -59,7 +59,7 @@ failures << "approved About positioning copy is incomplete or altered" unless ap
 failures << "About section label changed" unless html.include?('<p class="eyebrow">What Solaris Lucerna Does</p>')
 failures << "public site retains consultancy positioning" if html.match?(/\badvis(?:ory|or|ors)\b|consult(?:ing|ant|ancy)|\bengagements?\b/i) || config.match?(/\badvis(?:ory|or|ors)\b|consult(?:ing|ant|ancy)|\bengagements?\b/i)
 failures << "AI technology company positioning is incomplete" unless html.include?("Solaris Lucerna is an AI technology company") && html.include?("building AI-powered products")
-failures << "LENS is not positioned as Solaris Lucerna's first product" unless html.include?("Solaris Lucerna's first product and platform") && html.include?("LENS, the Lucerna Executive Navigation System, is the first expression of that philosophy")
+failures << "LENS is not positioned as Solaris Lucerna's first product" unless html.include?("Solaris Lucerna's first software platform") && html.include?("LENS, the Lucerna Executive Navigation System, is the first expression of that philosophy")
 approved_longer_view_copy = [
   "Artificial intelligence is the next chapter in a much longer human story.",
   "People have always created tools that extend memory, communication, calculation, and reach. AI continues that history of expanding human capability.",
@@ -94,19 +94,17 @@ failures << "removed Hero CTA remains" if hero_section.match?(/<a\b|data-product
 failures << "empty Hero action wrapper remains" if hero_section.match?(/hero-support|button-group/)
 failures << "product naming is incomplete" unless html.scan(/\bLENS\b/).length >= 4 && html.include?("Lucerna Executive Navigation System")
 failures << "LENS identity hierarchy is incomplete" unless html.match?(%r{<h2 id="lens-title"><span data-product-name></span></h2>\s*<p class="eyebrow" data-product-expansion></p>\s*<p class="product-expansion">In Development</p>})
-failures << "LENS is not presented as the first product and platform" unless html.include?("is the Lucerna Executive Navigation System, Solaris Lucerna's first product and platform for responsible AI governance and executive navigation") && !html.include?("Solaris <span data-product-name></span>")
-failures << "LENS development status is unclear" unless html.include?("In Development") && html.include?("currently in active design and development")
+failures << "LENS is not presented as the first software platform" unless html.include?("is Solaris Lucerna's first software platform, designed to help organizations govern their adoption and use of artificial intelligence") && !html.include?("Solaris <span data-product-name></span>")
+failures << "LENS development status is unclear" unless html.include?("In Development") && html.include?("is in active development, with work progressing across its foundational governance capabilities and supporting product experience")
 failures << "LENS human-judgment limitation is missing" unless html.include?("Rather than replacing human judgment") && html.include?("Technology is never the hero. Humanity is.")
 failures << "LENS capability sequence note spacing is missing" unless html.include?('class="capability-sequence-note"') && css.include?(".capability-panel > .capability-sequence-note { margin-top: 2rem; }")
 
 expected_lens_capabilities = [
-  "Executive Governance Dashboards",
-  "AI Risk & Readiness Insights",
-  "Regulatory & Standards Monitoring",
-  "Research & Knowledge Repository",
-  "Governance Assessments",
-  "Decision Support",
-  "Governance Activity Tracking"
+  "LENS Intelligence — Provides a structured approach to identifying, reviewing, and presenting developments in artificial intelligence, governance, regulation, standards, and related areas that may inform organizational oversight.",
+  "LENS Diagnostic — Designed to evaluate an organization's AI governance capability, helping identify strengths, gaps, and opportunities for improvement. The Diagnostic focuses on organizational governance—not individual model performance testing or technical vulnerability scanning.",
+  "Governance — Envisions a structured environment for managing governance activities, accountability, oversight, and decisions associated with organizational AI use.",
+  "Knowledge — A governed environment for organizing and maintaining information and evidence that support responsible AI governance.",
+  "Ask LENS — An envisioned assistance capability intended to help users work with relevant information across the LENS environment while preserving human judgment and appropriate governance boundaries."
 ]
 failures << "planned LENS capabilities are incomplete" unless expected_lens_capabilities.all? { |capability| config.include?(capability) }
 failures << "neutral company contact language is missing" unless html.include?("Contact Solaris Lucerna with questions about the company, its technology, or LENS.")
