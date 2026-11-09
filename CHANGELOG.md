@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-08 — Equal Planned Capabilities row-divider gaps
+
+- Matched the rendered gap above and below the Planned Capabilities horizontal row divider while preserving the existing row spacing.
+- Left all capability wording, responsive layouts, and other visual styling unchanged.
+
 ## 2026-11-08 — Planned Capabilities divider spacing
 
 - Inset the Planned Capabilities vertical dividers so they stop consistently short of the horizontal row divider.

@@ -119,15 +119,15 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
 .capability-panel { padding: clamp(1.35rem, 2.5vw, 2rem); border: 1px solid rgba(158, 223, 240, .28); border-radius: 12px; background: rgba(8, 13, 20, .54); box-shadow: var(--shadow); }
 .panel-label { margin-bottom: 1.25rem; color: var(--cyan-soft); font-family: var(--font-heading); font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; }
 .capability-panel > p { color: var(--text-muted); font-size: .9rem; }
-.capability-panel ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 0; margin: 1.4rem 0 0; list-style: none; }
+.capability-panel ul { --capability-divider-gap: .75rem; --capability-row-offset: 1rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 0; margin: 1.4rem 0 0; list-style: none; }
 .capability-panel li { position: relative; min-width: 0; display: flex; align-items: flex-start; padding: .25rem 1rem; color: var(--soft-white); font-size: .78rem; line-height: 1.65; }
 .capability-panel li:nth-child(3n + 1) { padding-left: 0; }
 .capability-panel li:nth-child(3n) { padding-right: 0; }
 .capability-panel li:nth-child(n + 4) { padding-top: 1rem; margin-top: 1rem; border-top: 1px solid rgba(158, 223, 240, .15); }
 .capability-panel li::before { width: 6px; height: 6px; flex: 0 0 auto; margin-right: .7rem; border-radius: 50%; background: var(--gold); content: ""; }
 .capability-panel li:not(:nth-child(3n))::after { position: absolute; top: .25rem; right: 0; bottom: .25rem; width: 1px; background: rgba(158, 223, 240, .15); content: ""; }
-.capability-panel li:nth-child(-n + 3)::after { bottom: .75rem; }
-.capability-panel li:nth-child(n + 4)::after { top: .75rem; }
+.capability-panel li:nth-child(-n + 3)::after { bottom: calc(var(--capability-divider-gap) - var(--capability-row-offset)); }
+.capability-panel li:nth-child(n + 4)::after { top: var(--capability-divider-gap); }
 .capability-panel > .capability-sequence-note { margin-top: 1.4rem; }
 .lens-supporting-content { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
 .lens-prototype-preview { min-width: 0; }
