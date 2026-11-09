@@ -18,7 +18,7 @@ failures << "public metadata title is missing" unless html.include?("<title>Sola
 failures << "product-first meta description is missing" unless html.include?('name="description"') && html.include?("AI technology company building AI-powered products with responsible governance engineered into their foundation")
 failures << "Open Graph text metadata is incomplete" unless %w[og:type og:site_name og:title og:description].all? { |property| html.include?(%[property="#{property}"]) }
 failures << "Twitter text metadata is incomplete" unless html.include?('name="twitter:card"') && html.include?('name="twitter:title"') && html.include?('name="twitter:description"')
-failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.14"') && html.include?('src="brand-config.js?v=0.22.11"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.9"')
+failures << "shared public assets are not loaded" unless html.include?('href="site.css?v=0.22.15"') && html.include?('src="brand-config.js?v=0.22.11"') && html.include?('src="contact-config.js"') && html.include?('src="site.js?v=0.22.9"')
 favicon_references = [
   'rel="icon" href="favicon.ico" sizes="any"',
   'rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"',
@@ -29,7 +29,7 @@ failures << "approved Solaris Lucerna favicon references are incomplete" unless 
 failures << "approved Solaris Lucerna favicon files are incomplete" unless %w[favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png].all? { |filename| File.file?(File.join(app, filename)) }
 failures << "public interaction script is not cache-versioned" unless html.include?('src="site.js?v=0.22.9"')
 failures << "public navigation configuration is not cache-versioned" unless html.include?('src="brand-config.js?v=0.22.11"')
-failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.14"')
+failures << "public-site stylesheet is not cache-versioned" unless html.include?('href="site.css?v=0.22.15"')
 failures << "centralized corporate identity is incomplete" unless config.include?('companyName: "Solaris Lucerna"') && config.include?('tagline: "Illuminating Responsible Intelligence"')
 failures << "LENS name is not centralized" unless config.include?('name: "LENS"') && config.include?('heroCtaLabel: "Discover LENS"') && config.include?('expansion: "Lucerna Executive Navigation System"') && config.include?("Solaris Lucerna's first software platform, designed to help organizations govern their adoption and use of artificial intelligence")
 failures << "retired Nexus name remains user-facing" if html.match?(/\bNexus\b/i)
@@ -100,7 +100,7 @@ failures << "LENS human-judgment limitation is missing" unless html.include?("Ra
 failures << "LENS capability sequence note spacing is missing" unless html.include?('class="capability-sequence-note"') && css.include?(".capability-panel > .capability-sequence-note { margin-top: 1.4rem; }")
 failures << "approved LENS section hierarchy is incomplete" unless html.index('class="lens-copy"') < html.index('class="capability-panel"') && html.index('class="capability-panel"') < html.index('class="lens-supporting-content"')
 failures << "planned capabilities do not use the approved balanced desktop layout" unless css.include?("grid-template-columns: repeat(3, minmax(0, 1fr));") && css.include?(".capability-panel li:nth-child(3n + 1)") && css.include?(".capability-panel li:nth-child(3n)") && css.include?(".lens-supporting-content { display: grid;")
-failures << "planned capability column dividers do not preserve spacing around the row divider" unless css.include?(".capability-panel li:not(:nth-child(3n))::after") && css.include?(".capability-panel li:nth-child(-n + 3)::after { bottom: .75rem; }") && css.include?(".capability-panel li:nth-child(n + 4)::after { top: .75rem; }")
+failures << "planned capability column dividers do not preserve equal rendered spacing around the row divider" unless css.include?("--capability-divider-gap: .75rem;") && css.include?("--capability-row-offset: 1rem;") && css.include?(".capability-panel li:not(:nth-child(3n))::after") && css.include?(".capability-panel li:nth-child(-n + 3)::after { bottom: calc(var(--capability-divider-gap) - var(--capability-row-offset)); }") && css.include?(".capability-panel li:nth-child(n + 4)::after { top: var(--capability-divider-gap); }")
 
 expected_lens_capabilities = [
   "LENS Intelligence: Planned to organize developments in AI, governance, regulation and standards for review, helping leaders identify information relevant to oversight.",
