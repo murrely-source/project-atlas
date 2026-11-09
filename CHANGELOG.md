@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-08 — Planned Capabilities divider spacing
+
+- Inset the Planned Capabilities vertical dividers so they stop consistently short of the horizontal row divider.
+- Preserved the existing desktop, tablet, and mobile grid layouts, capability wording, and visual style.
+
 ## 2026-11-08 — Balanced Planned Capabilities grid
 
 - Rebalanced the six Planned Capabilities into two aligned rows of three on desktop.
