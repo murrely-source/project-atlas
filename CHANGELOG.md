@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-08 — Balanced Planned Capabilities grid
+
+- Rebalanced the six Planned Capabilities into two aligned rows of three on desktop.
+- Preserved the existing two-column tablet and single-column mobile behavior, with consistent row and column separators at each breakpoint.
+- Changed no capability wording, imagery, color, typography, navigation, or unrelated website behavior.
+
 ## 2026-11-08 — Approved LENS capability and accessibility copy
 
 - Replaced the six planned-capability descriptions with the approved public wording, including the planned Tasks workspace.
