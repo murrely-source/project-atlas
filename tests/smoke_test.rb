@@ -97,10 +97,10 @@ failures << "LENS identity hierarchy is incomplete" unless html.match?(%r{<h2 id
 failures << "LENS is not presented as the first software platform" unless html.include?("is Solaris Lucerna's first software platform, designed to help organizations govern their adoption and use of artificial intelligence") && !html.include?("Solaris <span data-product-name></span>")
 failures << "LENS development status is unclear" unless html.include?("In Development") && html.include?("is in active development, with work progressing across its foundational governance capabilities and supporting product experience")
 failures << "LENS human-judgment limitation is missing" unless html.include?("Rather than replacing human judgment") && html.include?("Technology is never the hero. Humanity is.")
-founder_sign_in = '<a class="button button-primary" href="https://lens.solarislucerna.ai/">Founder sign-in</a>'
+founder_sign_in = '<a class="button button-primary" href="https://lens.solarislucerna.ai/">LENS Login</a>'
 lens_copy = html[/<div class="lens-copy">.*?<\/div>/m].to_s
-failures << "LENS founder sign-in is missing or outside the approved product explanation" unless lens_copy.include?(founder_sign_in)
-failures << "LENS founder sign-in was added to the primary navigation" if config.include?('href: "https://lens.solarislucerna.ai/')
+failures << "LENS login button is missing or outside the approved product explanation" unless lens_copy.include?(founder_sign_in)
+failures << "LENS login button was added to the primary navigation" if config.include?('href: "https://lens.solarislucerna.ai/')
 failures << "LENS capability sequence note spacing is missing" unless html.include?('class="capability-sequence-note"') && css.include?(".capability-panel > .capability-sequence-note { margin-top: 1.4rem; }")
 failures << "approved LENS section hierarchy is incomplete" unless html.index('class="lens-copy"') < html.index('class="capability-panel"') && html.index('class="capability-panel"') < html.index('class="lens-supporting-content"')
 failures << "planned capabilities do not use the approved balanced desktop layout" unless css.include?("grid-template-columns: repeat(3, minmax(0, 1fr));") && css.include?(".capability-panel li:nth-child(3n + 1)") && css.include?(".capability-panel li:nth-child(3n)") && css.include?(".lens-supporting-content { display: grid;")
