@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-09 — LENS login button label
+
+- Renamed the public-site LENS entry button from **Founder sign-in** to **LENS Login** while preserving its existing `https://lens.solarislucerna.ai/` destination and presentation.
+
 ## 2026-11-09 — LENS founder sign-in entry point
 
 - Added a focused **Founder sign-in** button beside the LENS product explanation, linking to the approved `lens.solarislucerna.ai` application domain.
