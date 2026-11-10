@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-09 — LENS founder sign-in entry point
+
+- Added a focused **Founder sign-in** button beside the LENS product explanation, linking to the approved `lens.solarislucerna.ai` application domain.
+- Reused the existing primary-button treatment and preserved the public site's development-stage copy, navigation, preview, responsive behavior, and accessibility conventions.
+- Added automated and manual acceptance coverage for button placement, target, navigation separation, and the protected founder-login boundary.
+
 ## 2026-11-08 — Equal Planned Capabilities row-divider gaps
 
 - Matched the rendered gap above and below the Planned Capabilities horizontal row divider while preserving the existing row spacing.

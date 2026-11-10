@@ -18,6 +18,8 @@ Run after each public-site UI change.
 - [ ] Solutions renders the approved product-first copy as one continuous narrative hierarchy without numbered cards, consulting, advisory, service, future-product, pricing, or unsupported capability claims.
 - [ ] LENS is presented as the **Lucerna Executive Navigation System**, Solaris Lucerna's first product and platform for responsible AI governance and executive navigation, and is described as complementing rather than replacing human judgment.
 - [ ] LENS is clearly marked **In Development**, and its detailed status remains **active design and development**.
+- [ ] The **Founder sign-in** button appears with the LENS product explanation, opens `https://lens.solarislucerna.ai/` in the same tab, and is not duplicated in either primary navigation.
+- [ ] Anonymous access to the LENS domain reaches the founder login without exposing protected LENS content; successful sign-in, sign-out, and session expiry preserve the existing application boundary.
 - [ ] The Planned Capabilities sequence note has additional breathing room beneath the final capability divider without changing the panel layout.
 - [ ] No Resources navigation item, section, placeholder, or broken `#resources` anchor remains.
 - [ ] About identifies Solaris Lucerna as an AI technology company, explains responsible intelligence and governance by design, and introduces LENS as the first expression of that philosophy without duplicating LENS feature detail.
