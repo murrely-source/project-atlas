@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-18 — Temporarily hide public LENS login
+
+- Removed the public-site **LENS Login** control from the LENS product explanation under Founder direction so visitors without access are not invited into the private application.
+- Preserved the surrounding LENS copy, concept preview, capabilities, layout, navigation, branding, and private LENS application without changing authentication or access.
+
 ## 2026-11-09 — LENS login button label
 
 - Renamed the public-site LENS entry button from **Founder sign-in** to **LENS Login** while preserving its existing `https://lens.solarislucerna.ai/` destination and presentation.
