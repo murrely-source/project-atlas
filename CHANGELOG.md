@@ -3,6 +3,7 @@
 ## 2026-11-18 — Temporarily hide public LENS login
 
 - Removed the public-site **LENS Login** control from the LENS product explanation under Founder direction so visitors without access are not invited into the private application.
+- Replaced the public LENS concept preview with the exact Founder-supplied Governance overview screenshot, preserving the existing responsive preview, enlarged view, accessibility labels, and concept/sample-data disclosure.
 - Preserved the surrounding LENS copy, concept preview, capabilities, layout, navigation, branding, and private LENS application without changing authentication or access.
 
 ## 2026-11-09 — LENS login button label
