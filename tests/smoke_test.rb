@@ -41,9 +41,10 @@ prototype_support = "An illustrative look at the LENS Governance workspace, show
 prototype_disclosure = "Concept preview: This interface contains sample data and represents an evolving product concept. The final interface, functionality, and available capabilities may differ as development progresses."
 prototype_alt = "Concept mockup of the LENS Governance overview dashboard."
 prototype_expanded_alt = "Expanded concept mockup of the LENS Governance overview dashboard."
-prototype_dimensions = 'width="1839" height="855"'
-failures << "approved LENS Intelligence prototype preview is incomplete" unless File.file?(File.join(app, prototype_asset)) && [prototype_heading, prototype_support, prototype_disclosure, prototype_alt, prototype_expanded_alt, prototype_dimensions].all? { |copy| html.include?(copy) }
-failures << "approved LENS Intelligence prototype image hash changed" unless Digest::SHA256.file(File.join(app, prototype_asset)).hexdigest == "3126a33249cc6094f7f55d061ea77017e4fe0f6a6187fdaad36ba758f7ee6c33"
+prototype_dimensions = 'width="1536" height="1024"'
+prototype_versioned_source = 'assets/lens-intelligence-prototype-accessible-light.png?v=0.23.0'
+failures << "approved LENS Intelligence prototype preview is incomplete" unless File.file?(File.join(app, prototype_asset)) && [prototype_heading, prototype_support, prototype_disclosure, prototype_alt, prototype_expanded_alt, prototype_dimensions, prototype_versioned_source].all? { |copy| html.include?(copy) }
+failures << "approved LENS Intelligence prototype image hash changed" unless Digest::SHA256.file(File.join(app, prototype_asset)).hexdigest == "86dd5c2fdc4877dc90b1d69f74d05faaad8bea72cc6c764d18160a9ce6851a99"
 failures << "LENS Intelligence prototype preview is not between Planned Capabilities and Current Status" unless html.index("Planned Capabilities") < html.index(prototype_heading) && html.index(prototype_heading) < html.index("Current Status")
 failures << "LENS Intelligence prototype lightbox is incomplete" unless html.include?('id="lens-prototype-trigger"') && html.include?('aria-haspopup="dialog"') && html.include?('aria-label="Open a larger view of the LENS Governance concept preview."') && html.include?('id="lens-prototype-dialog"') && html.include?('aria-label="Expanded LENS Governance concept preview"') && html.include?('id="lens-prototype-close"') && script.include?("prototypeDialog.showModal()") && script.include?('event.target === prototypeDialog') && script.include?('prototypeTrigger.focus({ preventScroll: true })')
 failures << "removed Resources surface remains" if html.match?(/id="resources"|Resources &amp; Publications|resource-(?:grid|card|type)|status-label/i) || config.match?(/label: "Resources"|href: "#resources"/) || css.match?(/\.resources-section|\.resource-(?:grid|card|type)|\.status-label/)
@@ -97,10 +98,9 @@ failures << "LENS identity hierarchy is incomplete" unless html.match?(%r{<h2 id
 failures << "LENS is not presented as the first software platform" unless html.include?("is Solaris Lucerna's first software platform, designed to help organizations govern their adoption and use of artificial intelligence") && !html.include?("Solaris <span data-product-name></span>")
 failures << "LENS development status is unclear" unless html.include?("In Development") && html.include?("is in active development, with work progressing across its foundational governance capabilities and supporting product experience")
 failures << "LENS human-judgment limitation is missing" unless html.include?("Rather than replacing human judgment") && html.include?("Technology is never the hero. Humanity is.")
-founder_sign_in = '<a class="button button-primary" href="https://lens.solarislucerna.ai/">LENS Login</a>'
 lens_copy = html[/<div class="lens-copy">.*?<\/div>/m].to_s
-failures << "LENS login button is missing or outside the approved product explanation" unless lens_copy.include?(founder_sign_in)
-failures << "LENS login button was added to the primary navigation" if config.include?('href: "https://lens.solarislucerna.ai/')
+failures << "temporarily hidden LENS login remains in the product explanation" if lens_copy.match?(/LENS Login|lens\.solarislucerna\.ai/)
+failures << "temporarily hidden LENS login remains in the primary navigation" if config.include?('href: "https://lens.solarislucerna.ai/')
 failures << "LENS capability sequence note spacing is missing" unless html.include?('class="capability-sequence-note"') && css.include?(".capability-panel > .capability-sequence-note { margin-top: 1.4rem; }")
 failures << "approved LENS section hierarchy is incomplete" unless html.index('class="lens-copy"') < html.index('class="capability-panel"') && html.index('class="capability-panel"') < html.index('class="lens-supporting-content"')
 failures << "planned capabilities do not use the approved balanced desktop layout" unless css.include?("grid-template-columns: repeat(3, minmax(0, 1fr));") && css.include?(".capability-panel li:nth-child(3n + 1)") && css.include?(".capability-panel li:nth-child(3n)") && css.include?(".lens-supporting-content { display: grid;")
